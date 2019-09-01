@@ -1,11 +1,30 @@
 # README
 
+### 기본적인 셋팅이 끝났습니다. 
+- App.js, Root.js는 서비스에 대한 내용을 담지 않습니다.
+- src/pages는 라우터에서 처리할 컴포넌트 단위입니다. 유저가 UI가 아니라 URL를 통해 행동할때를 고려해주세요.
+- src/compnents는 중복적으로 사용되는 컴포넌트를 재활용하기 위해 만들었습니다. pages에서 계속 사용되는 컴포넌트가 있다면 props만 다르게 지정해주면 재활용할 수 있도록 만들어주세요.
+- src/client가 굳이 있는 이유는 서버렌더링을 고려한 준비입니다.
+- [안트디자인](https://ant.design/)  을 적극활용해주세요.
+
+- - -
+
+### 코드 규칙 통일을 위해 VS Code Extension 내 ESLint 및 Prettier 설치가 필요합니다
+- 이후 settings(Cmd+) 진입, 우측 상단의 '{}' 버튼을 눌러 json 파일을 오픈합니다
+
+- 아래 설정 내용을 추가합니다
+
+- { ..., "editor.formatOnSave": true, "javascript.format.enable": false, "prettier.eslintIntegration": true }
+
 - - -
 
 - 프로젝트에 대한 설명을 문서로 잘 기록하고 잘 리뷰하고
 - 투두카드와 스프린트 진행 질서를 잘 준수해서
 - 더 큰 프로젝트를 위한 기본적인 팀워크 습관과
 - 작지만 단단한 서비스를 만들어봅시다.
+
+
+
 
 - - -
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
