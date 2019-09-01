@@ -4,7 +4,7 @@ class ExperienceGuage extends Component {
   render() {
     return (
         <div>
-          This is ExperienceGurage COMP
+          ExperienceGuage
         </div>
     );
   }

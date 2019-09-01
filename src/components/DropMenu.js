@@ -4,7 +4,7 @@ class DropMenu extends Component {
   render() {
     return (
         <div>
-          This is DropMenu COMP
+          DropMenuCOMP
         </div>
     );
   }
