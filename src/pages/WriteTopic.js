@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Button, Icon} from 'antd';
 import './WriteTopic.css';
 
-
 class WriteTopic extends Component {
   constructor(props) {
     super(props);
@@ -39,24 +38,22 @@ class WriteTopic extends Component {
   }
 
   render() {
-    const ButtonGroup = Button.Group;
     return (
         <div>
           <div className="TopicBox">
             <div className="Topic-TEXT">
               {this.state.curTopic}
             </div>
-            <ButtonGroup size='large'>
+            <Button.Group size='large'>
               <Button onClick={this.getTopic}>
                 <Icon type="reload"/>
                 새로운 주제 받기
               </Button>
-              <Button onClick={this.goWrite}
-                  type="primary">
+              <Button onClick={this.goWrite} type="primary">
                 Write Now!
                 <Icon type="right"/>
               </Button>
-            </ButtonGroup>
+            </Button.Group>
           </div>
         </div>
     );
