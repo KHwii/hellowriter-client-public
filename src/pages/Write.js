@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { withRouter} from 'react-router-dom';
-import {Button, Icon} from 'antd';
+import {Button, Icon, Input} from 'antd';
 
-const {ButtonGroup} = Button;
+const {TextArea} = Input;
 class Write extends Component {
   render() {
     return (
@@ -10,22 +10,24 @@ class Write extends Component {
           <div className="topic-bar">
             <span>{this.props.data.currentWriteTopic}</span>
           </div>
-          <div className="write-area">
-            "안녕"
+          <div className="write-area-box">
+            <TextArea
+                placeholder="Autosize height with minimum and maximum number of lines"
+                autosize={{ minRows: 2, maxRows: 6 }}
+            />
             {console.log(this.props.data, "들어온 데이터")}
           </div>
           <div className="bottom-bar">
-            <ButtonGroup size='large'>
-              <Button onClick={this.getTopic}>
-                <Icon type="reload"/>
+            <Button.Group size="large">
+              <Button >
+                <Icon type="vertical-align-bottom" />
+                임시저장
+              </Button>
+              <Button type="primary">
+                <Icon type="forward"/>
                 Write now
               </Button>
-              <Button onClick={this.goWrite}
-                      type="primary">
-                임시저장
-                <Icon type="right"/>
-              </Button>
-            </ButtonGroup>
+            </Button.Group>
           </div>
         </div>
     );

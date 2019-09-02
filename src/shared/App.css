@@ -71,7 +71,7 @@
     margin: 3px;
 }
 
-.write-area {
+.write-area-box {
     display: flex;
     flex: 1;
 }
