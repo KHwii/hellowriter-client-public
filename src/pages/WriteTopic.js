@@ -7,13 +7,12 @@ class WriteTopic extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      curTopic: 'test 토픽입니다. fetch 후 받는 토픽으로 대체될거에요',
+      curTopic: this.props.data.currentWriteTopic || 'none',
     };
   }
 
   getTopic = () => {
     console.log("getTopic호출!");
-
     const {email, nickname} = this.props.data;
     const body = JSON.stringify({email, nickname});
     fetch('http://localhost:5000/topics/random',
@@ -47,7 +46,7 @@ class WriteTopic extends Component {
             <div className="Topic-TEXT">
               {this.state.curTopic}
             </div>
-            <ButtonGroup>
+            <ButtonGroup size='large'>
               <Button onClick={this.getTopic}>
                 <Icon type="reload"/>
                 새로운 주제 받기
