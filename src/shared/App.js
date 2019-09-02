@@ -28,10 +28,6 @@ class App extends Component {
   render() {
     return (
         <div className="container">
-          <ButtonGroup>
-            <Button type="primary" size="small" icon="cloud" />
-            <Button type="primary" size="small" icon="cloud-download" />
-          </ButtonGroup>
           <Layout className="App-table">
             <div className="App-table-cell">
               <div className="centerContents">
