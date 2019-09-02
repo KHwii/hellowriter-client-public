@@ -7,9 +7,6 @@
     background: rgba(16, 142, 233, 0.47);
     color: #fff;
     min-height: 120px;
-    line-height: 120px;
-
-
 }
 /*중앙배치 CSS*/
 .container {
@@ -78,6 +75,17 @@
     background-color: chocolate;
 }
 
+/*WriteTopic.js*/
+.newTopic-Button {
+    margin-top: 25px;
+}
+.myIssue-Button {
+    margin-top: 25px;
+}
+.goWrite-Button {
+    margin-top: 25px;
+}
+
 /*Write.js*/
 .write-area-box {
     display: flex;
@@ -97,4 +105,10 @@
 
 .ant-btn-group {
     margin-right: 8px;
+}
+
+.Topic-TEXT {
+    margin-top: 30px;
+    height: 3em;
+    vertical-align: middle;
 }

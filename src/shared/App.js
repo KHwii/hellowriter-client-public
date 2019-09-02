@@ -15,15 +15,18 @@ class App extends Component {
     super(props);
     this.state = {
       currentWriteTopic: "FAKE_승재님 BLINK DANCE 볼래 안볼래?",
+      isCustomIssue: false,
       email:"fakeUser",
       nickname:"fakeNick"
     }
   }
 
-  changeCurrentWriteTopic = (string) => {
-    this.setState({currentWriteTopic: string});
-    console.log("주제변경")
+  changeCurrentWriteTopic = (string, bool) => {
+    this.setState({currentWriteTopic: string, isCustomIssue: bool}, () => {
+      console.log("changed to ", this.state.currentWriteTopic)
+    });
   };
+
 
   render() {
     return (
@@ -47,8 +50,9 @@ class App extends Component {
                     <Route exact path="/write" render={(props) => <Write {...props}
                                                                               data={this.state}/>}/>
 
-                    <Route exact path="/write/topic" changeCurrentWriteTopic={this.changeCurrentWriteTopic}
+                    <Route exact path="/write/topic"
                            render={(props) => <WriteTopic {...props}
+                                                          changeCurrentWriteTopic={this.changeCurrentWriteTopic}
                                                           data={this.state}/>}/>
                     {/*Todo 진짜 데이터가 App에서 관리되면 같은 키값으로 리팩토링해주세요*/}
                     <Route exact path="/read" component={Read}/>
