@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
+import { withRouter} from 'react-router-dom';
 
 class Write extends Component {
   render() {
     return (
         <div>
-          This is Write
+          {console.log(this.props,"히스토리확인")}
         </div>
     );
   }
 }
 
-export default Write;
+export default withRouter(Write);
