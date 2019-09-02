@@ -6,7 +6,7 @@ class WriteTopic extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      curTopic: this.props.data.currentWriteTopic || 'none',
+      curTopic: this.props.data.currentWriteTopic || 'FAKE_TOPIC_승재님 BLINK DANCE 볼래 안볼래?',
     };
   }
 

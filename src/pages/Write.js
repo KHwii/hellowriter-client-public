@@ -2,32 +2,33 @@ import React, {Component} from 'react';
 import { withRouter} from 'react-router-dom';
 import {Button, Icon, Input} from 'antd';
 
+const ButtonGroup = Button.Group;
 const {TextArea} = Input;
+
 class Write extends Component {
+
   render() {
+
     return (
         <div className="flex-container">
           <div className="topic-bar">
+
             <span>{this.props.data.currentWriteTopic}</span>
           </div>
           <div className="write-area-box">
-            <TextArea
-                placeholder="Autosize height with minimum and maximum number of lines"
-                autosize={{ minRows: 2, maxRows: 6 }}
-            />
-            {console.log(this.props.data, "들어온 데이터")}
+            <TextArea className="write-area" placeholder="엄청나게 보고싶다"/>
           </div>
-          <div className="bottom-bar">
-            <Button.Group size="large">
-              <Button >
+          <div className="bottom-bar" >
+            <ButtonGroup size="large">
+              <Button type="dashed" size="large" shape="round">
                 <Icon type="vertical-align-bottom" />
                 임시저장
               </Button>
-              <Button type="primary">
+              <Button type="primary" size="large" shape="round">
                 <Icon type="forward"/>
                 Write now
               </Button>
-            </Button.Group>
+            </ButtonGroup>
           </div>
         </div>
     );

@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import React, { Component } from 'react';
-import {Layout} from 'antd';
+import {Layout,Button} from 'antd';
 import {
   Admin, Main, Mypage, MypageArticle, Read, ReadTopic, Signin, Signup, Welcome, Write, WriteTopic,
 } from '../pages';
@@ -8,12 +8,13 @@ import DropMenu from '../components/DropMenu';
 import ExperienceGuage from '../components/ExperienceGuage';
 import './App.css';
 
+const ButtonGroup = Button.Group;
 const {Header, Content} = Layout;
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentWriteTopic: "none",
+      currentWriteTopic: "FAKE_승재님 BLINK DANCE 볼래 안볼래?",
       email:"fakeUser",
       nickname:"fakeNick"
     }
@@ -27,10 +28,15 @@ class App extends Component {
   render() {
     return (
         <div className="container">
+          <ButtonGroup>
+            <Button type="primary" size="small" icon="cloud" />
+            <Button type="primary" size="small" icon="cloud-download" />
+          </ButtonGroup>
           <Layout className="App-table">
             <div className="App-table-cell">
               <div className="centerContents">
                 <Header className="Header-Box">
+
                   <DropMenu/>
                   HEADER
                   <ExperienceGuage/>
