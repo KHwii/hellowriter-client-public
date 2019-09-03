@@ -13,13 +13,17 @@ class Signup extends Component {
 	}
 	async onSubmit(e) {
 		e.preventDefault();
+
 		const email = e.target.email.value;
 		const password = e.target.password.value;
 		const checkpassword = e.target.checkpassword.value;
 		const nickname = e.target.nickname.value;
 		const userInfo = {};
+		
 		console.log(email, password, nickname);
+		
 		userInfo.email = email;
+		
 		if (password.length <= 8) {
 			alert('비밀번호는 8자리 이상 입력해주세요.');
 		} else if (password !== checkpassword) {
@@ -27,15 +31,18 @@ class Signup extends Component {
 		} else {
 			userInfo.password = password;
 		}
+
 		userInfo.nickname = nickname;
+		
 		console.log(userInfo);
 		//아래에 서버 post주소를 넣어주면됩니다.
+		
 		await fetch('http://127.0.0.1:3000', {
 			method: 'POST',
 			body: JSON.stringify(userInfo),
 			headers: {
-				'Content-Type': 'application/json'
-			}
+				'Content-Type': 'application/json',
+			},
 		})
 			.then((response) => {
 				alert('회원가입이 완료되었습니다.');
@@ -43,6 +50,7 @@ class Signup extends Component {
 			})
 			.catch((error) => console.error(error));
 	}
+	
 	render() {
 		return (
 			<div className="signUpPage">
