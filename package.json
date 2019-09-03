@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^3.23.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1"
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.1.1",
+    "semantic-ui-react": "^0.88.0"
   },
   "scripts": {
     "start": "cross-env NODE_PATH=src react-scripts start",
@@ -14,7 +17,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": ["react-app", "airbnb"]
+    "extends": [
+      "react-app",
+      "airbnb"
+    ]
   },
   "browserslist": {
     "production": [
@@ -29,7 +35,9 @@
     ]
   },
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "eslint": "^6.3.0",
+    "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-react": "^7.14.3",
     "prettier": "1.18.2"
   }

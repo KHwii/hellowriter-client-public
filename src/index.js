@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Root from './client/Root';
+import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// eslint-disable-next-line react/jsx-filename-extension
+ReactDOM.render(<Root />, document.getElementById('root'));
+serviceWorker.unregister();
