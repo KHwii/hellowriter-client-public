@@ -11,8 +11,11 @@ class Write extends Component {
       title: "",
       text: "",
       phaseOneBool: false,
+      phaseThreeBool: false,
+      phaseThreeThree: false,
       burnDate: "",
-      publish: ""
+      publish: "",
+      timeCapDate:"",
     }
   }
 
@@ -49,13 +52,21 @@ class Write extends Component {
     this.phaseOnePop()
   };
   phaseOneHandle = (value) => {
-    console.log(this, "어디보");
-    this.setState({burnDate: (new Date()).setSeconds(value)});
-    this.setState({phaseTwoBool: true});
+    console.log(this, "페이즈1 종료시작");
+    let burnDate = new Date().setSeconds(value);
+    this.setState({burnDate: burnDate, phaseTwoBool: true});
   };
 
   phaseTwoHandle = (value) => {
-  }
+    console.log(this, "페이즈2 종료시작");
+    this.setState({publish: value, phaseThreeBool: true});
+  };
+
+  phaseThreeHandle = (value) => {
+    console.log(this, "페이즈3 종료시작");
+    let burnDate = new Date().setSeconds(value);
+    this.setState({timeCapDate: value, phaseFourBool: true});
+  };
 
   phaseOnePop = () => this.setState({phaseOneBool: true});
   phaseOneClose = () => this.setState({phaseOneBool: false});
@@ -88,32 +99,45 @@ class Write extends Component {
                    header="헬로라이트의 글에는 생명이 있습니다. 이 글은 언제 사라질까요?"
                    content={
                      <Button.Group className="confirmPhaseBurnButtonGroup" size='large'>
-                       <Button onClick={this.phaseOneHandle(3600)} inverted color='olive'>한시간</Button>
+                       <Button onClick={() => this.phaseOneHandle(3600)} inverted color='olive'>한시간</Button>
                        <div style={{width: "0px"}}/>
-                       <Button onClick={this.phaseOneHandle(86400)} inverted color='yellow'>하루</Button>
+                       <Button onClick={() => this.phaseOneHandle(86400)} inverted color='yellow'>하루</Button>
                        <div style={{width: "0px"}}/>
-                       <Button onClick={this.phaseOneHandle(2592000)} inverted color='orange'>한달</Button>
+                       <Button onClick={() => this.phaseOneHandle(2592000)} inverted color='orange'>한달</Button>
                        <div style={{width: "0px"}}/>
-                       <Button onClick={this.phaseOneHandle(31536000000)} inverted color='red'>천년</Button>
+                       <Button onClick={() => this.phaseOneHandle(31536000000)} inverted color='red'>천년</Button>
                      </Button.Group>
                    }
                    open={this.state.phaseOneBool}
-                   onCancel={this.phaseOneClose}
-                   onConfirm={this.phaseOneClose}
           />
-          {/*<Confirm className={"confirmPhaseBurn"}*/}
-          {/*         header="글은 꼭 자신을 위한 것이기도 하고 타인을 위한 것이기도 합니다."*/}
-          {/*         content={*/}
-          {/*           <Button.Group className="confirmPhaseBurnButtonGroup" size='large'>*/}
-          {/*             <Button onClick={this.phaseTwoHandle("private")} inverted color='olive'>비공개</Button>*/}
-          {/*             <div style={{width: "0px"}}/>*/}
-          {/*             <Button onClick={this.phaseTwoHandle("half")} inverted color='yellow'>한정판 공개</Button>*/}
-          {/*             <div style={{width: "0px"}}/>*/}
-          {/*             <Button onClick={this.phaseTwoHandle("public")} inverted color='orange'>공개</Button>*/}
-          {/*           </Button.Group>*/}
-          {/*         }*/}
-          {/*         open={this.state.phaseTwoBool}*/}
-          {/*/>*/}
+          <Confirm className={"confirmPhaseTimeCap"}
+                   header="글은 꼭 자신을 위한 것이기도 하고 타인을 위한 것이기도 합니다."
+                   content={
+                     <Button.Group className="confirmPhaseBurnButtonGroup" size='large'>
+                       <Button onClick={() => this.phaseTwoHandle("private")} inverted color='olive'>비공개</Button>
+                       <div style={{width: "0px"}}/>
+                       <Button onClick={() => this.phaseTwoHandle("half")} inverted color='yellow'>한정판 공개</Button>
+                       <div style={{width: "0px"}}/>
+                       <Button onClick={() => this.phaseTwoHandle("public")} inverted color='orange'>공개</Button>
+                     </Button.Group>
+                   }
+                   open={this.state.phaseTwoBool}
+          />
+          <Confirm className={"confirmPhaseBurn"}
+                   header="글은 꼭 자신을 위한 것이기도 하고 타인을 위한 것이기도 합니다."
+                   content={
+                     <Button.Group className="confirmPhaseBurnButtonGroup" size='large'>
+                       <Button onClick={() => this.phaseThreeHandle(0)} inverted color='olive'>NOW</Button>
+                       <div style={{width: "0px"}}/>
+                       <Button onClick={() => this.phaseThreeHandle(86400)} inverted color='yellow'>하루뒤</Button>
+                       <div style={{width: "0px"}}/>
+                       <Button onClick={() => this.phaseThreeHandle(2592000)} inverted color='orange'>한달뒤</Button>
+                       <div style={{width: "0px"}}/>
+                       <Button onClick={() => this.phaseThreeHandle(31536000000)} inverted color='orange'>천년뒤</Button>
+                     </Button.Group>
+                   }
+                   open={this.state.phaseThreeBool}
+          />
         </div>
     );
   }
