@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import App from 'shared/App.js';
+import App from '../shared/App';
+import './Root.css';
 
 const Root = () => (
     <BrowserRouter>
