@@ -4,7 +4,7 @@ class MypageArticle extends Component {
   render() {
     return (
         <div>
-          This is MypageArticle
+          This is MypageArticle (ADVEN)
         </div>
     );
   }

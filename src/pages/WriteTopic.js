@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {withRouter} from 'react-router-dom';
 import {Button, Icon, Input, Tooltip} from 'antd';
 
 class WriteTopic extends Component {
@@ -14,16 +13,13 @@ class WriteTopic extends Component {
 
   getTopic = () => {
     console.log("getTopic호출!");
-    const {email, nickname} = this.props.data;
-    const body = JSON.stringify({email, nickname});
     fetch('http://localhost:5000/topics/random',
         {
-          method: 'POST',
+          method: 'GET',
           credentials: 'same-origin', // include, *same-origin, omit
           headers: {
             'Content-Type': 'application/json',
           },
-          body,
         }).then((res) => res.json())
         .then((res) => {
           console.log(res,"res.json() 결과");
@@ -86,6 +82,7 @@ class WriteTopic extends Component {
                       onChange={this.inputOnChangeHandle}
                       onBlur={this.onBlur}
                       maxLength={30}
+                      autoFocus={true}
                       onPressEnter={() => {
                         this.setState({renderInput: false});
                       }}

@@ -3,3 +3,21 @@
 .Root {
     text-align: center;
 }
+
+.ui.modal > .actions {
+    visibility: hidden;
+    height: 0;
+}
+
+.ui.small.modal.transition.visible.active.confirmPhaseBurn {
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+.confirmPhaseBurnButtonGroup {
+    padding: 10px 0 0 0;
+}
+
+.ui.dimmer {
+    background-color: rgba(0, 0, 0, 0.4);
+}
