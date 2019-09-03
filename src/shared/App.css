@@ -4,12 +4,9 @@
 }
 
 .ant-layout-content {
-    background: rgba(16, 142, 233, 1);
+    background: rgba(16, 142, 233, 0.47);
     color: #fff;
     min-height: 120px;
-    line-height: 120px;
-
-
 }
 /*중앙배치 CSS*/
 .container {
@@ -37,7 +34,7 @@
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    height: 350px;
+    height: 450px;
     padding: 1em;
     background: orange;
     color: white;
@@ -55,14 +52,12 @@
     flex-direction: column;
 }
 
-
 .flex-container {
+    line-height: initial;
     display: flex;
     flex-direction: column;
     flex: 1;
-    line-height: initial;
 }
-
 .topic-bar {
     line-height: initial;
     display: flex;
@@ -70,15 +65,50 @@
     height: 30px;
     margin: 3px;
 }
-
-.write-area-box {
-    display: flex;
-    flex: 1;
-}
-
 .bottom-bar {
     line-height: initial;
+    flex-direction: column;
     display: flex;
-    flex: 0;
+    flex: 0 ;
     height: 30px;
+    margin: 3px;
+    background-color: chocolate;
+}
+
+/*WriteTopic.js*/
+.newTopic-Button {
+    margin-top: 25px;
+}
+.myIssue-Button {
+    margin-top: 25px;
+}
+.goWrite-Button {
+    margin-top: 25px;
+}
+
+/*Write.js*/
+.write-area-box {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 5px;
+}
+.write-area {
+    display: flex;
+    flex: 1;
+    width: auto;
+    padding: 10px;
+    background-color: rgba(97, 218, 251, 0.26);
+    color:white;
+    font-size:1.2em;
+}
+
+.ant-btn-group {
+    margin-right: 8px;
+}
+
+.Topic-TEXT {
+    margin-top: 30px;
+    height: 3em;
+    vertical-align: middle;
 }
