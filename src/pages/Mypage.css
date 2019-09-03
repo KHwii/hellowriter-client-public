@@ -1,0 +1,10 @@
+/* .mypage-info-table {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    line-height: initial;
+} */
+
+.bottom-bar2 {
+    display:inline;
+}
