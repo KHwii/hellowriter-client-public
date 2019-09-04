@@ -67,16 +67,7 @@ class Write extends Component {
       console.log("최종제출 호출!");
       const {burnDate, publish, timeCapDate, title, text} = this.state;
       const {email, currentWriteTopic, isCustomIssue} = this.props;
-      const body = JSON.stringify({
-        email: email,
-        title: title,
-        article_text: text,
-        burn_date: burnDate,
-        publish_status: publish,
-        will_public_at: timeCapDate,
-        topic_text: currentWriteTopic,
-        isCustomIssue: isCustomIssue,
-      });
+      const body = JSON.stringify({email, title, text, burnDate, publish, will_public_at:timeCapDate,isCustomIssue,topic_text:currentWriteTopic});
       console.log("준비된", body);
       fetch('http://localhost:5000/article/',
           {
