@@ -1,6 +1,6 @@
-import { Route, Switch } from 'react-router-dom';
-import React, { Component } from 'react';
-import {Layout,Button} from 'antd';
+import { Route, Switch } from "react-router-dom";
+import React, { Component } from "react";
+import { Layout, Button } from "antd";
 import {
   Admin,
   Main,
@@ -19,7 +19,7 @@ import ExperienceGuage from "../components/ExperienceGuage";
 import "./App.css";
 
 const ButtonGroup = Button.Group;
-const {Header, Content} = Layout;
+const { Header, Content } = Layout;
 
 class App extends Component {
   constructor(props) {
@@ -30,49 +30,77 @@ class App extends Component {
       isCustomIssue: false,
       email: "fakeUser",
       nickname: "fakeNick"
-    }
+    };
+  }
+
+  changeCurrentUser = event => {
+    this.setState({ currentUserId: event });
   };
 
   changeCurrentWriteTopic = (string, bool) => {
-    this.setState({currentWriteTopic: string, isCustomIssue: bool}, () => {
-      console.log("changed to ", this.state.currentWriteTopic)
+    this.setState({ currentWriteTopic: string, isCustomIssue: bool }, () => {
+      console.log("changed to ", this.state.currentWriteTopic);
     });
   };
+
   changeCurrentReadTopic = event => {
-    this.setState({currentReadTopic: event});
+    this.setState({ currentReadTopic: event });
   };
 
   render() {
     return (
-        <div className="container">
-          <Layout className="App-table">
-            <div className="App-table-cell">
-              <div className="centerContents">
-                <Header className="Header-Box">
-
-                  <DropMenu/>
-                  HEADER
-                  <ExperienceGuage/>
-                </Header>
-                <Content className="App-Content">
-                  <Switch>
-                       <Route
+      <div className="container">
+        <Layout className="App-table">
+          <div className="App-table-cell">
+            <div className="centerContents">
+              <Header className="Header-Box">
+                <DropMenu />
+                HEADER
+                <ExperienceGuage />
+              </Header>
+              <Content className="App-Content">
+                <Switch>
+                  <Route
                     exact
                     path="/main"
                     component={Main}
                     changeCurrentReadTopic={this.changeCurrentReadTopic}
                   />
-                    <Route exact path="/signin" component={Signin}/>
-                    <Route exact path="/signup" component={Signup}/>
-                    <Route exact path="/mypage" component={Mypage}/>
-                    <Route exact path="/mypage/Article" component={MypageArticle}/>
-                    <Route exact path="/write" render={(props) => <Write {...props}
-                                                                              data={this.state}/>}/>
-                    <Route exact path="/write/topic"
-                           render={(props) => <WriteTopic {...props}
-                                                          changeCurrentWriteTopic={this.changeCurrentWriteTopic}
-                                                          data={this.state}/>}/>
-                    {/*Todo 진짜 데이터가 App에서 관리되면 같은 키값으로 리팩토링해주세요*/}
+                  <Route
+                    exact
+                    path="/signin"
+                    render={props => (
+                      <Signin
+                        {...props}
+                        changeCurrentUser={this.changeCurrentUser}
+                        data={this.state}
+                      />
+                    )}
+                  />
+                  <Route exact path="/signup" component={Signup} />
+                  <Route exact path="/mypage" component={Mypage} />
+                  <Route
+                    exact
+                    path="/mypage/Article"
+                    component={MypageArticle}
+                  />
+                  <Route
+                    exact
+                    path="/write"
+                    render={props => <Write {...props} data={this.state} />}
+                  />
+                  <Route
+                    exact
+                    path="/write/topic"
+                    render={props => (
+                      <WriteTopic
+                        {...props}
+                        changeCurrentWriteTopic={this.changeCurrentWriteTopic}
+                        data={this.state}
+                      />
+                    )}
+                  />
+                  {/*Todo 진짜 데이터가 App에서 관리되면 같은 키값으로 리팩토링해주세요*/}
                   <Route
                     exact
                     path="/read"

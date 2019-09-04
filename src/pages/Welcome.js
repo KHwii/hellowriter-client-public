@@ -1,14 +1,16 @@
+/* eslint-disable no-tabs */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './Welcome.css';
 
 class Welcome extends Component {
 	render() {
 		return (
-			<div className="Welcome-box">
-				<h4>Hello, Writer. I read you, you lead me.</h4>
+			<div className="welcomePage">
+				<h1 id="welcomeWrite">Hello, Writer.</h1>
 				<div>
-					<Link to="/signup">Sign up</Link>
-					<Link to="/signin">Sign in</Link>
+					<Link className="welcomeBtn" to="/signup">Sign up</Link>
+					<Link className="welcomeBtn" to="/signin">Sign in</Link>
 				</div>
 			</div>
 		);
