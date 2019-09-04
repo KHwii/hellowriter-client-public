@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Button, Statistic, Icon, message} from 'antd';
+import {List, Button, Statistic, Icon, message} from 'antd';
 class Main extends Component {
   constructor(props) {
     super(props)
@@ -16,6 +16,7 @@ class Main extends Component {
     setTimeout(() => this.props.history.push('/read/topic'), 1500)
   }
   render() {
+    const data = ["1위! 최후의 점멸 댄스", "2위! 이시국씨의 일본맥주 떨이탐험", "2위! 고양이 마켓 후기"];
     return (
         <div className="Mina-Containner">
           <div className="Top-Infomation">
@@ -35,6 +36,16 @@ class Main extends Component {
               </Button>
             </Button.Group>
           </div>
+          {/*<h3 style={{ margin: '16px 0' }}></h3>*/}
+          <div>오늘의 핫한 글~?</div>
+          <List
+              size="small"
+              // header={}
+              // footer={<div style={{ margin: '8px 0' }}>Footer</div>}
+              bordered
+              dataSource={data}
+              renderItem={item => <List.Item>{item}</List.Item>}
+          />
         </div>
     );
   }
