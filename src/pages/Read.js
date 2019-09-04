@@ -4,7 +4,6 @@
 /* eslint-disable no-console */
 /* eslint-disable quotes */
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
 import { Button } from "antd";
 
 class Read extends Component {
