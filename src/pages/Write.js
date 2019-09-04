@@ -41,14 +41,12 @@ class Write extends Component {
         })
         .catch((err) => console.log(err))
   };
-
   titleHandle = (e) => {
     this.setState({title: e.target.value})
   };
   textHandle = (e) => {
     this.setState({text: e.target.value})
   };
-
   mainSave = () => {
     this.phaseOnePop()
   };
@@ -71,24 +69,29 @@ class Write extends Component {
       const {email, currentWriteTopic, isCustomIssue} = this.props;
       const body = JSON.stringify({email, title, text, burnDate, publish, will_public_at:timeCapDate,isCustomIssue,topic_text:currentWriteTopic});
       console.log("준비된", body);
-      fetch('http://localhost:5000/stash/',
+      fetch('http://localhost:5000/article/',
           {
-            method: 'POST',
-            credentials: 'same-origin', // include, *same-origin, omit
+            method: 'POST', // include, *same-origin, omit
             headers: {
               'Content-Type': 'application/json',
             },
             body,
           }).then((res) => res.json())
           .then((res) => {
-            message.success('Save success!');
+
             console.log(res, "res.json() 결과");
+            setTimeout(() => {
+              this.setState({phaseFourBool: false}, () => {
+                message.success('비바람이 몰아치는 가운데 당신의 기록이 어디에 남았어요! 🙊');
+                setTimeout(() => this.props.history.push('/write/topic'), 0)
+              })
+            }, 1500);
           })
           .catch((err) => console.log(err))
     });
   };
-
   phaseOnePop = () => this.setState({phaseOneBool: true});
+
   closePop = () => this.setState({phaseOneBool: false, phaseTwoBool: false, phaseThreeBool: false});
 
   render() {
@@ -130,7 +133,7 @@ class Write extends Component {
                        </Button.Group>
                      }
                      open={this.state.phaseOneBool}
-                     close={this.state.phaseThreeBool}
+                     close={String(this.state.phaseTwoBool)}
             />
             <Confirm className={"confirmPhaseBurn"}
                      header="이 세상에 몇명만 아는 비밀을 만들어보세요."
@@ -144,7 +147,7 @@ class Write extends Component {
                        </Button.Group>
                      }
                      open={this.state.phaseTwoBool}
-                     close={this.state.phaseThreeBool}
+                     close={String(this.state.phaseTwoBool)}
             />
             <Confirm className={"confirmPhaseBurn"}
                      header="이글이 타임머신을 타고 미래에 공개된다면 어떨까요?"
@@ -152,25 +155,25 @@ class Write extends Component {
                        <Button.Group className="confirmPhaseBurnButtonGroup" size='large'>
                          <Button onClick={() => this.phaseThreeHandle(0)} inverted color='olive'>NOW</Button>
                          <div style={{width: "0px"}}/>
-                         <Button onClick={() => this.phaseThreeHandle(86400)} inverted color='yellow'>하루뒤</Button>
+                         <Button onClick={() => this.phaseThreeHandle(86400)} inverted color='yellow'>하루뒤에?</Button>
                          <div style={{width: "0px"}}/>
-                         <Button onClick={() => this.phaseThreeHandle(2592000)} inverted color='orange'>한달뒤</Button>
+                         <Button onClick={() => this.phaseThreeHandle(2592000)} inverted color='orange'>한달뒤에?</Button>
                          <div style={{width: "0px"}}/>
-                         <Button onClick={() => this.phaseThreeHandle(31536000000)} inverted color='orange'>천년뒤</Button>
+                         <Button onClick={() => this.phaseThreeHandle(31536000000)} inverted color='orange'>천년뒤에?</Button>
                        </Button.Group>
                      }
                      open={this.state.phaseThreeBool}
-                     close={this.state.phaseThreeBool}
+                     close={String(this.state.phaseThreeBool)}
             />
           </div>
       )
     } else {//phase four 단계 로드
       return (
-          <Segment>
-            <Dimmer active inverted>
-              <Loader inverted content='Loading'/>
+          <Segment className="Load-Container">
+            <Dimmer className="Load-outer" active inverted>
+              <Loader inverted content="당신의 향기를 기록중~"/>
             </Dimmer>
-            <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png'/>
+            <Image className="Load-Image" src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png'/>
           </Segment>
       )
     }
