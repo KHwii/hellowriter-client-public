@@ -2,7 +2,7 @@
 /* eslint-disable no-tabs */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'antd';
+import { Button, Carousel } from 'antd';
 import IsLoading from '../components/IsLoading';
 import './Mypage.css';
 
@@ -38,7 +38,7 @@ class Mypage extends Component {
 					userData: data
 				});
 			})
-      .catch((err) => console.error(err));
+			.catch((err) => console.error(err));
 		// fetch주소에 server/totalinfo로 변경
 		fetch('https://randomuser.me/api/?results=10')
 			.then((res) => res.json())
@@ -58,7 +58,6 @@ class Mypage extends Component {
 
 	render() {
 		const { userData, totalInfo, isLoading } = this.state;
-		console.log('너상태가뭐야', isLoading);
 		return isLoading ? (
 			<IsLoading />
 		) : (
@@ -66,18 +65,45 @@ class Mypage extends Component {
 				<div className="my-page">
 					<span>마이페이지</span>
 				</div>
-				<div className="mypage-info-table">
-					<p>내가 쓴글 : {userData.total}개</p>
-					<p>타임캡슐 : {userData.timeCaptule}개</p>
-					<p>내가 발행한 주제 : {userData.topic}개</p>
+				<Carousel autoplay>
 					<div>
-						전체현황
-						<p> 전체글 : {totalInfo.total}개</p>
-						<p>토픽 : {totalInfo.topics}개</p>
-						<p>유저 : {totalInfo.users}개</p>
+						<h2>나는 어때</h2>
+						<h3>
+							내가 쓴글 :
+							{userData.total}
+							개
+						</h3>
+						<h3>
+							타임캡슐 :
+							{userData.timeCaptule}
+							개
+						</h3>
+						<h3>
+							내가 발행한 주제 :
+							{userData.topic}
+							개
+						</h3>
 					</div>
-					<div />
-				</div>
+					<div>
+						<h2>우리는 어때</h2>
+						<h3>
+							전체글 :
+							{totalInfo.total}
+							개
+						</h3>
+						<h3>
+							토픽 :
+							{totalInfo.topics}
+							개
+						</h3>
+						<h3>
+							유저 :
+							{totalInfo.users}
+							개
+						</h3>
+					</div>
+				</Carousel>
+
 				<div className="bottom-bar">
 					<Button id="mypage-homeBtn" size="large" onClick={this.changePageHome}>
 						<Link to="/main">HOME</Link>
