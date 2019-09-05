@@ -47,30 +47,22 @@ class Read extends Component {
 
   postEvaluation = event => {
     // 클릭한 평가 내용으로 post 요청(읽음 표시)
-    fetch("http://localhost:5000/read", {
+    fetch("http://localhost:5000/topics", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: {
+      body: JSON.stringify({
         article_id: this.state.curArticle.id,
-        email: this.props.data.email,
+        user_id: this.props.data.currentUserId,
         rating: event.target.innerText
-      }
+      })
     })
       .then(res => res.json())
       .then(json => console.log(json))
       .catch(err => console.log(err));
 
-    fetch("http://localhost:5000/article/random", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(json => this.setState({ curArticle: json }))
-      .catch(err => console.log(err));
+    this.getArticle();
   };
 
   render() {
