@@ -1,4 +1,5 @@
 .dropMenu {
-    position: relative;
+    position: absolute;
+    left: 14.4px;
     z-index: 6;
     }
