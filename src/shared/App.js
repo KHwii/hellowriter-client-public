@@ -12,7 +12,8 @@ import {
   Signup,
   Welcome,
   Write,
-  WriteTopic
+  WriteTopic,
+  Creator
 } from "../pages";
 import DropMenu from "../components/DropMenu";
 import ExperienceGuage from "../components/ExperienceGuage";
@@ -124,7 +125,8 @@ class App extends Component {
                     component={MypageArticle}
                   />
                   <Route exact path="/admin" component={Admin} />
-                  <Route path="/" component={Welcome} />
+                  <Route exact path="/" component={Welcome} />
+                  <Route exact path="/creator" component={Welcome} />
                 </Switch>
               </Content>
             </div>
