@@ -63,7 +63,7 @@ class Signin extends Component {
         </div>
         <div>
           <span>비밀번호 : </span>
-          <Input id="password-input" />
+          <Input id="password-input" type="password" />
         </div>
         <div>
           <Button onClick={this.toLongIn}>로그인하기</Button>

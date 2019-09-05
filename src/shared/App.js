@@ -110,9 +110,13 @@ class App extends Component {
                   <Route
                     exact
                     path="/read/Topic"
-                    component={ReadTopic}
-                    data={this.state}
-                    changeCurrentReadTopic={this.changeCurrentReadTopic}
+                    render={props => (
+                      <ReadTopic
+                        {...props}
+                        changeCurrentReadTopic={this.changeCurrentReadTopic}
+                        data={this.state}
+                      />
+                    )}
                   />
                   <Route
                     exact
