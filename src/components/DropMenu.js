@@ -1,13 +1,15 @@
 import React from 'react';
-import { Menu, Icon, Button } from 'antd';
-import { Link } from 'react-router-dom';
+import { Icon, Button } from 'antd';
 import './DropMenu.css';
 import Menus from './Menus';
 // const { SubMenu } = Menu;
 class DropMenu extends React.Component {
-	state = {
-		collapsed: false
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			collapsed: false
+		};
+	}
 
 	toggleCollapsed = () => {
 		this.setState({
@@ -17,11 +19,11 @@ class DropMenu extends React.Component {
 
 	render() {
 		return (
-			<div className="dropMenu">
+			<div className="dropMenu" style={{ width: 128 }}>
 				<Button type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 16 }}>
 					<Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
 				</Button>
-				{this.state.collapsed ? <Menus /> : null}
+				{this.state.collapsed ? <Menus toggleCollapsed={this.toggleCollapsed} /> : null}
 			</div>
 		);
 	}

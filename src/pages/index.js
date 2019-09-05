@@ -9,3 +9,4 @@ export { default as Signup } from './Signup';
 export { default as Welcome } from './Welcome';
 export { default as Write } from './Write';
 export { default as WriteTopic } from './WriteTopic';
+export { default as Creator } from './Creator';

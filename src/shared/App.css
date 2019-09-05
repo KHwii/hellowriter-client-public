@@ -1,7 +1,6 @@
 .ant-layout-header {
   background: #7dbcea;
   color: #fff;
-  line-height: 32px;
 }
 
 .ant-layout-content {
@@ -32,10 +31,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-
   margin-left: auto;
   margin-right: auto;
-
   width: 50%;
   height: 450px;
   padding: 1em;
@@ -60,6 +57,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  overflow: auto;
 }
 .topic-bar {
   line-height: initial;

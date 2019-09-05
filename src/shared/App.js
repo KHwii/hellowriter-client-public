@@ -126,7 +126,7 @@ class App extends Component {
                   />
                   <Route exact path="/admin" component={Admin} />
                   <Route exact path="/" component={Welcome} />
-                  <Route exact path="/creator" component={Welcome} />
+                  <Route exact path="/creator" component={Creator} />
                 </Switch>
               </Content>
             </div>
