@@ -3,7 +3,7 @@
         "browser": true,
         "es6": true
     },
-    "extends": "airbnb",
+    "extends": ["airbnb","plugin:prettier/recommended"],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
@@ -16,9 +16,10 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react", "prettier"
     ],
     "rules": {
+        "prettier/prettier": "warn",
         "no-console": "off",
         "react/jsc-indent-props": "off",
         "indent": "off",
