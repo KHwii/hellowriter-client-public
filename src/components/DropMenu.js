@@ -5,7 +5,7 @@ import Menus from './Menus';
 // const { SubMenu } = Menu;
 class DropMenu extends React.Component {
 	constructor(props) {
-		super(props)
+		super(props);
 		this.state = {
 			collapsed: false
 		};
@@ -23,7 +23,7 @@ class DropMenu extends React.Component {
 				<Button type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 16 }}>
 					<Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
 				</Button>
-				{this.state.collapsed ? <Menus toggleCollapsed={this.toggleCollapsed}/> : null}
+				{this.state.collapsed ? <Menus toggleCollapsed={this.toggleCollapsed} /> : null}
 			</div>
 		);
 	}

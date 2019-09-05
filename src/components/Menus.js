@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import './DropMenu.css';
 
 export default function Menus(props) {
-	const toggleCollapsed = props.toggleCollapsed
+	const toggleCollapsed = props.toggleCollapsed;
 	return (
 		<div>
-			<Menu mode="vertical-left" theme="dark">
+			<Menu mode="vertical-right" theme="dark">
 				<Menu.Item key="1" onClick={toggleCollapsed}>
 					<Icon type="home" />
 					<span>Home</span>
