@@ -3,15 +3,26 @@ import './Creator.css';
 
 class Creator extends Component {
 	render() {
-		const creators = [ '강태훈', '육광휘', '김해준' ];
-		const creatorsImg = creators.map((ele,index) => (
+		const creators = [
+			{
+				name: '강태훈',
+				img:
+					'https://files.slack.com/files-pri/TLJSSPZFE-FN1NFG2LV/i-didnt-choose-the-puglife-the-pug-life-chose-me-23261739.png'
+			},
+			{
+				name: '육광휘',
+				img: 'https://files.slack.com/files-pri/TLJSSPZFE-FMQ91CAGK/deadpool.jpeg'
+			},
+			{
+				name: '김해준',
+				img: 'https://t1.daumcdn.net/cfile/tistory/116CBB3F50EEACBB37'
+			}
+		];
+		const creatorsImg = creators.map((ele, index) => (
 			<div className="creators" key={ele + index}>
-				<img
-					className="creatorsPic"
-					src="//upload.wikimedia.org/wikipedia/commons/thumb/5/50/Albert_Einstein_%28Nobel%29.png/100px-Albert_Einstein_%28Nobel%29.png"
-				/>
+				<img className="creatorsPic" src={ele.img} />
 				<br />
-				{ele}
+				{ele.name}
 			</div>
 		));
 		return (
@@ -19,20 +30,12 @@ class Creator extends Component {
 				<br />
 				<h3>Hello, Writer</h3>
 				<p>by codestates</p>
-				<div id="usersInfo">
-					<img
-						className="usersPic"
-						src="//upload.wikimedia.org/wikipedia/commons/thumb/5/50/Albert_Einstein_%28Nobel%29.png/100px-Albert_Einstein_%28Nobel%29.png"
-					/>
-					<div>
-						유저이름
-						<br />
-						<br />
-            Runaway trains
-            <br />
-						<div>{creatorsImg}</div>
-					</div>
-				</div>
+				<br />
+				<br />
+				Runaway trains
+				<br />
+				<br />
+				<div>{creatorsImg}</div>
 			</div>
 		);
 	}
