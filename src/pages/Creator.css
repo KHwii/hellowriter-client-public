@@ -1,0 +1,18 @@
+.usersPic {
+    width: 90px; height: 90px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+}
+
+.creators {
+    float: left;
+    width: 33%;
+}
+
+.creatorsPic {
+    width: 70px; height: 70px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+}
