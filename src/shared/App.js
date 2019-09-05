@@ -54,7 +54,7 @@ class App extends Component {
         <Layout className="App-table">
           <div className="App-table-cell">
             <div className="centerContents">
-              <Header className="Header-Box">
+              <Header style={{"padding-left":"0px"}} className="Header-Box">
                 <DropMenu />
                 HEADER
                 <ExperienceGuage />

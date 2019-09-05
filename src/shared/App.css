@@ -1,118 +1,121 @@
-.ant-layout-header{
-    background: #7dbcea;
-    color: #fff;
+.ant-layout-header {
+  background: #7dbcea;
+  color: #fff;
+  line-height: 32px;
 }
 
 .ant-layout-content {
-    background: rgba(16, 142, 233, 0.47);
-    color: #fff;
-    min-height: 120px;
+  background: rgba(16, 142, 233, 0.47);
+  color: #fff;
+  min-height: 120px;
 }
 /*중앙배치 CSS*/
 .container {
-    width: 70%;
-    height: 70%;
-    margin: 20px auto;
-    background: #8f93ff;
+  width: 70%;
+  height: 70%;
+  margin: 20px auto;
+  background: #8f93ff;
 }
 
 .App-table {
-    background-color: #48363c;
-    display: table;
-    width: 100%;
-    height: 100%;
+  background-color: #48363c;
+  display: table;
+  width: 100%;
+  height: 100%;
 }
 .App-table-cell {
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
 }
 .centerContents {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    height: 450px;
-    padding: 1em;
-    background: orange;
-    color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 50%;
+  height: 450px;
+  padding: 1em;
+  background: orange;
+  color: white;
 }
 
 .Header-Box {
-    display: flex;
-    height: 25px;
-    flex-direction: row;
+  display: flex;
+  height: 25px;
+  flex-direction: row;
 }
 
 .App-Content {
-    height: 90%;
-    display: flex;
-    flex-direction: column;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
 }
 
 .flex-container {
-    line-height: initial;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+  line-height: initial;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 .topic-bar {
-    line-height: initial;
-    display: flex;
-    flex: 0;
-    height: 30px;
-    margin: 3px;
+  line-height: initial;
+  display: flex;
+  flex: 0;
+  height: 30px;
+  margin: 3px;
 }
 .bottom-bar {
-    line-height: initial;
-    flex-direction: column;
-    display: flex;
-    flex: 0 ;
-    height: 30px;
-    margin: 3px;
-    background-color: chocolate;
+  line-height: initial;
+  flex-direction: column;
+  display: flex;
+  flex: 0;
+  height: 30px;
+  margin: 3px;
+  background-color: chocolate;
 }
 
 /*WriteTopic.js*/
 .newTopic-Button {
-    margin-top: 25px;
+  margin-top: 25px;
 }
 .myIssue-Button {
-    margin-top: 25px;
+  margin-top: 25px;
 }
 .goWrite-Button {
-    margin-top: 25px;
+  margin-top: 25px;
 }
 
 /*Write.js*/
 .write-area-box {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    padding: 5px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 5px;
 }
 .write-area {
-    display: flex;
-    flex: 1;
-    width: auto;
-    padding: 10px;
-    background-color: rgba(97, 218, 251, 0.26);
-    color:white;
-    font-size:1.2em;
+  display: flex;
+  flex: 1;
+  width: auto;
+  padding: 10px;
+  background-color: rgba(97, 218, 251, 0.26);
+  color: white;
+  font-size: 1.2em;
 }
 
 .ant-btn-group {
-    margin-right: 8px;
+  margin-right: 8px;
 }
 
 .Topic-TEXT {
-    margin-top: 30px;
-    height: 3em;
-    vertical-align: middle;
+  margin-top: 30px;
+  height: 3em;
+  vertical-align: middle;
 }
 
 .signUpPage {
-    color: black;
+  color: black;
 }
