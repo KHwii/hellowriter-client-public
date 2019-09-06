@@ -16,7 +16,7 @@ class WriteTopic extends Component {
     fetch('http://localhost:5000/topics/random',
         {
           method: 'GET',
-          credentials: 'same-origin', // include, *same-origin, omit
+          credentials: 'include', // include, *same-origin, omit
           headers: {
             'Content-Type': 'application/json',
           },

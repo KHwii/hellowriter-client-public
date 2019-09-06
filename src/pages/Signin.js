@@ -31,6 +31,7 @@ class Signin extends Component {
         headers: {
           "Content-Type": "application/json"
         },
+        credentials: "include",
         body
       })
         .then(res => res.json())
