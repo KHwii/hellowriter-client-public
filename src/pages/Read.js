@@ -16,10 +16,14 @@ class Read extends Component {
 
   componentDidMount() {
     if (this.props.data.currentReadTopics) {
+      const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+      const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
       fetch("http://localhost:5000/article/random", {
         method: "GET",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          accessToken,
+          refreshToken
         },
         body: {
           topic: this.props.data.currentReadTopics
@@ -34,10 +38,14 @@ class Read extends Component {
   }
 
   getArticle = () => {
+    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+    const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
     fetch("http://localhost:5000/article/random", {
       method: "GET",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        accessToken,
+        refreshToken
       }
     })
       .then(res => res.json())
@@ -47,10 +55,14 @@ class Read extends Component {
 
   postEvaluation = event => {
     // 클릭한 평가 내용으로 post 요청(읽음 표시)
+    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+    const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
     fetch("http://localhost:5000/topics", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        accessToken,
+        refreshToken
       },
       body: JSON.stringify({
         article_id: this.state.curArticle.id,

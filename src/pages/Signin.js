@@ -21,7 +21,6 @@ class Signin extends Component {
   };
 
   toLongIn = () => {
-    console.log(this.props);
     let id = document.body.querySelector("#email-input").value;
     let password = document.body.querySelector("#password-input").value;
     const body = JSON.stringify({ email: id,  password:password });
@@ -37,6 +36,11 @@ class Signin extends Component {
         .then(res => res.json())
         .then(json => {
           // db에서 해당 유저 데이터가 있을 경우 response에 userid를 id 키에 매칭하여 전달한다는 가정 하 진행
+          const accessToken = json.accessToken;
+          const refreshToken = json.refreshToken;
+          localStorage.setItem("accessToken", JSON.stringify(accessToken));
+          localStorage.setItem("refreshToken", JSON.stringify(refreshToken));
+          console.log("응답: ", json);
           if (json.id !== undefined) {
             this.props.changeCurrentUser(json);
             this.goMain();
