@@ -5,6 +5,7 @@
 /* eslint-disable quotes */
 import React, { Component } from "react";
 import { Button } from "antd";
+import SERVER_URL from "../config/config";
 
 class Read extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class Read extends Component {
     if (this.props.data.currentReadTopics) {
       const accessToken = JSON.parse(localStorage.getItem("accessToken"));
       const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
-      fetch("http://localhost:5000/article/random", {
+      fetch(`${SERVER_URL}/article/random`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -40,7 +41,7 @@ class Read extends Component {
   getArticle = () => {
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
-    fetch("http://localhost:5000/article/random", {
+    fetch(`${SERVER_URL}/article/random`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +58,7 @@ class Read extends Component {
     // 클릭한 평가 내용으로 post 요청(읽음 표시)
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
-    fetch("http://localhost:5000/topics", {
+    fetch(`${SERVER_URL}:5000/topics`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

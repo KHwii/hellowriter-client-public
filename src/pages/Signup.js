@@ -7,6 +7,7 @@
 /* eslint-disable no-useless-constructor */
 import React, { Component } from 'react';
 import {message, Button} from 'antd';
+import SERVER_URL from "../config/config";
 
 class Signup extends Component {
 	constructor(props) {
@@ -53,7 +54,7 @@ class Signup extends Component {
 		console.log('checkMail 호출!');
 		const {email} = this.state;
 		const body = JSON.stringify({email});
-		fetch('http://localhost:5000/signup/email',
+		fetch(`${SERVER_URL}/signup/email`,
 				{
 					method: 'POST',
 					credentials: 'same-origin', // include, *same-origin, omit

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Icon, Input, Tooltip } from "antd";
+import SERVER_URL from "../config/config";
 
 class WriteTopic extends Component {
   constructor(props) {
@@ -14,19 +15,19 @@ class WriteTopic extends Component {
   getTopic = () => {
     console.log("getTopic호출!");
 
-    fetch('http://localhost:5000/topics/random',
-        {
-          method: 'GET',
-          credentials: 'include', // include, *same-origin, omit
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }).then((res) => res.json())
-        .then((res) => {
-          console.log(res,"res.json() 결과");
-          this.props.changeCurrentWriteTopic(res, false);
-        })
-        .catch((err) => console.log(err))
+    fetch(`${SERVER_URL}/topics/random`, {
+      method: "GET",
+      credentials: "include", // include, *same-origin, omit
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res, "res.json() 결과");
+        this.props.changeCurrentWriteTopic(res, false);
+      })
+      .catch(err => console.log(err));
   };
   goWrite = () => {
     this.props.history.push("/write");

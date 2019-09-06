@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "antd";
 import { Input } from "semantic-ui-react";
+import SERVER_URL from "../config/config";
 
 class Signin extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class Signin extends Component {
     let password = document.body.querySelector("#password-input").value;
     const body = JSON.stringify({ email: id,  password:password });
     if (id && password) {
-      fetch("http://localhost:5000/signin", {
+      fetch(`${SERVER_URL}/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

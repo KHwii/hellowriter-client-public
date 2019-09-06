@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button } from "antd";
+import SERVER_URL from "../config/config";
 
 class ReadTopic extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class ReadTopic extends Component {
   getTopics = () => {
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
-    fetch("http://localhost:5000/tags", {
+    fetch(`${SERVER_URL}/tags`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

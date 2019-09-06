@@ -1,10 +1,9 @@
-/* eslint-disable comma-dangle */
-/* eslint-disable no-tabs */
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button, Carousel } from "antd";
 import IsLoading from "../components/IsLoading";
 import "./Mypage.css";
+import SERVER_URL from "../config/config";
 
 class Mypage extends Component {
   constructor(props) {
@@ -28,7 +27,7 @@ class Mypage extends Component {
     // fetch에 server/user/article로 변경
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
-    fetch("http://localhost:5000/user/article", {
+    fetch(`${SERVER_URL}/user/article`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -40,7 +39,7 @@ class Mypage extends Component {
       .then(res => {
         const data = {
           total: res.info.results,
-          timeCaptule: res.info.results,
+          timeCapsule: res.info.results,
           topic: res.info.results
         };
         this.setState({

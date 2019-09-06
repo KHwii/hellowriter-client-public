@@ -8,6 +8,7 @@ import {
   Image,
   Segment
 } from "semantic-ui-react";
+import SERVER_URL from "../config/config";
 
 const { TextArea } = Input;
 
@@ -35,7 +36,7 @@ class Write extends Component {
     console.log("준비된", body);
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
-    fetch("http://localhost:5000/stash/", {
+    fetch(`${SERVER_URL}/stash/`, {
       method: "POST",
       credentials: "same-origin", // include, *same-origin, omit
       headers: {
@@ -96,7 +97,7 @@ class Write extends Component {
         console.log("준비된", body);
         const accessToken = JSON.parse(localStorage.getItem("accessToken"));
         const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
-        fetch("http://localhost:5000/article", {
+        fetch(`${SERVER_URL}/article`, {
           method: "POST", // include, *same-origin, omit
           headers: {
             "Content-Type": "application/json",

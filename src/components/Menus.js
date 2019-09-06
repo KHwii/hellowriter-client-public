@@ -1,13 +1,15 @@
 import React from "react";
-import { Menu, Icon, message } from "antd";
+import { Menu, Icon } from "antd";
 import { Link } from "react-router-dom";
 import "./DropMenu.css";
+import SERVER_URL from "../config/config";
 
 export default function Menus(props) {
-  const toggleCollapsed = props.toggleCollapsed;
+  // eslint-disable-next-line react/prop-types
+  const { toggleCollapsed } = props;
 
   const logout = () => {
-    fetch("http://localhost:5000/signout", {
+    fetch(`${SERVER_URL}/signout`, {
       method: "GET", // include, *same-origin, omit
       headers: {
         "Content-Type": "application/json",

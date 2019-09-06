@@ -21,7 +21,7 @@ class Creator extends Component {
     ];
     const creatorsImg = creators.map((ele, index) => (
       <div className="creators" key={ele + index}>
-        <img className="creatorsPic" src={ele.img} />
+        <img alt="fail" className="creatorsPic" src={ele.img} />
         <br />
         {ele.name}
       </div>
