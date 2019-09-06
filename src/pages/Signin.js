@@ -24,16 +24,14 @@ class Signin extends Component {
     console.log(this.props);
     let id = document.body.querySelector("#email-input").value;
     let password = document.body.querySelector("#password-input").value;
+    const body = JSON.stringify({ email: id,  password:password });
     if (id && password) {
       fetch("http://localhost:5000/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: {
-          email: id,
-          password: password
-        }
+        body
       })
         .then(res => res.json())
         .then(json => {
@@ -45,6 +43,7 @@ class Signin extends Component {
             alert("가입 내용이 없습니다");
           }
         })
+        .catch(err => console.log(err))
         // post 요청 후 해당 유저의 id 값을 받아와서 app 에 state 변경 후 다음 페이지로 이동
 
         .catch(err => console.log(err));
