@@ -13,23 +13,20 @@ class WriteTopic extends Component {
 
   getTopic = () => {
     console.log("getTopic호출!");
-    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
-    const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
-    fetch("http://localhost:5000/topics/random", {
-      method: "GET",
-      credentials: "same-origin", // include, *same-origin, omit
-      headers: {
-        "Content-Type": "application/json",
-        accessToken,
-        refreshToken
-      }
-    })
-      .then(res => res.json())
-      .then(res => {
-        console.log(res, "res.json() 결과");
-        return this.props.changeCurrentWriteTopic(res, false);
-      })
-      .catch(err => console.log("!!!!!", err));
+
+    fetch('http://localhost:5000/topics/random',
+        {
+          method: 'GET',
+          credentials: 'include', // include, *same-origin, omit
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }).then((res) => res.json())
+        .then((res) => {
+          console.log(res,"res.json() 결과");
+          this.props.changeCurrentWriteTopic(res, false);
+        })
+        .catch((err) => console.log(err))
   };
   goWrite = () => {
     this.props.history.push("/write");
