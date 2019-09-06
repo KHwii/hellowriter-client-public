@@ -12,10 +12,14 @@ class Admin extends Component {
   }
 
   getNotAllowedTopics = () => {
+    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+    const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
     fetch("http://localhost:5000/topics/notAllowed", {
       method: "GET",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        accessToken,
+        refreshToken
       }
     })
       .then(res => res.json())
@@ -24,11 +28,14 @@ class Admin extends Component {
   };
 
   allowTopic = event => {
-    console.log(typeof event.target.value);
+    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+    const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
     fetch("http://localhost:5000/topics/confirmAllow", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        accessToken: accessToken,
+        refreshToken: refreshToken
       },
       body: JSON.stringify({
         id: Number(event.target.value)

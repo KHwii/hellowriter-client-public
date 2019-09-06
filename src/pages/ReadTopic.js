@@ -14,10 +14,14 @@ class ReadTopic extends Component {
   }
 
   getTopics = () => {
+    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+    const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
     fetch("http://localhost:5000/tags", {
       method: "GET",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        accessToken,
+        refreshToken
       }
     })
       .then(res => res.json())
