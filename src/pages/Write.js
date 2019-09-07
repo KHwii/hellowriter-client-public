@@ -28,6 +28,12 @@ class Write extends Component {
     };
   }
 
+  componentDidMount() {
+    if (!this.props.data.currentUserId) {
+      this.props.history.push("/");
+    }
+  }
+
   mediateSave = () => {
     console.log("mediateSave 호출!");
     const { email } = this.props.data;

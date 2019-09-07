@@ -24,6 +24,9 @@ class Mypage extends Component {
   }
 
   componentDidMount() {
+    if (!this.props.data.currentUserId) {
+      this.props.history.push("/");
+    }
     // fetch에 server/user/article로 변경
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
