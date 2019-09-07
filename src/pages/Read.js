@@ -17,10 +17,15 @@ class Read extends Component {
   }
 
   componentDidMount() {
-    if (this.props.data.currentReadTopics) {
+    if (!this.props.data.currentUserId) {
+      this.props.history.push("/");
+    } else if (
+      this.props.data.currentUserId &&
+      this.props.data.currentReadTopic
+    ) {
       const accessToken = JSON.parse(localStorage.getItem("accessToken"));
       const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
-      fetch(`${SERVER_URL}/topics?word=${this.props.data.currentReadTopics}`, {
+      fetch(`${SERVER_URL}/topics?word=${this.props.data.currentReadTopic}`, {
         method: "GET",
         credentials: "include",
         headers: {
@@ -38,7 +43,7 @@ class Read extends Component {
   }
 
   getArticle = () => {
-    console.log("제로 1")
+    console.log("제로 1");
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
     fetch(`${SERVER_URL}/article/random`, {
