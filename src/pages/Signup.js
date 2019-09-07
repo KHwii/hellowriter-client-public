@@ -32,7 +32,7 @@ class Signup extends Component {
 			userInfo.password = password;
 		}
 		userInfo.nickname = nickname;
-		fetch('http://127.0.0.1:5000/signup', {
+		fetch(`${SERVER_URL}/signup`, {
 			method: 'POST',
 			body: JSON.stringify(userInfo),
 			headers: {
