@@ -1,6 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 import React, { Component } from "react";
-import { Layout, Button } from "antd";
+import { Layout } from "antd";
 import {
   Admin,
   Main,
@@ -19,7 +19,6 @@ import DropMenu from "../components/DropMenu";
 import ExperienceGuage from "../components/ExperienceGuage";
 import "./App.css";
 
-const ButtonGroup = Button.Group;
 const { Header, Content } = Layout;
 
 class App extends Component {
@@ -30,7 +29,8 @@ class App extends Component {
       currentWriteTopic: "FAKE_승재님 BLINK DANCE 볼래 안볼래?",
       isCustomIssue: false,
       email: "fakeUser",
-      nickname: "fakeNick"
+      nickname: "fakeNick",
+      point: 77.7
     };
   }
 
@@ -54,10 +54,9 @@ class App extends Component {
         <Layout className="App-table">
           <div className="App-table-cell">
             <div className="centerContents">
-              <Header style={{"padding-left":"0px"}} className="Header-Box">
+              <Header style={{ paddingLeft: "5px" }} className="Header-Box">
                 <DropMenu />
-                HEADER
-                <ExperienceGuage />
+                <ExperienceGuage point={this.state.point} />
               </Header>
               <Content className="App-Content">
                 <Switch>

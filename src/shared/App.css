@@ -40,10 +40,28 @@
   color: white;
 }
 
+/*상단메뉴*/
 .Header-Box {
   display: flex;
-  height: 25px;
   flex-direction: row;
+  height: 20px;
+}
+.dropMenu {
+  display: flex;
+  flex: 0;
+}
+.Menu-Button {
+  display: flex;
+  flex: 0;
+}
+.progress-box {
+  display: flex;
+  flex: 1;
+  margin-left: 50px;
+  margin-right: -40px;
+}
+.progress {
+  width: 100%;
 }
 
 .App-Content {

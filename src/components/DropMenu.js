@@ -20,7 +20,7 @@ class DropMenu extends React.Component {
 	render() {
 		return (
 			<div className="dropMenu" style={{ width: 128 }}>
-				<Button type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 16 }}>
+				<Button className="Menu-Button" type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 0 }}>
 					<Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
 				</Button>
 				{this.state.collapsed ? <Menus toggleCollapsed={this.toggleCollapsed} /> : null}

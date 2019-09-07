@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button } from "antd";
+import SERVER_URL from "../config/config";
 
 class Admin extends Component {
   constructor() {
@@ -14,7 +15,7 @@ class Admin extends Component {
   getNotAllowedTopics = () => {
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
-    fetch("http://localhost:5000/topics/notAllowed", {
+    fetch(`${SERVER_URL}/topics/notAllowed`, {
       method: "GET",
       credentials: "include",
       headers: {
@@ -31,7 +32,7 @@ class Admin extends Component {
   allowTopic = event => {
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
-    fetch("http://localhost:5000/topics/confirmAllow", {
+    fetch(SERVER_URL + "/topics/confirmAllow", {
       method: "POST",
       credentials: "include",
       headers: {
