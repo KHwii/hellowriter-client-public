@@ -38,10 +38,11 @@ class Mypage extends Component {
     })
       .then(res => res.json())
       .then(res => {
+        console.log("통신성공후 데이터 적용합니다.", res);
         const data = {
-          total: res.info.results,
-          timeCapsule: res.info.results,
-          topic: res.info.results
+          total: res.results,
+          timeCapsule: res.results,
+          topic: res.results
         };
         this.setState({
           userData: data
@@ -53,9 +54,9 @@ class Mypage extends Component {
       .then(res => res.json())
       .then(res => {
         const data = {
-          total: res.info.results,
-          topics: res.info.results,
-          users: res.info.results
+          total: res.results,
+          topics: res.results,
+          users: res.results
         };
         this.setState({
           totalInfo: data,
@@ -83,9 +84,9 @@ class Mypage extends Component {
           </div>
           <div>
             <h2>우리는 어때</h2>
-            <h3>전체글 :{totalInfo.total}개</h3>
-            <h3>토픽 :{totalInfo.topics}개</h3>
-            <h3>유저 :{totalInfo.users}개</h3>
+            {/*<h3>전체글 :{totalInfo.total}개</h3>*/}
+            {/*<h3>토픽 :{totalInfo.topics}개</h3>*/}
+            {/*<h3>유저 :{totalInfo.users}개</h3>*/}
           </div>
         </Carousel>
 

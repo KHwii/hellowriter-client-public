@@ -4,14 +4,15 @@
 /* eslint-disable no-console */
 /* eslint-disable quotes */
 import React, { Component } from "react";
-import { Button } from "antd";
+import { Button, message } from "antd";
 import SERVER_URL from "../config/config";
 
 class Read extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      curArticle: null
+      curArticle: null,
+      loading: false
     };
   }
 
@@ -40,6 +41,7 @@ class Read extends Component {
   }
 
   getArticle = () => {
+    console.log("제로 1")
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
     fetch(`${SERVER_URL}/article/random`, {
@@ -56,11 +58,12 @@ class Read extends Component {
       .catch(err => console.log(err));
   };
 
-  postEvaluation = event => {
+  postEvaluation = async event => {
+    this.setState({ loading: true });
     // 클릭한 평가 내용으로 post 요청(읽음 표시)
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
-    fetch(`${SERVER_URL}:5000/topics`, {
+    let result = await fetch(`${SERVER_URL}/read`, {
       method: "POST",
       credentials: "include",
       headers: {
@@ -75,9 +78,16 @@ class Read extends Component {
       })
     })
       .then(res => res.json())
-      .then(json => console.log(json))
-      .catch(err => console.log(err));
-
+      .then(json => {
+        console.log(json);
+        console.log("오나?");
+        this.setState({ loading: false }, () => {
+          message.success("당신의 평가를 고이고이 접어 보관했습니다. 📦");
+          console.log("오나?");
+        });
+      })
+      .catch(err => console.log(err, "프로미스 에러 "));
+    console.log("1단");
     this.getArticle();
   };
 
@@ -90,9 +100,15 @@ class Read extends Component {
             : "article 미 선택"}
         </div>
         <div>
-          <Button onClick={this.postEvaluation}>별로</Button>
-          <Button onClick={this.postEvaluation}>그냥</Button>
-          <Button onClick={this.postEvaluation}>좋아</Button>
+          <Button loading={this.state.loading} onClick={this.postEvaluation}>
+            별로
+          </Button>
+          <Button loading={this.state.loading} onClick={this.postEvaluation}>
+            그냥
+          </Button>
+          <Button loading={this.state.loading} onClick={this.postEvaluation}>
+            좋아
+          </Button>
         </div>
       </div>
     );
