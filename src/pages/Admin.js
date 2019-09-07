@@ -16,6 +16,7 @@ class Admin extends Component {
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
     fetch("http://localhost:5000/topics/notAllowed", {
       method: "GET",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
         accessToken,
@@ -32,6 +33,7 @@ class Admin extends Component {
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
     fetch("http://localhost:5000/topics/confirmAllow", {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
         accessToken: accessToken,

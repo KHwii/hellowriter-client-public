@@ -18,6 +18,7 @@ class ReadTopic extends Component {
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
     fetch("http://localhost:5000/tags", {
       method: "GET",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
         accessToken,
