@@ -21,13 +21,15 @@ class WriteTopic extends Component {
       method: "GET",
       credentials: "include", // include, *same-origin, omit
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        accessToken,
+        refreshToken
       }
     })
       .then(res => res.json())
-      .then(res => {
-        console.log(res, "res.json() 결과");
-        this.props.changeCurrentWriteTopic(res, false);
+      .then(str => {
+        this.setState({ currentWriteTopic: str });
+        this.props.changeCurrentWriteTopic(str, false);
       })
       .catch(err => console.log(err));
   };

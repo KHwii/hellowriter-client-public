@@ -81,11 +81,15 @@ class Write extends Component {
         phaseThreeBool: false
       },
       () => {
-        console.log("최종제출 호출!");
+        console.log("최종제출 호출!", this.props);
         const { burnDate, publish, timeCapDate, title, text } = this.state;
-        const { email, currentWriteTopic, isCustomIssue } = this.props;
+        const {
+          currentUserId,
+          currentWriteTopic,
+          isCustomIssue
+        } = this.props.data;
         const body = JSON.stringify({
-          email,
+          currentUserId,
           title,
           text,
           burnDate,

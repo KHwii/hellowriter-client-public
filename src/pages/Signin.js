@@ -24,7 +24,7 @@ class Signin extends Component {
   toLongIn = () => {
     let id = document.body.querySelector("#email-input").value;
     let password = document.body.querySelector("#password-input").value;
-    const body = JSON.stringify({ email: id,  password:password });
+    const body = JSON.stringify({ email: id, password: password });
     if (id && password) {
       fetch(`${SERVER_URL}/signin`, {
         method: "POST",
@@ -43,7 +43,7 @@ class Signin extends Component {
           localStorage.setItem("refreshToken", JSON.stringify(refreshToken));
           console.log("응답: ", json);
           if (json.id !== undefined) {
-            this.props.changeCurrentUser(json);
+            this.props.changeCurrentUser(json.id);
             this.goMain();
           } else {
             alert("가입 내용이 없습니다");
