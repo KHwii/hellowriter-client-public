@@ -19,16 +19,13 @@ class Read extends Component {
     if (this.props.data.currentReadTopics) {
       const accessToken = JSON.parse(localStorage.getItem("accessToken"));
       const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
-      fetch(`${SERVER_URL}/article/random`, {
+      fetch(`${SERVER_URL}/topics?word=${this.props.data.currentReadTopics}`, {
         method: "GET",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
           accessToken,
           refreshToken
-        },
-        body: {
-          topic: this.props.data.currentReadTopics
         }
       })
         .then(res => res.json())
@@ -60,7 +57,7 @@ class Read extends Component {
     // 클릭한 평가 내용으로 post 요청(읽음 표시)
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
-    fetch(`${SERVER_URL}:5000/topics`, {
+    fetch(`${SERVER_URL}/read`, {
       method: "POST",
       credentials: "include",
       headers: {
@@ -82,6 +79,7 @@ class Read extends Component {
   };
 
   render() {
+    console.log("props: ", this.props, "state: ", this.state);
     return (
       <div>
         <div id="render-article-div">
