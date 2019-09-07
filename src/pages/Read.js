@@ -21,6 +21,7 @@ class Read extends Component {
       const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
       fetch(`${SERVER_URL}/article/random`, {
         method: "GET",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
           accessToken,
@@ -43,6 +44,7 @@ class Read extends Component {
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
     fetch(`${SERVER_URL}/article/random`, {
       method: "GET",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
         accessToken,
@@ -60,6 +62,7 @@ class Read extends Component {
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
     fetch(`${SERVER_URL}:5000/topics`, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
         accessToken,

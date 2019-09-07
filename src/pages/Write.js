@@ -38,7 +38,7 @@ class Write extends Component {
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
     fetch(`${SERVER_URL}/stash/`, {
       method: "POST",
-      credentials: "same-origin", // include, *same-origin, omit
+      credentials: "include", // include, *same-origin, omit
       headers: {
         "Content-Type": "application/json",
         accessToken,
@@ -99,6 +99,7 @@ class Write extends Component {
         const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
         fetch(`${SERVER_URL}/article`, {
           method: "POST", // include, *same-origin, omit
+          credentials: "include",
           headers: {
             "Content-Type": "application/json",
             accessToken,

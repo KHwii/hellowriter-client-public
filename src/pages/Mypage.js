@@ -29,6 +29,7 @@ class Mypage extends Component {
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
     fetch(`${SERVER_URL}/user/article`, {
       method: "GET",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
         accessToken,

@@ -14,6 +14,8 @@ class WriteTopic extends Component {
 
   getTopic = () => {
     console.log("getTopic호출!");
+    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+    const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
 
     fetch(`${SERVER_URL}/topics/random`, {
       method: "GET",
@@ -64,8 +66,8 @@ class WriteTopic extends Component {
   };
 
   render() {
-    console.log(this.props);
-    console.log(this.state);
+    console.log("!!!", this.props);
+    console.log("!!!!!", this.state);
     const title = "당신이 발행한 이슈는 다른 사람들도 쓰게되요~";
     return (
       <div>
