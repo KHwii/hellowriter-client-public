@@ -49,7 +49,6 @@ class Mypage extends Component {
         });
       })
       .catch(err => console.error(err));
-    // fetch주소에 server/totalinfo로 변경
     fetch("https://randomuser.me/api/?results=10")
       .then(res => res.json())
       .then(res => {
@@ -84,7 +83,7 @@ class Mypage extends Component {
           </div>
           <div>
             <h2>우리는 어때</h2>
-            {/*<h3>전체글 :{totalInfo.total}개</h3>*/}
+            <h3>전체글 :{totalInfo.total}개</h3>
             {/*<h3>토픽 :{totalInfo.topics}개</h3>*/}
             {/*<h3>유저 :{totalInfo.users}개</h3>*/}
           </div>
