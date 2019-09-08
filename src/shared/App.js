@@ -33,6 +33,13 @@ class App extends Component {
       point: 77.7
     };
   }
+  changeActivePoint = v => {
+    let nextPoint = this.state + v;
+    if (nextPoint > 100) {
+      
+    }
+    this.setState({ point: nextPoint });
+  };
 
   changeCurrentUser = event => {
     this.setState({ currentUserId: event });
