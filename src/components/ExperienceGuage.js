@@ -36,7 +36,7 @@ class ExperienceGuage extends Component {
           percent={point}
         />
         <div>
-          <Transition.Group
+          <Transition
             animation={animation}
             duration={duration}
             visible={visible}
@@ -48,7 +48,7 @@ class ExperienceGuage extends Component {
                 src="https://react.semantic-ui.com/images/leaves/4.png"
               />
             )}
-          </Transition.Group>
+          </Transition>
         </div>
       </div>
     );
