@@ -50,13 +50,7 @@ export default function Menus(props) {
           <span>Creator</span>
           <Link to="/creator" />
         </Menu.Item>
-        <Menu.Item
-          key="6"
-          onClick={() => {
-            logout();
-            toggleCollapsed();
-          }}
-        >
+        <Menu.Item key="6" onClick={toggleCollapsed}>
           <Icon type="logout" />
           <span>Sign out</span>
           <Link to="/" />

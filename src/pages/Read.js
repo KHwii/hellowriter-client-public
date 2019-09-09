@@ -43,7 +43,6 @@ class Read extends Component {
   }
 
   getArticle = () => {
-    console.log("제로 1");
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
     fetch(`${SERVER_URL}/article/random`, {
@@ -82,14 +81,12 @@ class Read extends Component {
       .then(res => res.json())
       .then(json => {
         console.log(json);
-        console.log("오나?");
         this.setState({ loading: false }, () => {
           message.success("당신의 평가를 고이고이 접어 보관했습니다. 📦");
-          console.log("오나?");
+          this.props.changeActivePoint(15);
         });
       })
       .catch(err => console.log(err, "프로미스 에러 "));
-    console.log("1단");
     this.getArticle();
   };
 
