@@ -6,7 +6,7 @@ import SERVER_URL from "../config/config";
 
 export default function Menus(props) {
   // eslint-disable-next-line react/prop-types
-  const { toggleCollapsed } = props;
+  const { toggleCollapsed, changeCurrentUser } = props;
 
   const logout = () => {
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
@@ -22,12 +22,15 @@ export default function Menus(props) {
     })
       .then(res => res.json())
       .then(res => {
-        if (res.success === true) { message.success('다음에 또 봐요, 나의 작가님.')}
-        else { message.warning("아직 접속하지 않으셨어요. 들어오실래요?") }
-      })
-        // console.log(res, "res.json() 결과");
-      // .catch(err => console.log(err, "로그인 하지 않으셨습니다"));
+        if (res.success === true) {
+          message.success("다음에 또 봐요, 나의 작가님.")
+        } else {
+          message.warning("아직 접속하지 않으셨어요. 들어오실래요?")
+        }
+      });
+    changeCurrentUser(null);
   };
+  console.log(changeCurrentUser)
   return (
     <div>
       <Menu mode="vertical-right" theme="dark">

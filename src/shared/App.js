@@ -66,11 +66,13 @@ class App extends Component {
           <div className="App-table-cell">
             <div className="centerContents">
               <Header style={{ paddingLeft: "5px" }} className="Header-Box">
-                <DropMenu />
+
+                {this.state.currentUserId ? <DropMenu changeCurrentUser={this.changeCurrentUser} /> : null}
                 <ExperienceGuage
                   isEventTime={this.state.isEventTime}
                   point={this.state.point}
                 />
+
               </Header>
               <Content className="App-Content">
                 <Switch>
