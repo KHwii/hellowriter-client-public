@@ -35,9 +35,16 @@ class Main extends Component {
         .then(res => res.json())
         .then(res => {
           console.log(res);
+          console.log(res,"에러가 난 경위");
+          let data = undefined
+          if ((res.data.length<4 )) {
+            data = ["빈공간","빈공간","빈공간","빈공간"];
+          } else {
+            data = res.data.splice(0, 3);
+          }
           this.setState(
             {
-              hotArticleTitle: res.data.splice(0, 3),
+              hotArticleTitle: data,
               currentStatus: {
                 burning: res.burning,
                 timecapsule: res.timecapsule,
@@ -53,12 +60,12 @@ class Main extends Component {
   }
 
   goWrite = () => {
-    message.success("🐶 속시원한 글 쓰기를 준비중! ", 1);
-    setTimeout(() => this.props.history.push("/write/topic"), 1500);
+    message.success("🐶 속시원한 글 쓰기를 준비중! ", 0.5);
+    setTimeout(() => this.props.history.push("/write/topic"), 1000);
   };
   goRead = () => {
-    message.success("🦊 속시원한 드립을 읽으러 갑니다. ", 1);
-    setTimeout(() => this.props.history.push("/read/topic"), 1500);
+    message.success("🦊 속시원한 드립을 읽으러 갑니다. ", 0.5);
+    setTimeout(() => this.props.history.push("/read/topic"), 1000);
   };
   render() {
     const { hotArticleTitle, isLoading } = this.state;

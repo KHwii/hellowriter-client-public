@@ -41,6 +41,11 @@ class Read extends Component {
       this.getArticle();
     }
   }
+  goMain = () => {
+    this.setState({ loading: true },()=>{
+      setTimeout(() => this.props.history.push("/main"), 200);
+    });
+  }
 
   getArticle = () => {
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
@@ -55,7 +60,12 @@ class Read extends Component {
       }
     })
       .then(res => res.json())
-      .then(json => this.setState({ curArticle: json }))
+      .then(json => {
+        if( json.success === null){
+        } else {
+          this.setState({curArticle: json})
+        }
+      })
       .catch(err => console.log(err));
   };
 
@@ -97,19 +107,24 @@ class Read extends Component {
         <div id="render-article-div">
           {this.state.curArticle
             ? this.state.curArticle.article_text
-            : "article 미 선택"}
+            : "article 재고가 떨어졌습니다.. ☠️"}
         </div>
-        <div>
-          <Button loading={this.state.loading} onClick={this.postEvaluation}>
-            별로
-          </Button>
-          <Button loading={this.state.loading} onClick={this.postEvaluation}>
-            그냥
-          </Button>
-          <Button loading={this.state.loading} onClick={this.postEvaluation}>
-            좋아
-          </Button>
-        </div>
+        {this.state.curArticle
+            ? <div>
+              <Button loading={this.state.loading} onClick={this.postEvaluation}>
+                별로
+              </Button>
+              <Button loading={this.state.loading} onClick={this.postEvaluation}>
+                그냥
+              </Button>
+              <Button loading={this.state.loading} onClick={this.postEvaluation}>
+                좋아
+              </Button>
+            </div>
+            :
+            <Button loading={this.state.loading} onClick={this.goMain}>
+              메인으로 돌아기기
+            </Button>}
       </div>
     );
   }

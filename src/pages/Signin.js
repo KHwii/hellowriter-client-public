@@ -10,7 +10,7 @@ class Signin extends Component {
   }
 
   goWelcome = () => {
-    this.props.history.push("/welcome");
+    this.props.history.push("/");
   };
 
   goSignIn = () => {
