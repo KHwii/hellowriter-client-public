@@ -17,35 +17,39 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
-    const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
+    if (!this.props.data.currentUserId) {
+      this.props.history.push("/");
+    } else {
+      const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+      const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
 
-    fetch(`${SERVER_URL}/article/hot`, {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        accessToken,
-        refreshToken
-      }
-    })
-      .then(res => res.json())
-      .then(res => {
-        console.log(res);
-        this.setState(
-          {
-            hotArticleTitle: res.data.splice(0, 3),
-            currentStatus: {
-              burning: res.burning,
-              timecapsule: res.timecapsule,
-              topicRefCount: res.topicRefCount
-            },
-            isLoading: false
-          },
-          () => console.log("초기화완료")
-        );
+      fetch(`${SERVER_URL}/article/hot`, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          accessToken,
+          refreshToken
+        }
       })
-      .catch(err => console.error(err));
+        .then(res => res.json())
+        .then(res => {
+          console.log(res);
+          this.setState(
+            {
+              hotArticleTitle: res.data.splice(0, 3),
+              currentStatus: {
+                burning: res.burning,
+                timecapsule: res.timecapsule,
+                topicRefCount: res.topicRefCount
+              },
+              isLoading: false
+            },
+            () => console.log("초기화완료")
+          );
+        })
+        .catch(err => console.error(err));
+    }
   }
 
   goWrite = () => {
