@@ -30,9 +30,20 @@ class App extends Component {
       isCustomIssue: false,
       email: "fakeUser",
       nickname: "fakeNick",
-      point: 77.7
+      point: 77,
+      currentUserId: null,
+      isEventTime: false
     };
   }
+  changeActivePoint = v => {
+    console.log(v,"타입검사")
+    let nextPoint = this.state.point + v;
+    if (nextPoint > 100) {
+      nextPoint = nextPoint - 100;
+      this.setState({ point: nextPoint, isEventTime: true });
+    }
+    this.setState({ point: nextPoint });
+  };
 
   changeCurrentUser = event => {
     this.setState({ currentUserId: event });
@@ -55,8 +66,13 @@ class App extends Component {
           <div className="App-table-cell">
             <div className="centerContents">
               <Header style={{ paddingLeft: "5px" }} className="Header-Box">
+
                 {this.state.currentUserId ? <DropMenu changeCurrentUser={this.changeCurrentUser} /> : null}
-                <ExperienceGuage point={this.state.point} />
+                <ExperienceGuage
+                  isEventTime={this.state.isEventTime}
+                  point={this.state.point}
+                />
+
               </Header>
               <Content className="App-Content">
                 <Switch>
@@ -96,7 +112,7 @@ class App extends Component {
                   <Route
                     exact
                     path="/write"
-                    render={props => <Write {...props} data={this.state} />}
+                    render={props => <Write {...props} changeActivePoint={this.changeActivePoint} data={this.state} />}
                   />
                   <Route
                     exact
@@ -109,12 +125,11 @@ class App extends Component {
                       />
                     )}
                   />
-                  {/*Todo 진짜 데이터가 App에서 관리되면 같은 키값으로 리팩토링해주세요*/}
                   <Route
                     exact
                     path="/read"
                     changeCurrentReadTopic={this.changeCurrentReadTopic}
-                    render={props => <Read {...props} data={this.state} />}
+                    render={props => <Read {...props} changeActivePoint={this.changeActivePoint} data={this.state} />}
                   />
                   <Route
                     exact
