@@ -10,7 +10,7 @@ class ExperienceGuage extends Component {
   }
 
   componentWillReceiveProps() {
-    if (this.props.isEventTime === true) {
+    if (this.isEventTime === true) {
       this.setState({ visible: true }, () => {
         setTimeout(() => {
           this.setState({ visible: false });
@@ -20,7 +20,7 @@ class ExperienceGuage extends Component {
   }
 
   render() {
-    let { point, isEventTime } = this.props;
+    const { point, isEventTime } = this.props;
     console.log(point, isEventTime, "변화상태를 보고해주세요~");
     const { animation, duration, visible } = this.state;
     return (
