@@ -85,7 +85,11 @@ class App extends Component {
                     )}
                   />
                   <Route exact path="/signup" component={Signup} />
-                  <Route exact path="/mypage" component={Mypage} />
+                  <Route
+                    exact
+                    path="/mypage"
+                    render={props => <Mypage {...props} data={this.state} />}
+                  />
                   <Route
                     exact
                     path="/mypage/Article"

@@ -28,6 +28,12 @@ class Write extends Component {
     };
   }
 
+  componentDidMount() {
+    if (!this.props.data.currentUserId) {
+      this.props.history.push("/");
+    }
+  }
+
   mediateSave = () => {
     console.log("mediateSave 호출!");
     const { email } = this.props.data;
@@ -81,11 +87,15 @@ class Write extends Component {
         phaseThreeBool: false
       },
       () => {
-        console.log("최종제출 호출!");
+        console.log("최종제출 호출!", this.props);
         const { burnDate, publish, timeCapDate, title, text } = this.state;
-        const { email, currentWriteTopic, isCustomIssue } = this.props;
+        const {
+          currentUserId,
+          currentWriteTopic,
+          isCustomIssue
+        } = this.props.data;
         const body = JSON.stringify({
-          email,
+          currentUserId,
           title,
           text,
           burnDate,

@@ -11,7 +11,7 @@ class Mypage extends Component {
     this.state = {
       userData: {
         total: 0,
-        timeCaptule: 0,
+        timecapsule: 0,
         topic: 0
       },
       totalInfo: {
@@ -24,6 +24,9 @@ class Mypage extends Component {
   }
 
   componentDidMount() {
+    if (!this.props.data.currentUserId) {
+      this.props.history.push("/");
+    }
     // fetch에 server/user/article로 변경
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
@@ -39,23 +42,35 @@ class Mypage extends Component {
       .then(res => res.json())
       .then(res => {
         const data = {
-          total: res.info.results,
-          timeCapsule: res.info.results,
-          topic: res.info.results
+          total: res.total,
+          timecapsule: res.timecapsule,
+          topic: res.topic
         };
-        this.setState({
-          userData: data
-        });
+        this.setState(
+          {
+            userData: data
+          },
+          () => {
+            "스테이트 변경";
+          }
+        );
       })
       .catch(err => console.error(err));
-    // fetch주소에 server/totalinfo로 변경
-    fetch("https://randomuser.me/api/?results=10")
+    fetch(`${SERVER_URL}/app/info`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        accessToken,
+        refreshToken
+      }
+    })
       .then(res => res.json())
       .then(res => {
         const data = {
-          total: res.info.results,
-          topics: res.info.results,
-          users: res.info.results
+          total: res.total,
+          topics: res.topics,
+          users: res.users
         };
         this.setState({
           totalInfo: data,
@@ -78,7 +93,7 @@ class Mypage extends Component {
           <div>
             <h2>나는 어때</h2>
             <h3>내가 쓴글 :{userData.total}개</h3>
-            <h3>타임캡슐 :{userData.timeCaptule}개</h3>
+            <h3>타임캡슐 :{userData.timecapsule}개</h3>
             <h3>내가 발행한 주제 :{userData.topic}개</h3>
           </div>
           <div>

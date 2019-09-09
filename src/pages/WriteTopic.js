@@ -21,13 +21,15 @@ class WriteTopic extends Component {
       method: "GET",
       credentials: "include", // include, *same-origin, omit
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        accessToken,
+        refreshToken
       }
     })
       .then(res => res.json())
-      .then(res => {
-        console.log(res, "res.json() 결과");
-        this.props.changeCurrentWriteTopic(res, false);
+      .then(str => {
+        this.setState({ currentWriteTopic: str });
+        this.props.changeCurrentWriteTopic(str, false);
       })
       .catch(err => console.log(err));
   };
@@ -52,6 +54,9 @@ class WriteTopic extends Component {
   };
 
   componentDidMount() {
+    if (!this.props.data.currentUserId) {
+      this.props.history.push("/");
+    }
     this.getTopic();
   }
 
@@ -66,8 +71,6 @@ class WriteTopic extends Component {
   };
 
   render() {
-    console.log("!!!", this.props);
-    console.log("!!!!!", this.state);
     const title = "당신이 발행한 이슈는 다른 사람들도 쓰게되요~";
     return (
       <div>
