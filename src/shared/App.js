@@ -63,8 +63,13 @@ class App extends Component {
                   <Route
                     exact
                     path="/main"
-                    component={Main}
-                    changeCurrentReadTopic={this.changeCurrentReadTopic}
+                    render={props => (
+                      <Main
+                        {...props}
+                        data={this.state}
+                        changeCurrentReadTopic={this.changeCurrentReadTopic}
+                      />
+                    )}
                   />
                   <Route
                     exact
@@ -127,7 +132,11 @@ class App extends Component {
                     path="/mypage/Article"
                     component={MypageArticle}
                   />
-                  <Route exact path="/admin" component={Admin} />
+                  <Route
+                    exact
+                    path="/admin"
+                    render={props => <Admin {...props} data={this.state} />}
+                  />
                   <Route exact path="/" component={Welcome} />
                   <Route exact path="/creator" component={Creator} />
                 </Switch>
