@@ -44,11 +44,6 @@ class App extends Component {
     }
     this.setState({ point: nextPoint });
   };
-  endEvent = () => {
-    this.setState({ isEventTime: false }, () => {
-      console.log(this.state);
-    });
-  };
 
   changeCurrentUser = event => {
     this.setState({ currentUserId: event });
@@ -75,7 +70,6 @@ class App extends Component {
                 <ExperienceGuage
                   isEventTime={this.state.isEventTime}
                   point={this.state.point}
-                  endEvent={this.endEvent}
                 />
               </Header>
               <Content className="App-Content">
