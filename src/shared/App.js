@@ -36,7 +36,7 @@ class App extends Component {
     };
   }
   changeActivePoint = v => {
-    console.log(v,"타입검사")
+    console.log(v, "타입검사");
     let nextPoint = this.state.point + v;
     if (nextPoint > 100) {
       nextPoint = nextPoint - 100;
@@ -66,13 +66,16 @@ class App extends Component {
           <div className="App-table-cell">
             <div className="centerContents">
               <Header style={{ paddingLeft: "5px" }} className="Header-Box">
-
-                {this.state.currentUserId ? <DropMenu changeCurrentUser={this.changeCurrentUser} /> : null}
+                {this.state.currentUserId ? (
+                  <DropMenu
+                    changeCurrentUser={this.changeCurrentUser}
+                    data={this.state}
+                  />
+                ) : null}
                 <ExperienceGuage
                   isEventTime={this.state.isEventTime}
                   point={this.state.point}
                 />
-
               </Header>
               <Content className="App-Content">
                 <Switch>
@@ -112,7 +115,13 @@ class App extends Component {
                   <Route
                     exact
                     path="/write"
-                    render={props => <Write {...props} changeActivePoint={this.changeActivePoint} data={this.state} />}
+                    render={props => (
+                      <Write
+                        {...props}
+                        changeActivePoint={this.changeActivePoint}
+                        data={this.state}
+                      />
+                    )}
                   />
                   <Route
                     exact
@@ -129,7 +138,13 @@ class App extends Component {
                     exact
                     path="/read"
                     changeCurrentReadTopic={this.changeCurrentReadTopic}
-                    render={props => <Read {...props} changeActivePoint={this.changeActivePoint} data={this.state} />}
+                    render={props => (
+                      <Read
+                        {...props}
+                        changeActivePoint={this.changeActivePoint}
+                        data={this.state}
+                      />
+                    )}
                   />
                   <Route
                     exact
