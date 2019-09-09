@@ -18,12 +18,13 @@ class DropMenu extends React.Component {
 	};
 
 	render() {
+		console.log('지금필요한건',this.props.changeCurrentUser)
 		return (
 			<div className="dropMenu" style={{ width: 128 }}>
 				<Button className="Menu-Button" type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 0 }}>
 					<Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
 				</Button>
-				{this.state.collapsed ? <Menus toggleCollapsed={this.toggleCollapsed} /> : null}
+				{this.state.collapsed ? <Menus changeCurrentUser={this.props.changeCurrentUser} toggleCollapsed={this.toggleCollapsed} /> : null}
 			</div>
 		);
 	}
