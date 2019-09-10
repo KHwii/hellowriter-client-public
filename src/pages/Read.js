@@ -90,7 +90,7 @@ class Read extends Component {
     })
       .then(res => res.json())
       .then(json => {
-        console.log(json);
+        // console.log(json);
         this.setState({ loading: false }, () => {
           message.success("당신의 평가를 고이고이 접어 보관했습니다. 📦");
           this.props.changeActivePoint(15);
@@ -101,7 +101,7 @@ class Read extends Component {
   };
 
   render() {
-    console.log("props: ", this.props, "state: ", this.state);
+    // console.log("props: ", this.props, "state: ", this.state);
     return (
       <div>
         <div id="render-article-div">

@@ -35,6 +35,9 @@ class App extends Component {
       isEventTime: false
     };
   }
+  endEvent = () => {
+    this.setState({ isEventTime: false });
+  };
   changeActivePoint = v => {
     console.log(v, "타입검사");
     let nextPoint = this.state.point + v;
@@ -75,6 +78,7 @@ class App extends Component {
                 <ExperienceGuage
                   isEventTime={this.state.isEventTime}
                   point={this.state.point}
+                  endEvent={this.endEvent}
                 />
               </Header>
               <Content className="App-Content">
