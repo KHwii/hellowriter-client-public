@@ -42,6 +42,7 @@ class ExperienceGuage extends Component {
             "100%": "#87d068"
           }}
           status="active"
+          showInfo={false}
           percent={point}
         />
         <div>

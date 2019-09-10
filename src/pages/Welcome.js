@@ -7,7 +7,7 @@ class Welcome extends Component {
 	render() {
 		return (
 			<div className="welcomePage">
-				<h1 id="welcomeWrite">Hello, Writer.</h1>
+				<span className="title-welcome">Hello, Writer.</span>
 				<div>
 					<Link className="welcomeBtn" to="/signup">Sign up</Link>
 					<Link className="welcomeBtn" to="/signin">Sign in</Link>

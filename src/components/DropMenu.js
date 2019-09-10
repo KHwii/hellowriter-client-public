@@ -1,6 +1,5 @@
 import React from "react";
 import { Icon, Button } from "antd";
-import "./DropMenu.css";
 import Menus from "./Menus";
 // const { SubMenu } = Menu;
 class DropMenu extends React.Component {
@@ -33,6 +32,8 @@ class DropMenu extends React.Component {
             user={this.props.data.currentUserId}
             changeCurrentUser={this.props.changeCurrentUser}
             toggleCollapsed={this.toggleCollapsed}
+            theme="dark"
+            mode="vertical" //
           />
         ) : null}
       </div>

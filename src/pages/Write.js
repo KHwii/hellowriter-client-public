@@ -35,11 +35,9 @@ class Write extends Component {
   }
 
   mediateSave = () => {
-    console.log("mediateSave 호출!");
     const { email } = this.props.data;
     const { title, text } = this.state;
     const body = JSON.stringify({ email, title, text });
-    console.log("준비된", body);
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
     fetch(`${SERVER_URL}/stash/`, {
@@ -88,7 +86,6 @@ class Write extends Component {
         phaseThreeBool: false
       },
       () => {
-        console.log("최종제출 호출!", this.props);
         const { burnDate, publish, timeCapDate, title, text } = this.state;
         const {
           currentUserId,
@@ -105,7 +102,6 @@ class Write extends Component {
           isCustomIssue,
           topic_text: currentWriteTopic
         });
-        console.log("준비된", body);
         const accessToken = JSON.parse(localStorage.getItem("accessToken"));
         const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
         fetch(`${SERVER_URL}/article`, {
@@ -120,7 +116,6 @@ class Write extends Component {
         })
           .then(res => res.json())
           .then(res => {
-            console.log(res, "res.json() 결과");
             setTimeout(() => {
               this.setState({ phaseFourBool: false }, () => {
                 message.success(
@@ -267,19 +262,11 @@ class Write extends Component {
                 size="large"
               >
                 <Button
-                  onClick={() => this.phaseThreeHandle(0)}
+                  onClick={() => this.phaseThreeHandle(31536000000)}
                   inverted
-                  color="olive"
+                  color="orange"
                 >
-                  NOW
-                </Button>
-                <div style={{ width: "0px" }} />
-                <Button
-                  onClick={() => this.phaseThreeHandle(86400)}
-                  inverted
-                  color="yellow"
-                >
-                  하루뒤에?
+                  천년뒤에?
                 </Button>
                 <div style={{ width: "0px" }} />
                 <Button
@@ -291,11 +278,20 @@ class Write extends Component {
                 </Button>
                 <div style={{ width: "0px" }} />
                 <Button
-                  onClick={() => this.phaseThreeHandle(31536000000)}
+                  onClick={() => this.phaseThreeHandle(86400)}
                   inverted
-                  color="orange"
+                  color="yellow"
                 >
-                  천년뒤에?
+                  하루뒤에?
+                </Button>
+                <div style={{ width: "0px" }} />
+
+                <Button
+                  onClick={() => this.phaseThreeHandle(0)}
+                  inverted
+                  color="olive"
+                >
+                  NOW
                 </Button>
               </Button.Group>
             }
@@ -305,7 +301,6 @@ class Write extends Component {
         </div>
       );
     } else {
-      //phase four 단계 로드
       return (
         <Segment className="Load-Container">
           <Dimmer className="Load-outer" active inverted>
@@ -313,7 +308,7 @@ class Write extends Component {
           </Dimmer>
           <Image
             className="Load-Image"
-            src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png"
+            src=""
           />
         </Segment>
       );
