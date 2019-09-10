@@ -50,7 +50,7 @@ class ReadTopic extends Component {
   render() {
     return (
       <div>
-        <div>
+        <div id="div-read-tags">
           {this.state.tags
             ? this.state.tags.map(tag => {
                 return (
@@ -61,7 +61,7 @@ class ReadTopic extends Component {
               })
             : null}
         </div>
-        <div>
+        <div className="bottom-bar-topic">
           <Button onClick={this.goRead}>바로보기</Button>
           <Button onClick={this.goMain}>뒤로가기</Button>
         </div>
