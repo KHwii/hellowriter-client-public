@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import "./Creator.css";
+import Ykh from "./img/ykh.jpeg";
+import Kth from "./img/giphy.gif";
 
 class Creator extends Component {
   render() {
     const creators = [
       {
-        name: "강태훈",
-        img:
-          "https://files.slack.com/files-pri/TLJSSPZFE-FN1NFG2LV/i-didnt-choose-the-puglife-the-pug-life-chose-me-23261739.png"
+        name: "육광휘",
+        img: Ykh
       },
       {
-        name: "육광휘",
-        img:
-          "https://files.slack.com/files-pri/TLJSSPZFE-FMQ91CAGK/deadpool.jpeg"
+        name: "강태훈",
+        img: Kth
       },
       {
         name: "김해준",
@@ -31,7 +31,6 @@ class Creator extends Component {
         <br />
         <h3>Hello, Writer</h3>
         <p>by codestates</p>
-        <br />
         <br />
         Runaway trains
         <br />
