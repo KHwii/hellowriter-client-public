@@ -54,6 +54,7 @@ class Read extends Component {
     });
   };
 
+
   getArticle = () => {
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
@@ -68,8 +69,12 @@ class Read extends Component {
     })
       .then(res => res.json())
       .then(json => {
-        if (json.success === null) {
+        console.log(json.success, "어떤 형태.");
+        if (json.success === "NULL") {
+          console.log("null셋팅 완료");
+          this.state({ curArticle: null });
         } else {
+          console.log("제대로 바다왔습니다. ", json);
           this.setState({ curArticle: json });
         }
       })
@@ -97,7 +102,6 @@ class Read extends Component {
     })
       .then(res => res.json())
       .then(json => {
-        // console.log(json);
         this.setState({ loading: false }, () => {
           message.success("당신의 평가를 고이고이 접어 보관했습니다. 📦");
           this.props.changeActivePoint(15);
@@ -110,15 +114,20 @@ class Read extends Component {
   };
 
   render() {
+    const { curArticle } = this.state;
+    console.log(curArticle, "셋팅");
     console.log("count!!", this.state.count);
+
     return (
       <div>
         <div id="render-article-div">
-          {this.state.curArticle
-            ? this.state.curArticle.article_text
-            : "article 재고가 떨어졌습니다.. ☠️"}
+          {this.state.curArticle !== null ? (
+            <span> {this.state.curArticle.article_text}</span>
+          ) : (
+            <span>"article 재고가 떨어졌습니다.. ☠️"</span>
+          )}
         </div>
-        {this.state.curArticle ? (
+        {this.state.curArticle !== null ? (
           <div>
             <Button loading={this.state.loading} onClick={this.postEvaluation}>
               별로
