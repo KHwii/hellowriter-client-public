@@ -30,7 +30,6 @@ export default function Menus(props) {
       });
     changeCurrentUser(null);
   };
-  console.log(user);
   return (
     <div>
       <Menu mode="vertical-right" theme="dark">
@@ -59,11 +58,13 @@ export default function Menus(props) {
           <span>Creator</span>
           <Link to="/creator" />
         </Menu.Item>
-        <Menu.Item key="6" 
+        <Menu.Item
+          key="6"
           onClick={() => {
             toggleCollapsed();
             logout();
-          }}>
+          }}
+        >
           <Icon type="logout" />
           <span>Sign out</span>
           <Link to="/" />
