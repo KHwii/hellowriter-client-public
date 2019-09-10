@@ -78,6 +78,7 @@ class Write extends Component {
     this.setState({ publish: value, phaseThreeBool: true });
   };
   phaseThreeHandle = value => {
+    this.props.handleWriteCounter();
     this.setState(
       {
         timeCapDate: new Date().setSeconds(value),
