@@ -42,10 +42,10 @@ class Read extends Component {
     }
   }
   goMain = () => {
-    this.setState({ loading: true },()=>{
+    this.setState({ loading: true }, () => {
       setTimeout(() => this.props.history.push("/main"), 200);
     });
-  }
+  };
 
   getArticle = () => {
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
@@ -61,9 +61,13 @@ class Read extends Component {
     })
       .then(res => res.json())
       .then(json => {
-        if( json.success === null){
+        console.log(json.success, "어떤 형태.");
+        if (json.success === "NULL") {
+          console.log("null셋팅 완료");
+          this.state({ curArticle: null });
         } else {
-          this.setState({curArticle: json})
+          console.log("제대로 바다왔습니다. ", json);
+          this.setState({ curArticle: json });
         }
       })
       .catch(err => console.log(err));
@@ -90,7 +94,6 @@ class Read extends Component {
     })
       .then(res => res.json())
       .then(json => {
-        // console.log(json);
         this.setState({ loading: false }, () => {
           message.success("당신의 평가를 고이고이 접어 보관했습니다. 📦");
           this.props.changeActivePoint(15);
@@ -101,30 +104,34 @@ class Read extends Component {
   };
 
   render() {
-    // console.log("props: ", this.props, "state: ", this.state);
+    const { curArticle } = this.state;
+    console.log(curArticle, "셋팅");
     return (
       <div>
         <div id="render-article-div">
-          {this.state.curArticle
-            ? this.state.curArticle.article_text
-            : "article 재고가 떨어졌습니다.. ☠️"}
+          {this.state.curArticle !== null ? (
+            <span> {this.state.curArticle.article_text}</span>
+          ) : (
+            <span>"article 재고가 떨어졌습니다.. ☠️"</span>
+          )}
         </div>
-        {this.state.curArticle
-            ? <div>
-              <Button loading={this.state.loading} onClick={this.postEvaluation}>
-                별로
-              </Button>
-              <Button loading={this.state.loading} onClick={this.postEvaluation}>
-                그냥
-              </Button>
-              <Button loading={this.state.loading} onClick={this.postEvaluation}>
-                좋아
-              </Button>
-            </div>
-            :
-            <Button loading={this.state.loading} onClick={this.goMain}>
-              메인으로 돌아기기
-            </Button>}
+        {this.state.curArticle !== null ? (
+          <div>
+            <Button loading={this.state.loading} onClick={this.postEvaluation}>
+              별로
+            </Button>
+            <Button loading={this.state.loading} onClick={this.postEvaluation}>
+              그냥
+            </Button>
+            <Button loading={this.state.loading} onClick={this.postEvaluation}>
+              좋아
+            </Button>
+          </div>
+        ) : (
+          <Button loading={this.state.loading} onClick={this.goMain}>
+            메인으로 돌아기기
+          </Button>
+        )}
       </div>
     );
   }
