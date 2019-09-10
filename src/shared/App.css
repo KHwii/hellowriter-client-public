@@ -1,5 +1,5 @@
 .first-container {
-  background: #8f93ff;
+  background: #0f0f1a;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -10,7 +10,7 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  color: white;
+  color: rgba(0, 22, 170, 0.62);
   width: 100%;
   height: 100%;
   padding: 0.2em;
@@ -28,6 +28,7 @@
   flex: 1;
   flex-direction: row;
   padding: 0.5em;
+  color: #fff;
   /*height: 20%;*/
 }
 .dropMenu {
@@ -42,6 +43,9 @@
   z-index: 1;
   /*position: absolute;*/
   /*display: none;*/
+}
+.ant-input:focus {
+  border: gold 0.2em;
 }
 
 .progress-box {
@@ -62,28 +66,29 @@
 }
 
 .flex-container {
-  line-height: initial;
   display: flex;
   flex-direction: column;
   flex: 1;
-  overflow: auto;
 }
+
 .topic-bar {
-  line-height: initial;
   display: flex;
   flex: 0;
-  height: 30px;
+  height: 2em;
   margin: 3px;
+  text-align: center;
+  background : rgba(170, 156, 145, 0.1)
 }
+
 .bottom-bar {
-  line-height: initial;
-  flex-direction: column;
-  display: flex;
-  flex: 0;
-  height: 30px;
-  margin: 3px;
   background-color: chocolate;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex: 0 1;
+  text-align: center;
 }
+
 
 /*WriteTopic.js*/
 .newTopic-Button {
@@ -103,14 +108,15 @@
   flex: 1;
   padding: 5px;
 }
-.write-area {
+.title-area {
   display: flex;
-  flex: 1;
-  width: auto;
-  padding: 10px;
-  background-color: rgba(97, 218, 251, 0.26);
+  flex: 0 1;
+  height: 2.5em;
+  padding: 1em;
   color: white;
-  font-size: 1.2em;
+  font-size: 2em;
+}
+.write-area {
 }
 
 .ant-btn-group {
@@ -135,4 +141,11 @@
 
 #div-read-tags {
   overflow: auto;
+}
+
+.center-string {
+  margin: auto;
+  line-height: 2em;
+  vertical-align: middle;
+  color: white;
 }

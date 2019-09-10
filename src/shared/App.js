@@ -18,8 +18,6 @@ import {
 import { DropMenu, ExperienceGuage } from "../components";
 import "./App.css";
 
-const { Header, Content } = Layout;
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -30,7 +28,7 @@ class App extends Component {
       email: "fakeUser",
       nickname: "fakeNick",
       point: 77,
-      currentUserId: null,
+      currentUserId: 1,
       isEventTime: false,
       writeCount: 0
     };
@@ -46,7 +44,6 @@ class App extends Component {
     this.setState({ isEventTime: false });
   };
   changeActivePoint = v => {
-    console.log(v, "타입검사");
     let nextPoint = this.state.point + v;
     if (nextPoint > 100) {
       nextPoint = nextPoint - 100;
@@ -54,17 +51,14 @@ class App extends Component {
     }
     this.setState({ point: nextPoint });
   };
-
   changeCurrentUser = event => {
     this.setState({ currentUserId: event });
   };
-
   changeCurrentWriteTopic = (string, bool) => {
     this.setState({ currentWriteTopic: string, isCustomIssue: bool }, () => {
       console.log("changed to ", this.state.currentWriteTopic);
     });
   };
-
   changeCurrentReadTopic = event => {
     this.setState({ currentReadTopic: event });
   };
@@ -88,7 +82,7 @@ class App extends Component {
               </>
             ) : null}
           </div>
-          <Content className="App-Content">
+          <div className="App-Content">
             <Switch>
               <Route
                 exact
@@ -175,7 +169,7 @@ class App extends Component {
               <Route exact path="/" component={Welcome} />
               <Route exact path="/creator" component={Creator} />
             </Switch>
-          </Content>
+          </div>
         </div>
       </div>
     );

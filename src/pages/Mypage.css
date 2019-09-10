@@ -6,12 +6,12 @@
 } */
 
 
-.bottom-bar {
-    position: absolute;
-    bottom:15px;
-    width: 90%;
-    box-align: center;
-}
+/*.bottom-bar {*/
+/*    position: absolute;*/
+/*    bottom:15px;*/
+/*    width: 90%;*/
+/*    box-align: center;*/
+/*}*/
 
 .ant-carousel .slick-slide {
     position: relative;
