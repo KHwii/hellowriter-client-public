@@ -35,10 +35,10 @@ class Main extends Component {
         .then(res => res.json())
         .then(res => {
           console.log(res);
-          console.log(res,"에러가 난 경위");
-          let data = undefined
-          if ((res.data.length<4 )) {
-            data = ["빈공간","빈공간","빈공간","빈공간"];
+          console.log(res, "에러가 난 경위");
+          let data = undefined;
+          if (res.data.length < 4) {
+            data = ["빈공간", "빈공간", "빈공간", "빈공간"];
           } else {
             data = res.data.splice(0, 3);
           }
@@ -68,6 +68,7 @@ class Main extends Component {
     setTimeout(() => this.props.history.push("/read/topic"), 1000);
   };
   render() {
+    console.log(this.props);
     const { hotArticleTitle, isLoading } = this.state;
     const data = [hotArticleTitle[0], hotArticleTitle[1], hotArticleTitle[2]];
     return isLoading ? (

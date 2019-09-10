@@ -1,33 +1,43 @@
-import React from 'react';
-import { Icon, Button } from 'antd';
-import './DropMenu.css';
-import Menus from './Menus';
+import React from "react";
+import { Icon, Button } from "antd";
+import "./DropMenu.css";
+import Menus from "./Menus";
 // const { SubMenu } = Menu;
 class DropMenu extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			collapsed: false
-		};
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      collapsed: false
+    };
+  }
 
-	toggleCollapsed = () => {
-		this.setState({
-			collapsed: !this.state.collapsed
-		});
-	};
+  toggleCollapsed = () => {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
+  };
 
-	render() {
-		console.log('지금필요한건',this.props.changeCurrentUser)
-		return (
-			<div className="dropMenu" style={{ width: 128 }}>
-				<Button className="Menu-Button" type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 0 }}>
-					<Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
-				</Button>
-				{this.state.collapsed ? <Menus changeCurrentUser={this.props.changeCurrentUser} toggleCollapsed={this.toggleCollapsed} /> : null}
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div className="dropMenu" style={{ width: 128 }}>
+        <Button
+          className="Menu-Button"
+          type="primary"
+          onClick={this.toggleCollapsed}
+          style={{ marginBottom: 0 }}
+        >
+          <Icon type={this.state.collapsed ? "menu-unfold" : "menu-fold"} />
+        </Button>
+        {this.state.collapsed ? (
+          <Menus
+            user={this.props.data.currentUserId}
+            changeCurrentUser={this.props.changeCurrentUser}
+            toggleCollapsed={this.toggleCollapsed}
+          />
+        ) : null}
+      </div>
+    );
+  }
 }
 
 export default DropMenu;
