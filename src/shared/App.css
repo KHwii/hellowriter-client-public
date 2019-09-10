@@ -1,5 +1,19 @@
+.ant-layout-header {
+  color: #fff;
+}
+
+.ant-layout-content {
+  /* background: rgba(16, 142, 233, 0.47); */
+  background-image: url("https://thecrystalenchantress.com/wp-content/uploads/2017/03/gold-on-black-background-1.jpg");
+  background-size: cover;
+  color: #fff;
+  min-height: 120px;
+}
+
 .first-container {
-  background: #0f0f1a;
+  /* background: #8f93ff; */
+  /* background-image: url("https://thecrystalenchantress.com/wp-content/uploads/2017/03/gold-on-black-background-1.jpg");
+  background-size: cover; */
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -18,8 +32,8 @@
   text-align: center;
 }
 
-.title-welcome {
-  font-size: 5em;
+.centerContents {
+
 }
 
 /*상단메뉴*/
@@ -27,9 +41,8 @@
   display: flex;
   flex: 1;
   flex-direction: row;
-  padding: 0.5em;
-  color: #fff;
-  /*height: 20%;*/
+  height: 20px;
+  /* background-color: rgba(255, 255, 255, 1); */
 }
 .dropMenu {
   display: flex;
@@ -60,9 +73,12 @@
 }
 
 .App-Content {
+  /* background-image: url("https://thecrystalenchantress.com/wp-content/uploads/2017/03/gold-on-black-background-1.jpg");
+  background-size: cover; */
   height: 90%;
   display: flex;
   flex-direction: column;
+  color: #fff;
 }
 
 .flex-container {
@@ -130,7 +146,7 @@
 }
 
 .signUpPage {
-  color: black;
+  color: white;
 }
 .bottom-bar-topic {
   position: absolute;
