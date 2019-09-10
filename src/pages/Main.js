@@ -74,7 +74,7 @@ class Main extends Component {
     return isLoading ? (
       <IsLoading />
     ) : (
-      <div className="Mina-Containner">
+      <div className="Main-Containner">
         <div className="Top-Infomation">
           <Statistic
             title="불타는 당신의 글"

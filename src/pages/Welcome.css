@@ -1,25 +1,27 @@
 .welcomePage {
-    background-color: aliceblue;
-    flex: 3;
+  /* background-color: aliceblue; */
+  background-image: url("https://thecrystalenchantress.com/wp-content/uploads/2017/03/gold-on-black-background-1.jpg");
+  background-size: cover;
+  flex: 3;
 }
 
 .welcomeBtn {
-    color: white;
-    background: rgb(240, 174, 185);
-    padding: 1rem;
-    border: 2px solid whitesmoke;
-    border-radius: 0.25rem;
-    font-size: 1.5rem;
-    line-height: 2;
-    margin: 1.5rem;
-    text-align: initial;
-    position: relative;
-    top : 120px;
-  }
+  color: white;
+  background: rgb(240, 174, 185);
+  padding: 1rem;
+  border: 2px solid whitesmoke;
+  border-radius: 0.25rem;
+  font-size: 1.5rem;
+  line-height: 2;
+  margin: 1.5rem;
+  text-align: initial;
+  position: relative;
+  top: 120px;
+}
 
 #welcomeWrite {
-    color: rgb(255, 116, 116);
-    position: relative;
-    top : 60px;
-    transition-duration: 2ms;
+  color: rgb(255, 116, 116);
+  position: relative;
+  top: 60px;
+  transition-duration: 2ms;
 }
