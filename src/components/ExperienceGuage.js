@@ -9,15 +9,24 @@ class ExperienceGuage extends Component {
     this.state = { animation: "zoom", duration: 500, visible: false };
   }
 
-  componentWillReceiveProps() {
-    if (this.props.isEventTime === true) {
+  componentWillReceiveProps(Nextprops) {
+    console.log(Nextprops, "바바바", this);
+    if (Nextprops.isEventTime === true) {
+      console.log("이벤트타입");
       this.setState({ visible: true }, () => {
-        setTimeout(() => {
-          this.setState({ visible: false });
-        }, 2000);
+        console.log("변경 트루!");
+        this.takeDown.apply(this);
       });
     }
   }
+
+  takeDown = () => {
+    console.log("펄스시작");
+    this.setState({ visible: false }, () => {
+      console.log("펄스끝!");
+      this.props.endEvent();
+    });
+  };
 
   render() {
     let { point, isEventTime } = this.props;
@@ -41,13 +50,11 @@ class ExperienceGuage extends Component {
             duration={duration}
             visible={visible}
           >
-            {visible && (
-              <Image
-                centered
-                size="small"
-                src="https://react.semantic-ui.com/images/leaves/4.png"
-              />
-            )}
+            <Image
+              centered
+              size="small"
+              src="https://react.semantic-ui.com/images/leaves/4.png"
+            />
           </Transition>
         </div>
       </div>
