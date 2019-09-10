@@ -35,11 +35,9 @@ class Write extends Component {
   }
 
   mediateSave = () => {
-    console.log("mediateSave 호출!");
     const { email } = this.props.data;
     const { title, text } = this.state;
     const body = JSON.stringify({ email, title, text });
-    console.log("준비된", body);
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
     fetch(`${SERVER_URL}/stash/`, {
@@ -88,7 +86,6 @@ class Write extends Component {
         phaseThreeBool: false
       },
       () => {
-        console.log("최종제출 호출!", this.props);
         const { burnDate, publish, timeCapDate, title, text } = this.state;
         const {
           currentUserId,
@@ -105,7 +102,6 @@ class Write extends Component {
           isCustomIssue,
           topic_text: currentWriteTopic
         });
-        console.log("준비된", body);
         const accessToken = JSON.parse(localStorage.getItem("accessToken"));
         const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
         fetch(`${SERVER_URL}/article`, {
@@ -120,7 +116,6 @@ class Write extends Component {
         })
           .then(res => res.json())
           .then(res => {
-            console.log(res, "res.json() 결과");
             setTimeout(() => {
               this.setState({ phaseFourBool: false }, () => {
                 message.success(
@@ -149,10 +144,19 @@ class Write extends Component {
       return (
         <div className="flex-container">
           <div className="topic-bar">
-            <span>{this.props.data.currentWriteTopic}</span>
+            <h4 className="center-string">
+              {this.props.data.currentWriteTopic}
+            </h4>
           </div>
           <div className="write-area-box">
             <Input
+              style={{
+                display: "flex",
+                flex: "0 1",
+                color: "white",
+                "font-size": "1.5em",
+                background: "rgba(170,156,145,0.62)"
+              }}
               className="title-area"
               value={this.state.title}
               placeholder="title"
@@ -160,6 +164,14 @@ class Write extends Component {
               onChange={this.titleHandle}
             />
             <TextArea
+              style={{
+                display: "flex",
+                flex: "1",
+                color: "white",
+                "font-size": "1.2em",
+                margin: "0.5em 0 0.5em 0",
+                background: "rgba(170,156,145,0.4)"
+              }}
               className="write-area"
               value={this.state.text}
               placeholder="엄청나게 보고싶다"
@@ -168,11 +180,11 @@ class Write extends Component {
           </div>
           <div className="bottom-bar">
             <Button.Group size="medium">
-              <Button type="dashed" onClick={this.mediateSave}>
+              <Button block type="dashed" onClick={this.mediateSave}>
                 <Icon type="vertical-align-bottom" />
                 임시저장
               </Button>
-              <Button color="blue" type="primary" onClick={this.mainSave}>
+              <Button block color="blue" type="primary" onClick={this.mainSave}>
                 <Icon type="forward" />
                 Write now
               </Button>
@@ -193,7 +205,6 @@ class Write extends Component {
                 >
                   한시간
                 </Button>
-                <div style={{ width: "0px" }} />
                 <Button
                   onClick={() => this.phaseOneHandle(86400)}
                   inverted
@@ -201,7 +212,6 @@ class Write extends Component {
                 >
                   하루
                 </Button>
-                <div style={{ width: "0px" }} />
                 <Button
                   onClick={() => this.phaseOneHandle(2592000)}
                   inverted
@@ -209,7 +219,6 @@ class Write extends Component {
                 >
                   한달
                 </Button>
-                <div style={{ width: "0px" }} />
                 <Button
                   onClick={() => this.phaseOneHandle(31536000000)}
                   inverted
@@ -237,7 +246,6 @@ class Write extends Component {
                 >
                   비공개
                 </Button>
-                <div style={{ width: "0px" }} />
                 <Button
                   onClick={() => this.phaseTwoHandle("half")}
                   inverted
@@ -245,7 +253,6 @@ class Write extends Component {
                 >
                   한정판 공개
                 </Button>
-                <div style={{ width: "0px" }} />
                 <Button
                   onClick={() => this.phaseTwoHandle("public")}
                   inverted
@@ -264,38 +271,46 @@ class Write extends Component {
             content={
               <Button.Group
                 className="confirmPhaseBurnButtonGroup"
-                size="large"
               >
-                <Button
-                  onClick={() => this.phaseThreeHandle(0)}
-                  inverted
-                  color="olive"
-                >
-                  NOW
-                </Button>
-                <div style={{ width: "0px" }} />
-                <Button
-                  onClick={() => this.phaseThreeHandle(86400)}
-                  inverted
-                  color="yellow"
-                >
-                  하루뒤에?
-                </Button>
-                <div style={{ width: "0px" }} />
-                <Button
-                  onClick={() => this.phaseThreeHandle(2592000)}
-                  inverted
-                  color="orange"
-                >
-                  한달뒤에?
-                </Button>
-                <div style={{ width: "0px" }} />
                 <Button
                   onClick={() => this.phaseThreeHandle(31536000000)}
                   inverted
                   color="orange"
+                  style={{
+                    padding: "0.75em 1em 0.75em 1em",
+                  }}
                 >
                   천년뒤에?
+                </Button>
+                <Button
+                  onClick={() => this.phaseThreeHandle(2592000)}
+                  inverted
+                  color="orange"
+                  style={{
+                    padding: "0.75em 1em 0.75em 1em",
+                  }}
+                >
+                  한달뒤에?
+                </Button>
+                <Button
+                  onClick={() => this.phaseThreeHandle(86400)}
+                  inverted
+                  color="yellow"
+                  style={{
+                    padding: "0.75em 1em 0.75em 1em",
+                  }}
+                >
+                  하루뒤에?
+                </Button>
+                <Button
+                  onClick={() => this.phaseThreeHandle(0)}
+                  inverted
+                  color="olive"
+                  style={{
+                    padding: "0.75em 1em 0.75em 1em",
+                  }}
+                >
+                  NOW
                 </Button>
               </Button.Group>
             }
@@ -305,16 +320,12 @@ class Write extends Component {
         </div>
       );
     } else {
-      //phase four 단계 로드
       return (
         <Segment className="Load-Container">
           <Dimmer className="Load-outer" active inverted>
             <Loader inverted content="당신의 향기를 기록중~" />
           </Dimmer>
-          <Image
-            className="Load-Image"
-            src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png"
-          />
+          <Image className="Load-Image" src="" />
         </Segment>
       );
     }
