@@ -6,13 +6,15 @@
 import React, { Component } from "react";
 import { Button, message } from "antd";
 import SERVER_URL from "../config/config";
+import { Confirm } from "semantic-ui-react";
 
 class Read extends Component {
   constructor(props) {
     super(props);
     this.state = {
       curArticle: null,
-      loading: false
+      loading: false,
+      count: 0
     };
   }
 
@@ -42,10 +44,15 @@ class Read extends Component {
     }
   }
   goMain = () => {
-    this.setState({ loading: true },()=>{
+    this.setState({ loading: true, count: 0 }, () => {
       setTimeout(() => this.props.history.push("/main"), 200);
     });
-  }
+  };
+  stayRead = () => {
+    this.setState({ loading: true, count: 0 }, () => {
+      setTimeout(() => this.props.history.push("/read"), 200);
+    });
+  };
 
   getArticle = () => {
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
@@ -61,9 +68,9 @@ class Read extends Component {
     })
       .then(res => res.json())
       .then(json => {
-        if( json.success === null){
+        if (json.success === null) {
         } else {
-          this.setState({curArticle: json})
+          this.setState({ curArticle: json });
         }
       })
       .catch(err => console.log(err));
@@ -97,11 +104,13 @@ class Read extends Component {
         });
       })
       .catch(err => console.log(err, "프로미스 에러 "));
+    let prevCount = this.state.count;
+    this.setState({ count: prevCount + 1 });
     this.getArticle();
   };
 
   render() {
-    // console.log("props: ", this.props, "state: ", this.state);
+    console.log("count!!", this.state.count);
     return (
       <div>
         <div id="render-article-div">
@@ -109,22 +118,39 @@ class Read extends Component {
             ? this.state.curArticle.article_text
             : "article 재고가 떨어졌습니다.. ☠️"}
         </div>
-        {this.state.curArticle
-            ? <div>
-              <Button loading={this.state.loading} onClick={this.postEvaluation}>
-                별로
+        {this.state.curArticle ? (
+          <div>
+            <Button loading={this.state.loading} onClick={this.postEvaluation}>
+              별로
+            </Button>
+            <Button loading={this.state.loading} onClick={this.postEvaluation}>
+              그냥
+            </Button>
+            <Button loading={this.state.loading} onClick={this.postEvaluation}>
+              좋아
+            </Button>
+          </div>
+        ) : (
+          <Button loading={this.state.loading} onClick={this.goMain}>
+            메인으로 돌아기기
+          </Button>
+        )}
+        <Confirm
+          className={"confirmPhaseBurn"}
+          header="10개의 이야기를 읽었어요! 다른 이야기들을 더 살펴볼까요?"
+          content={
+            <Button.Group className="confirmPhaseBurnButtonGroup" size="large">
+              <Button onClick={this.goMain} inverted color="olive">
+                그만 읽을래요
               </Button>
-              <Button loading={this.state.loading} onClick={this.postEvaluation}>
-                그냥
+              <Button onClick={this.stayRead} inverted color="yellow">
+                더 읽고싶어요
               </Button>
-              <Button loading={this.state.loading} onClick={this.postEvaluation}>
-                좋아
-              </Button>
-            </div>
-            :
-            <Button loading={this.state.loading} onClick={this.goMain}>
-              메인으로 돌아기기
-            </Button>}
+            </Button.Group>
+          }
+          open={this.state.count === 10}
+          close={this.state.count === 0}
+        />
       </div>
     );
   }

@@ -135,3 +135,13 @@
 .signUpPage {
   color: black;
 }
+.bottom-bar-topic {
+  position: absolute;
+  bottom: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#div-read-tags {
+  overflow: auto;
+}
