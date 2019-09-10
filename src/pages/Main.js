@@ -68,6 +68,7 @@ class Main extends Component {
     setTimeout(() => this.props.history.push("/read/topic"), 1000);
   };
   render() {
+    console.log(this.props);
     const { hotArticleTitle, isLoading } = this.state;
     const data = [hotArticleTitle[0], hotArticleTitle[1], hotArticleTitle[2]];
     return isLoading ? (

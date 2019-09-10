@@ -3,8 +3,8 @@ import { Button } from "antd";
 import SERVER_URL from "../config/config";
 
 class Admin extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
@@ -55,6 +55,7 @@ class Admin extends Component {
   };
 
   render() {
+    console.log(this.props.data);
     return (
       <div className="flex-container">
         <h2>Admin Page</h2>
