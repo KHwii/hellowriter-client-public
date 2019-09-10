@@ -32,9 +32,17 @@ class App extends Component {
       nickname: "fakeNick",
       point: 77,
       currentUserId: null,
-      isEventTime: false
+      isEventTime: false,
+      writeCount: 0
     };
   }
+  handleWriteCounter = () => {
+    const prevCount = this.state.writeCount;
+    this.setState({ writeCount: prevCount + 1 });
+  };
+  resetWriteCounter = () => {
+    this.setState({ writeCount: 0 });
+  };
   endEvent = () => {
     this.setState({ isEventTime: false });
   };
@@ -124,6 +132,7 @@ class App extends Component {
                         {...props}
                         changeActivePoint={this.changeActivePoint}
                         data={this.state}
+                        handleWriteCounter={this.handleWriteCounter}
                       />
                     )}
                   />
@@ -135,6 +144,7 @@ class App extends Component {
                         {...props}
                         changeCurrentWriteTopic={this.changeCurrentWriteTopic}
                         data={this.state}
+                        resetWriteCounter={this.resetWriteCounter}
                       />
                     )}
                   />
