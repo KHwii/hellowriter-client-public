@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Icon, Input, Tooltip } from "antd";
 import SERVER_URL from "../config/config";
+import { Confirm } from "semantic-ui-react";
 
 class WriteTopic extends Component {
   constructor(props) {
@@ -70,6 +71,16 @@ class WriteTopic extends Component {
     console.log("탈출!");
   };
 
+  goMain = () => {
+    this.props.resetWriteCounter();
+    this.props.history.push("/main");
+  };
+
+  stay = () => {
+    this.props.resetWriteCounter();
+    this.props.history.push("/write/topic");
+  };
+
   render() {
     const title = "당신이 발행한 이슈는 다른 사람들도 쓰게되요~";
     return (
@@ -111,6 +122,25 @@ class WriteTopic extends Component {
             맘에들어
             <Icon type="right" />
           </Button>
+          <Confirm
+            className={"confirmPhaseBurn"}
+            header="연속으로 3개의 글을 작성하셨어요! 이 기세를 이어 더 작성해볼까요?!"
+            content={
+              <Button.Group
+                className="confirmPhaseBurnButtonGroup"
+                size="large"
+              >
+                <Button onClick={this.goMain} inverted color="olive">
+                  그만 쓸래요
+                </Button>
+                <Button onClick={this.stay} inverted color="yellow">
+                  더 쓰고 싶어요!
+                </Button>
+              </Button.Group>
+            }
+            open={this.props.data.writeCount === 3}
+            close={this.props.data.writeCount === 0}
+          />
         </div>
       </div>
     );
