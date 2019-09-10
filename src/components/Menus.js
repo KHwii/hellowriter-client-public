@@ -46,7 +46,7 @@ export default function Menus(props) {
         <Menu.Item key="3" onClick={toggleCollapsed}>
           <Icon type="form" />
           <span>Write</span>
-          <Link to="/write" />
+          <Link to="/write/topic" />
         </Menu.Item>
         <Menu.Item key="4" onClick={toggleCollapsed}>
           <Icon type="read" />
