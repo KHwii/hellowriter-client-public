@@ -35,10 +35,10 @@ class Main extends Component {
         .then(res => res.json())
         .then(res => {
           console.log(res);
-          console.log(res,"에러가 난 경위");
-          let data = undefined
-          if ((res.data.length<4 )) {
-            data = ["빈공간","빈공간","빈공간","빈공간"];
+          console.log(res, "에러가 난 경위");
+          let data = undefined;
+          if (res.data.length < 4) {
+            data = ["빈공간", "빈공간", "빈공간", "빈공간"];
           } else {
             data = res.data.splice(0, 3);
           }
@@ -87,7 +87,7 @@ class Main extends Component {
           />
           <Statistic
             title="이슈 인용 지수"
-            value={11}
+            value={this.state.currentStatus.topicRefCount}
             prefix={<Icon type="line-chart" />}
           />
         </div>
