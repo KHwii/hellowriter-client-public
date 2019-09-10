@@ -8,39 +8,31 @@
   color: #fff;
   min-height: 120px;
 }
-/*중앙배치 CSS*/
-.container {
-  /*width: 70%;*/
-  /*height: 70%;*/
-  /*margin: 20px auto;*/
+
+
+.first-container {
   background: #8f93ff;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
-.App-table {
-  background-color: #48363c;
-  display: table;
-  width: 100%;
-  height: 100%;
-}
-.App-table-cell {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-}
-
-.centerContents {
+.second-container {
   position: relative;
   display: flex;
   flex: 1;
   flex-direction: column;
 
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  height: 450px;
   padding: 1em;
-  background: orange;
   color: white;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.centerContents {
+
 }
 
 /*상단메뉴*/
