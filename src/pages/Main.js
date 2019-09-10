@@ -88,7 +88,7 @@ class Main extends Component {
           />
           <Statistic
             title="이슈 인용 지수"
-            value={11}
+            value={this.state.currentStatus.topicRefCount}
             prefix={<Icon type="line-chart" />}
           />
         </div>
