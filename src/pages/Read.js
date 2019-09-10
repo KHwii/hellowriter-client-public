@@ -49,7 +49,7 @@ class Read extends Component {
     });
   };
   stayRead = () => {
-    this.setState({ loading: true, count: 0 }, () => {
+    this.setState({ loading: false, count: 0 }, () => {
       setTimeout(() => this.props.history.push("/read"), 200);
     });
   };
