@@ -1,17 +1,12 @@
 import React, { Component } from "react";
-import { Icon, Input, message } from "antd";
-import {
-  Confirm,
-  Button,
-  Dimmer,
-  Loader,
-  Image,
-  Segment
-} from "semantic-ui-react";
+import { Icon, Spin, Input, message } from "antd";
+import { Confirm, Button, Dimmer, Loader, Image } from "semantic-ui-react";
 import SERVER_URL from "../config/config";
+// import writeAnime from "./img/myWrite.gif";
+import { IsLoading } from "../components";
 
 const { TextArea } = Input;
-
+const antIcon = <Icon type="loading" style={{ fontSize: 96 }} spin />;
 class Write extends Component {
   constructor(props) {
     super(props);
@@ -124,7 +119,7 @@ class Write extends Component {
                 this.props.changeActivePoint(30);
                 setTimeout(() => this.props.history.push("/write/topic"), 0);
               });
-            }, 1500);
+            }, 3000);
           })
           .catch(err => console.log(err));
       }
@@ -180,11 +175,16 @@ class Write extends Component {
           </div>
           <div className="bottom-bar">
             <Button.Group size="medium">
-              <Button block type="dashed" onClick={this.mediateSave}>
+              <Button inverted type="dashed" onClick={this.mediateSave}>
                 <Icon type="vertical-align-bottom" />
                 임시저장
               </Button>
-              <Button block color="blue" type="primary" onClick={this.mainSave}>
+              <Button
+                inverted
+                color="blue"
+                type="primary"
+                onClick={this.mainSave}
+              >
                 <Icon type="forward" />
                 Write now
               </Button>
@@ -269,15 +269,13 @@ class Write extends Component {
             className={"confirmPhaseBurn"}
             header="이글이 타임머신을 타고 미래에 공개된다면 어떨까요?"
             content={
-              <Button.Group
-                className="confirmPhaseBurnButtonGroup"
-              >
+              <Button.Group className="confirmPhaseBurnButtonGroup">
                 <Button
                   onClick={() => this.phaseThreeHandle(31536000000)}
                   inverted
                   color="orange"
                   style={{
-                    padding: "0.75em 1em 0.75em 1em",
+                    padding: "0.75em 1em 0.75em 1em"
                   }}
                 >
                   천년뒤에?
@@ -287,7 +285,7 @@ class Write extends Component {
                   inverted
                   color="orange"
                   style={{
-                    padding: "0.75em 1em 0.75em 1em",
+                    padding: "0.75em 1em 0.75em 1em"
                   }}
                 >
                   한달뒤에?
@@ -297,7 +295,7 @@ class Write extends Component {
                   inverted
                   color="yellow"
                   style={{
-                    padding: "0.75em 1em 0.75em 1em",
+                    padding: "0.75em 1em 0.75em 1em"
                   }}
                 >
                   하루뒤에?
@@ -307,7 +305,7 @@ class Write extends Component {
                   inverted
                   color="olive"
                   style={{
-                    padding: "0.75em 1em 0.75em 1em",
+                    padding: "0.75em 1em 0.75em 1em"
                   }}
                 >
                   NOW
@@ -321,12 +319,9 @@ class Write extends Component {
       );
     } else {
       return (
-        <Segment className="Load-Container">
-          <Dimmer className="Load-outer" active inverted>
-            <Loader inverted content="당신의 향기를 기록중~" />
-          </Dimmer>
-          <Image className="Load-Image" src="" />
-        </Segment>
+        <div className="Load-outer">
+          <Spin wrapperClassName="loader-child" indicator={antIcon}  tip="당신의 향기를 기록중~" />
+        </div>
       );
     }
   }

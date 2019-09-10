@@ -14,7 +14,6 @@ class WriteTopic extends Component {
   }
 
   getTopic = () => {
-    console.log("getTopic호출!");
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
 
@@ -46,9 +45,7 @@ class WriteTopic extends Component {
       () => {
         if (this.state.userIssueBoolean === false) {
           this.getTopic();
-          console.log("다시 정규 이슈 복귀");
         } else {
-          console.log("사용자 이슈 모드");
         }
       }
     );
@@ -64,11 +61,10 @@ class WriteTopic extends Component {
   inputOnChangeHandle = e => {
     this.setState({ currentWriteTopic: e.target.value });
     this.props.changeCurrentWriteTopic(e.target.value, true);
-    console.log("handleIssueInput", this.state.currentWriteTopic);
   };
 
   onBlur = () => {
-    console.log("탈출!");
+    // console.log("탈출!");
   };
 
   goMain = () => {
