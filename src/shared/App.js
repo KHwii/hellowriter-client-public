@@ -72,10 +72,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        <Layout className="App-table">
-          <div className="App-table-cell">
-            <div className="centerContents">
+      <div className="first-container">
+          <div className="second-container">
               <Header style={{ paddingLeft: "5px" }} className="Header-Box">
                 {this.state.currentUserId ? (
                   <DropMenu
@@ -185,9 +183,7 @@ class App extends Component {
                   <Route exact path="/creator" component={Creator} />
                 </Switch>
               </Content>
-            </div>
           </div>
-        </Layout>
       </div>
     );
   }

@@ -5,10 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: initial;
 }
 
 * {
-  /*outline: 1px red dashed;*/
+  outline: 1px red dashed;
 }
 
 code {
@@ -17,6 +21,9 @@ code {
 }
 
 #root{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 html, body { width: 100%; height: 100%; }
