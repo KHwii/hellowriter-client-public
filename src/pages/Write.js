@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { Icon, Spin, Input, message } from "antd";
 import { Confirm, Button, Dimmer, Loader, Image } from "semantic-ui-react";
 import SERVER_URL from "../config/config";
-// import writeAnime from "./img/myWrite.gif";
 import { IsLoading } from "../components";
+
+import { Icon as semanticIcon } from "semantic-ui-react";
 
 const { TextArea } = Input;
 const antIcon = <Icon type="loading" style={{ fontSize: 96 }} spin />;
+
 class Write extends Component {
   constructor(props) {
     super(props);
@@ -174,18 +176,39 @@ class Write extends Component {
             />
           </div>
           <div className="bottom-bar">
-            <Button.Group size="medium">
-              <Button inverted type="dashed" onClick={this.mediateSave}>
-                <Icon type="vertical-align-bottom" />
+            <Button.Group
+              size="medium"
+              style={{
+                display:"flex",
+                flex: 1
+              }}
+            >
+              <Button
+                style={{
+                  flex: 1
+                }}
+                circular
+                inverted
+                onClick={this.mediateSave}
+              >
+                <semanticIcon name="arichive" />
                 임시저장
               </Button>
+              <Button.Or
+                style={{
+                  margin: "auto 0 auto 0"
+                }}
+              />
               <Button
+                style={{
+                  flex: 1
+                }}
+                circular
                 inverted
-                color="blue"
-                type="primary"
+                color="red"
                 onClick={this.mainSave}
               >
-                <Icon type="forward" />
+                <semanticIcon name="level up" />
                 Write now
               </Button>
             </Button.Group>
@@ -320,7 +343,11 @@ class Write extends Component {
     } else {
       return (
         <div className="Load-outer">
-          <Spin wrapperClassName="loader-child" indicator={antIcon}  tip="당신의 향기를 기록중~" />
+          <Spin
+            wrapperClassName="loader-child"
+            indicator={antIcon}
+            tip="당신의 향기를 기록중~"
+          />
         </div>
       );
     }
