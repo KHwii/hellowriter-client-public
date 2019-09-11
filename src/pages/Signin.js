@@ -64,27 +64,29 @@ class Signin extends Component {
   };
   render() {
     return (
-      <div>
-        <div>로그인</div>
-        <div>
-          <span>이메일 : </span>
-          <Input id="email-input" placeholder="e-mail" />
-        </div>
-        <div>
-          <span>비밀번호 : </span>
-          <Input
-            onKeyPress={this.handleEnterEvent}
-            id="password-input"
-            type="password"
-            placeholder="password"
-          />
+      <div className="sign-page">
+        <div className="box">
+          <span className="span_larger">로그인</span>
+          <div className="box">
+            <span className="span_middle">이메일 </span>
+            <Input id="email-input" placeholder="e-mail" />
+          </div>
+          <div className="box">
+            <span className="span_middle">비밀번호 </span>
+            <Input
+              onKeyPress={this.handleEnterEvent}
+              id="password-input"
+              type="password"
+              placeholder="password"
+            />
+          </div>
         </div>
         <div>
           <Button color="yellow" circular onClick={this.toLongIn}>
             로그인하기
           </Button>
         </div>
-        <div>
+        <div className="box">
           <Button color="orange" circular inverted onClick={this.goSignIn}>
             가입하기
           </Button>
