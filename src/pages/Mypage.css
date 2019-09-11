@@ -8,7 +8,7 @@
 .mypage-bottom-bar {
   position: absolute;
   bottom: 15px;
-  width: 90%;
+  width: 100%;
   box-align: center;
 }
 
@@ -21,4 +21,9 @@
   /* background: rgba(97, 218, 251, 0.26); */
   color: white;
   overflow: hidden;
+}
+
+#hello-writer-info-div,
+#hello-writer-user-div {
+  padding-top: 5%;
 }
