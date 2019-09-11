@@ -29,13 +29,15 @@ class Creator extends Component {
     return (
       <div>
         <br />
-        <h3>Hello, Writer</h3>
-        <p>by codestates</p>
+        <h2>Hello, Writer</h2>
+        <h3>by codestates</h3>
         <br />
-        Runaway trains
-        <br />
-        <br />
-        <div>{creatorsImg}</div>
+        <div id="creator-info">
+          <h3>Runaway trains</h3>
+          <br />
+          <br />
+          <div>{creatorsImg}</div>
+        </div>
       </div>
     );
   }
