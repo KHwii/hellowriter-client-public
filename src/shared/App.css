@@ -23,8 +23,7 @@
   text-align: center;
 }
 
-.centerContents {
-}
+.centerContents {}
 
 /*상단메뉴*/
 .Header-Box {
@@ -34,19 +33,23 @@
   height: 8%;
   /* background-color: rgba(255, 255, 255, 1); */
 }
+
 .dropMenu {
   display: flex;
   flex: 0;
 }
+
 .Menu-Button {
   display: flex;
   flex: 0;
 }
+
 .real-menu {
   z-index: 1;
   /*position: absolute;*/
   /*display: none;*/
 }
+
 .ant-input:focus {
   border: gold 0.2em;
 }
@@ -56,11 +59,13 @@
   flex: 1;
   padding: 0 0.3em 0 0.3em;
 }
+
 .progress {
   display: flex;
   flex: 1;
   width: 100%;
 }
+
 .defualt-div {
   /*z-index: 1;*/
   position: absolute;
@@ -109,6 +114,7 @@
   flex: 1;
   padding: 5px;
 }
+
 .title-area {
   display: flex;
   flex: 0 1;
@@ -117,8 +123,8 @@
   color: white;
   font-size: 2em;
 }
-.write-area {
-}
+
+.write-area {}
 
 .ant-btn-group {
   margin-right: 8px;
@@ -129,6 +135,7 @@
 .signUpPage {
   color: white;
 }
+
 .bottom-bar-topic {
   position: absolute;
   bottom: 3%;
@@ -179,6 +186,7 @@
   margin-bottom: auto;
   margin-top: 3em;
 }
+
 .ant-statistic-title {
   color: white !important;
 }
@@ -187,6 +195,7 @@
   display: flex;
   flex: 0;
 }
+
 .bottom-information {
   margin-top: auto;
   display: flex;
@@ -194,9 +203,11 @@
   flex: 0;
   color: white;
 }
+
 .list-wrap {
   flex: 1;
 }
+
 .list-item {
   color: white;
 }
@@ -211,6 +222,7 @@
   text-align: center;
   overflow: hidden;
 }
+
 .Topic-TEXT {
   display: flex;
   flex-direction: column;
@@ -219,27 +231,42 @@
   vertical-align: middle;
   text-align: center;
   margin: auto;
-  padding: 20% 0 20% 0 ;
+  padding: 20% 0 20% 0;
 }
+
 .Topic-Button {
   display: flex;
   width: 50%;
 }
+
 .ant-input {
   background-color: rgba(192, 192, 192, 0.59) !important;
   color: white !important;
 }
+
 .ant-input:hover {
   border-color: rgba(255, 215, 0, 0);
 }
+
 /*재활용하는 텍스트 클래스 */
 .span_middle {
   color: white;
   font-size: 1.5em;
   display: inline-block;
 }
+
 .span_larger {
   color: white;
   font-size: 2em;
   display: inline-block;
+}
+
+.allow-text {
+  text-align: left;
+}
+
+.allow-btn {
+  float: right;
+  right: 0.3em;
+  bottom: 2.3em;
 }

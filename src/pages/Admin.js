@@ -59,16 +59,18 @@ class Admin extends Component {
     return (
       <div className="flex-container">
         <h2>Admin Page</h2>
-        <h4>발행 허용 클릭 시 사용자에게 해당 주제가 오픈됩니다</h4>
+        <div>클릭시 해당 주제가 사용자에게 공개됩니다.</div>
+        <br />
         {this.state.notAllowedTopics
           ? this.state.notAllowedTopics.map(topic => {
               return (
                 <div key={topic.id}>
-                  <span>{topic.topic_text}</span>
+                  <h3 className="allow-text">{topic.topic_text}</h3>
                   <Button
                     size="small"
                     onClick={this.allowTopic}
                     value={topic.id}
+                    className="allow-btn"
                   >
                     발행 허용
                   </Button>
