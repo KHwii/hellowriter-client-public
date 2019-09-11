@@ -1,57 +1,10 @@
 import React, { Component } from "react";
 import { List, Button, Statistic, Icon, message } from "antd";
-import SERVER_URL from "../config/config";
-import IsLoading from "../components/IsLoading";
 class Main extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      hotArticleTitle: [0, 1, 2, 3, 4],
-      currentStatus: {
-        burning: 0,
-        timecapsule: 0,
-        topicRefCount: 0
-      },
-      isLoading: true
-    };
+    this.state = { isLoading: false };
   }
-
-  componentDidMount() {
-    if (!this.props.data.currentUserId) {
-      this.props.history.push("/");
-    } else {
-      const accessToken = JSON.parse(localStorage.getItem("accessToken"));
-      const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
-
-      fetch(`${SERVER_URL}/article/hot`, {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          accessToken,
-          refreshToken
-        }
-      })
-        .then(res => res.json())
-        .then(res => {
-          console.log(res);
-          this.setState(
-            {
-              hotArticleTitle: res.data.splice(0, 3),
-              currentStatus: {
-                burning: res.burning,
-                timecapsule: res.timecapsule,
-                topicRefCount: res.topicRefCount
-              },
-              isLoading: false
-            },
-            () => console.log("초기화완료")
-          );
-        })
-        .catch(err => console.error(err));
-    }
-  }
-
   goWrite = () => {
     message.success("🐶 속시원한 글 쓰기를 준비중! ", 1);
     setTimeout(() => this.props.history.push("/write/topic"), 1500);
@@ -61,25 +14,26 @@ class Main extends Component {
     setTimeout(() => this.props.history.push("/read/topic"), 1500);
   };
   render() {
-    const { hotArticleTitle, isLoading } = this.state;
-    const data = [hotArticleTitle[0], hotArticleTitle[1], hotArticleTitle[2]];
-    return isLoading ? (
-      <IsLoading />
-    ) : (
+    const data = [
+      "1위! 최후의 점멸 댄스",
+      "2위! 이시국씨의 일본맥주 떨이탐험",
+      "3위! 고양이 마켓 후기"
+    ];
+    return (
       <div className="Mina-Containner">
         <div className="Top-Infomation">
           <Statistic
-            title="불타는 당신의 글"
-            value={this.state.currentStatus.burning}
+            title="불타는 중"
+            value={1}
             prefix={<Icon type="fire" />}
           />
           <Statistic
-            title="시간여행 중인 글"
-            value={this.state.currentStatus.timecapsule}
+            title="시간여행 중"
+            value={3}
             prefix={<Icon type="branches" />}
           />
           <Statistic
-            title="이슈 인용 지수"
+            title="이슈인용횟수"
             value={11}
             prefix={<Icon type="line-chart" />}
           />
