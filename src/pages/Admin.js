@@ -10,9 +10,6 @@ class Admin extends Component {
   }
 
   componentDidMount() {
-    if (!this.props.data.currentUserId) {
-      this.props.history.push("/");
-    }
     this.getNotAllowedTopics();
   }
 
