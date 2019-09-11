@@ -51,7 +51,7 @@ class Admin extends Component {
       .then(json => json)
       .catch(err => console.log(err));
 
-    this.getNotAllowedTopics();
+    setTimeout(this.getNotAllowedTopics, 500);
   };
 
   render() {
