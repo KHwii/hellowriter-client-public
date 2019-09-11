@@ -6,8 +6,8 @@
 } */
 
 .mypage-bottom-bar {
-  position: absolute;
-  bottom: 15px;
+  position: relative;
+  top: 37%;
   width: 100%;
   box-align: center;
 }
@@ -18,7 +18,6 @@
   text-align: center;
   height: 300px;
   line-height: 300px;
-  /* background: rgba(97, 218, 251, 0.26); */
   color: white;
   overflow: hidden;
 }

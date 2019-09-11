@@ -49,31 +49,36 @@ class ReadTopic extends Component {
 
   render() {
     return (
-      <div>
+      <div className="App-Content">
         <div id="div-read-tags">
           {this.state.tags
-            ? this.state.tags.map(tag => {
-                return (
-                  <Button
-                    circular
-                    inverted
-                    color="yellow"
-                    onClick={this.handleClickEachTag}
-                    key={tag}
-                  >
-                    {tag}
-                  </Button>
-                );
-              })
+            ? this.state.tags
+                .filter(el => el !== "")
+                .slice(0, 50)
+                .map(tag => {
+                  let color = ["yellow", "red", "orange"];
+                  let randomNum = Math.floor(Math.random() * 3);
+                  return (
+                    <Button
+                      circular
+                      inverted
+                      color={color[randomNum]}
+                      onClick={this.handleClickEachTag}
+                      key={tag}
+                    >
+                      {tag}
+                    </Button>
+                  );
+                })
             : null}
-        </div>
-        <div className="bottom-bar-topic">
-          <Button color="yellow" circular onClick={this.goRead}>
-            바로보기
-          </Button>
-          <Button color="orange" circular onClick={this.goMain}>
-            뒤로가기
-          </Button>
+          <div className="bottom-bar-topic">
+            <Button color="yellow" circular onClick={this.goRead}>
+              바로보기
+            </Button>
+            <Button color="orange" circular onClick={this.goMain}>
+              뒤로가기
+            </Button>
+          </div>
         </div>
       </div>
     );

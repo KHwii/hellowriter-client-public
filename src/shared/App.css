@@ -135,14 +135,8 @@
 }
 
 .bottom-bar-topic {
-  position: absolute;
-  bottom: 3%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-#div-read-tags {
-  overflow: auto;
+  position: relative;
+  margin-top: 5rem;
 }
 
 .center-string {
@@ -356,3 +350,8 @@
   flex-direction: column;
   justify-content: center;
 }
+
+#render-article-div {
+  font-size: 2em;
+}
+
