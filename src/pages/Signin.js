@@ -68,7 +68,7 @@ class Signin extends Component {
         <div className="box">
           <span className="span_larger">로그인</span>
           <div className="box">
-            <span className="span_middle">이메일 </span>
+            <span className="span_middle">이메일&nbsp;&nbsp;&nbsp;&nbsp;</span>
             <Input id="email-input" placeholder="e-mail" />
           </div>
           <div className="box">
