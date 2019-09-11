@@ -1,18 +1,15 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable comma-dangle */
-/* eslint-disable arrow-parens */
-/* eslint-disable no-console */
-/* eslint-disable quotes */
 import React, { Component } from "react";
-import { Button, message } from "antd";
+import { message } from "antd";
 import SERVER_URL from "../config/config";
+import { Button, Confirm } from "semantic-ui-react";
 
 class Read extends Component {
   constructor(props) {
     super(props);
     this.state = {
       curArticle: null,
-      loading: false
+      loading: false,
+      count: 0
     };
   }
 
@@ -41,9 +38,18 @@ class Read extends Component {
       this.getArticle();
     }
   }
+  goMain = () => {
+    this.setState({ loading: true, count: 0 }, () => {
+      setTimeout(() => this.props.history.push("/main"), 200);
+    });
+  };
+  stayRead = () => {
+    this.setState({ loading: false, count: 0 }, () => {
+      setTimeout(() => this.props.history.push("/read"), 200);
+    });
+  };
 
   getArticle = () => {
-    console.log("제로 1");
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
     fetch(`${SERVER_URL}/article/random`, {
@@ -56,7 +62,16 @@ class Read extends Component {
       }
     })
       .then(res => res.json())
-      .then(json => this.setState({ curArticle: json }))
+      .then(json => {
+        // console.log(json.success, "어떤 형태.");
+        if (json.success === "NULL") {
+          // console.log("null셋팅 완료");
+          this.state({ curArticle: null });
+        } else {
+          // console.log("제대로 바다왔습니다. ", json);
+          this.setState({ curArticle: json });
+        }
+      })
       .catch(err => console.log(err));
   };
 
@@ -81,38 +96,97 @@ class Read extends Component {
     })
       .then(res => res.json())
       .then(json => {
-        console.log(json);
-        console.log("오나?");
         this.setState({ loading: false }, () => {
           message.success("당신의 평가를 고이고이 접어 보관했습니다. 📦");
-          console.log("오나?");
+          this.props.changeActivePoint(15);
         });
       })
       .catch(err => console.log(err, "프로미스 에러 "));
-    console.log("1단");
+    let prevCount = this.state.count;
+    this.setState({ count: prevCount + 1 });
     this.getArticle();
   };
 
   render() {
-    console.log("props: ", this.props, "state: ", this.state);
+    const { curArticle } = this.state;
+    // console.log(curArticle, "셋팅");
+    // console.log("count!!", this.state.count);
+
     return (
-      <div>
+      <div className="page">
         <div id="render-article-div">
-          {this.state.curArticle
-            ? this.state.curArticle.article_text
-            : "article 미 선택"}
+          {this.state.curArticle !== null ? (
+            <div className="box">
+              <div className="box">
+                <span className="span_larger">
+                  {this.state.curArticle.title}
+                </span>
+              </div>
+              <div className="box">
+                <span className="span_middle">
+                  {" "}
+                  {this.state.curArticle.article_text}
+                </span>
+              </div>
+            </div>
+          ) : (
+            <span>"article 재고가 떨어졌습니다.. ☠️"</span>
+          )}
         </div>
-        <div>
-          <Button loading={this.state.loading} onClick={this.postEvaluation}>
-            별로
+        {this.state.curArticle !== null ? (
+          <div>
+            <Button
+              loading={this.state.loading}
+              onClick={this.postEvaluation}
+              color="red"
+              circular
+              inverted
+              size="large"
+            >
+              별로
+            </Button>
+            <Button
+              loading={this.state.loading}
+              onClick={this.postEvaluation}
+              color="orange"
+              circular
+              inverted
+              size="large"
+            >
+              그냥
+            </Button>
+            <Button
+              loading={this.state.loading}
+              onClick={this.postEvaluation}
+              color="yellow"
+              circular
+              inverted
+              size="large"
+            >
+              좋아
+            </Button>
+          </div>
+        ) : (
+          <Button loading={this.state.loading} onClick={this.goMain}>
+            메인으로 돌아기기
           </Button>
-          <Button loading={this.state.loading} onClick={this.postEvaluation}>
-            그냥
-          </Button>
-          <Button loading={this.state.loading} onClick={this.postEvaluation}>
-            좋아
-          </Button>
-        </div>
+        )}
+        <Confirm
+          className={"confirmPhaseBurn"}
+          header="10개의 이야기를 읽었어요! 다른 이야기들을 더 살펴볼까요?"
+          content={
+            <Button.Group className="confirmPhaseBurnButtonGroup" size="large">
+              <Button onClick={this.goMain} inverted color="olive">
+                그만 읽을래요
+              </Button>
+              <Button onClick={this.stayRead} inverted color="yellow">
+                더 읽고싶어요
+              </Button>
+            </Button.Group>
+          }
+          open={this.state.count === 10}
+          close={this.state.count === 0}
+        />
       </div>
     );
   }

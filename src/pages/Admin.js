@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Button } from "antd";
+import { Button, Collapse } from "antd";
 import SERVER_URL from "../config/config";
+const { Panel } = Collapse;
 
 class Admin extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
@@ -48,27 +49,33 @@ class Admin extends Component {
       .then(json => json)
       .catch(err => console.log(err));
 
-    this.getNotAllowedTopics();
+    setTimeout(this.getNotAllowedTopics, 500);
   };
 
   render() {
+    console.log(this.props.data);
     return (
       <div className="flex-container">
         <h2>Admin Page</h2>
-        <h4>발행 허용 클릭 시 사용자에게 해당 주제가 오픈됩니다</h4>
+        <div>클릭시 해당 주제가 사용자에게 공개됩니다.</div>
+        <br />
         {this.state.notAllowedTopics
           ? this.state.notAllowedTopics.map(topic => {
               return (
-                <div key={topic.id}>
-                  <span>{topic.topic_text}</span>
-                  <Button
-                    size="small"
-                    onClick={this.allowTopic}
-                    value={topic.id}
-                  >
-                    발행 허용
-                  </Button>
-                </div>
+                <Collapse className="allow-collapse">
+                  <Panel header={topic.topic_text} className="allow-text">
+                    <p>
+                      <Button
+                        size="small"
+                        onClick={this.allowTopic}
+                        value={topic.id}
+                        className="allow-btn"
+                      >
+                        발행 허용
+                      </Button>
+                    </p>
+                  </Panel>
+                </Collapse>
               );
             })
           : null}

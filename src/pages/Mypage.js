@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button, Carousel } from "antd";
+import { Button } from "semantic-ui-react";
 import IsLoading from "../components/IsLoading";
 import "./Mypage.css";
 import SERVER_URL from "../config/config";
@@ -11,7 +11,7 @@ class Mypage extends Component {
     this.state = {
       userData: {
         total: 0,
-        timeCaptule: 0,
+        timecapsule: 0,
         topic: 0
       },
       totalInfo: {
@@ -41,25 +41,36 @@ class Mypage extends Component {
     })
       .then(res => res.json())
       .then(res => {
-        console.log("통신성공후 데이터 적용합니다.", res);
         const data = {
-          total: res.results,
-          timeCapsule: res.results,
-          topic: res.results
+          total: res.total,
+          timecapsule: res.timecapsule,
+          topic: res.topic
         };
-        this.setState({
-          userData: data
-        });
+        this.setState(
+          {
+            userData: data
+          },
+          () => {
+            "스테이트 변경";
+          }
+        );
       })
       .catch(err => console.error(err));
-    // fetch주소에 server/totalinfo로 변경
-    fetch("https://randomuser.me/api/?results=10")
+    fetch(`${SERVER_URL}/app/info`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        accessToken,
+        refreshToken
+      }
+    })
       .then(res => res.json())
       .then(res => {
         const data = {
-          total: res.results,
-          topics: res.results,
-          users: res.results
+          total: res.total,
+          topics: res.topics,
+          users: res.users
         };
         this.setState({
           totalInfo: data,
@@ -76,25 +87,28 @@ class Mypage extends Component {
     ) : (
       <div className="flex-container">
         <div className="my-page">
-          <span>마이페이지</span>
+          <span className="span_larger">마이페이지</span>
         </div>
-        <Carousel autoplay>
-          <div>
+        <div box>
+          <div box id="hello-writer-user-div">
             <h2>나는 어때</h2>
-            <h3>내가 쓴글 :{userData.total}개</h3>
-            <h3>타임캡슐 :{userData.timeCaptule}개</h3>
-            <h3>내가 발행한 주제 :{userData.topic}개</h3>
+            <h3>내가 쓴글 : {userData.total} 개</h3>
+            <h3>타임캡슐 : {userData.timecapsule} 개</h3>
+            <h3>내가 발행한 주제 : {userData.topic} 개</h3>
           </div>
-          <div>
+          <div box id="hello-writer-info-div">
             <h2>우리는 어때</h2>
-            {/*<h3>전체글 :{totalInfo.total}개</h3>*/}
-            {/*<h3>토픽 :{totalInfo.topics}개</h3>*/}
-            {/*<h3>유저 :{totalInfo.users}개</h3>*/}
+            <h3>전체글 : {totalInfo.total} 개</h3>
+            <h3>토픽 : {totalInfo.topics} 개</h3>
+            <h3>유저 : {totalInfo.users} 개</h3>
           </div>
-        </Carousel>
+        </div>
 
-        <div className="bottom-bar">
+        <div className="mypage-bottom-bar">
           <Button
+            color="orange"
+            circular
+            Inverted
             id="mypage-homeBtn"
             size="large"
             onClick={this.changePageHome}
