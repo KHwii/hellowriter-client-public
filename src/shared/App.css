@@ -101,7 +101,6 @@
   padding: 0 0 0.5em 0;
 }
 
-
 /*Write.js*/
 .write-area-box {
   display: flex;
@@ -123,8 +122,6 @@
 .ant-btn-group {
   margin-right: 8px;
 }
-
-
 
 .signUpPage {
   color: white;
@@ -159,8 +156,6 @@
   color: gold;
   font-size: 1.5em;
 }
-
-
 
 /*main.js*/
 .Main-Containner {
@@ -201,7 +196,6 @@
   color: white;
 }
 
-
 /*WriteTopic.js*/
 .Write-Topic-Box {
   display: flex;
@@ -219,7 +213,7 @@
   vertical-align: middle;
   text-align: center;
   margin: auto;
-  padding: 20% 0 20% 0 ;
+  padding: 20% 0 20% 0;
 }
 .Topic-Button {
   display: flex;
@@ -232,14 +226,82 @@
 .ant-input:hover {
   border-color: rgba(255, 215, 0, 0);
 }
+
+/*welcomePage*/
+.welcomePage {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  margin-bottom: 45%;
+}
+
+.wel-upper-box {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  height: 30%;
+  text-align: center;
+
+}
+.wel-image {
+  width: 10em;
+  height: 10em;
+  margin: 2em auto 2em auto;
+}
+.wel-text-box {
+  display: flex;
+  flex: 0;
+  margin: 2em auto 2em auto;
+  padding: 1em;
+}
+
+.wel-bottom-box {
+  display: flex;
+  flex: 0;
+}
+
+/*signUpPage*/
+.signUpPage {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  margin-bottom: 45%;
+}
+
+.wel-upper-box {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  height: 30%;
+  text-align: center;
+}
+
+.ant-input:focus {
+  color: white;
+  border-color: rgba(32, 32, 32, 0.82);
+}
+
 /*재활용하는 텍스트 클래스 */
 .span_middle {
   color: white;
   font-size: 1.5em;
   display: inline-block;
+  vertical-align: middle;
 }
 .span_larger {
   color: white;
   font-size: 2em;
   display: inline-block;
+}
+.box {
+  line-height:3em;
+  margin: 1em 0 1em 0;
 }
