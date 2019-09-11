@@ -9,6 +9,7 @@
   flex-direction: column;
   flex: 1;
   padding: 0.2em;
+  overflow: auto;
 }
 
 .second-container {
@@ -23,8 +24,7 @@
   text-align: center;
 }
 
-.centerContents {
-}
+.centerContents {}
 
 /*상단메뉴*/
 .Header-Box {
@@ -124,8 +124,7 @@
   font-size: 2em;
 }
 
-.write-area {
-}
+.write-area {}
 
 .ant-btn-group {
   margin-right: 8px;
@@ -258,11 +257,13 @@
   height: 30%;
   text-align: center;
 }
+
 .wel-image {
   width: 10em;
   height: 10em;
   margin: 2em auto 2em auto;
 }
+
 .wel-text-box {
   display: flex;
   flex: 0;
@@ -346,7 +347,7 @@
   justify-content: center;
 }
 
-.page{
+.page {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -356,4 +357,3 @@
 #render-article-div {
   font-size: 2em;
 }
-

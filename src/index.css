@@ -24,8 +24,8 @@ code {
   display: flex;
   flex-direction: column;
   flex: 1 1 0;
-  max-width: 400px;
-  max-height: 640px;
+  max-width: 450px;
+  max-height: 850px;
 }
 
 html,
