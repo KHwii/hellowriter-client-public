@@ -46,7 +46,7 @@ class Signup extends Component {
   };
 
   // eslint-disable-next-line react/sort-comp
-  checkMail = (e) => {
+  checkMail = e => {
     e.preventDefault();
     const { email } = this.state;
     const body = JSON.stringify({ email });
@@ -100,12 +100,7 @@ class Signup extends Component {
               }}
             />
             <br />
-            <Button
-              color="orange"
-              circular
-              Inverted
-              onClick={this.checkMail}
-            >
+            <Button color="orange" circular onClick={this.checkMail}>
               Check Mail
             </Button>
           </div>
@@ -148,12 +143,14 @@ class Signup extends Component {
             />
           </div>
           <Button
-              color="yellow"
-              circular
-              Inverted
-              style={{ width: "30%"}}
-              hidden={this.state.hidden} type="submit" value="회원가입">
-               Submit
+            color="yellow"
+            circular
+            style={{ width: "30%" }}
+            hidden={this.state.hidden}
+            type="submit"
+            value="회원가입"
+          >
+            Submit
           </Button>
         </Form>
       </div>

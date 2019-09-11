@@ -31,7 +31,6 @@ class Welcome extends Component {
           <Button
             color="orange"
             circular
-            Inverted
             className="Topic-Button"
             onClick={() => {
               this.go("signup");
@@ -51,7 +50,6 @@ class Welcome extends Component {
           <Button
             color="yellow"
             circular
-            Inverted
             className="Topic-Button"
             onClick={() => {
               this.go("signin");
