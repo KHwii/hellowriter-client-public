@@ -3,7 +3,10 @@
   background-image: url("https://thecrystalenchantress.com/wp-content/uploads/2017/03/gold-on-black-background-1.jpg");
   background-size: cover;
   flex: 3;
+  opacity: 0.8;
 }
+
+
 
 .welcomeBtn {
   color: white;

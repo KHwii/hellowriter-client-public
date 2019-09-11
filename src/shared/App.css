@@ -1,19 +1,10 @@
-.ant-layout-header {
-  color: #fff;
-}
-
-.ant-layout-content {
-  /* background: rgba(16, 142, 233, 0.47); */
+.first-container {
+  /* background: #8f93ff; */
   background-image: url("https://thecrystalenchantress.com/wp-content/uploads/2017/03/gold-on-black-background-1.jpg");
   background-size: cover;
   color: #fff;
   min-height: 120px;
-}
 
-.first-container {
-  /* background: #8f93ff; */
-  /* background-image: url("https://thecrystalenchantress.com/wp-content/uploads/2017/03/gold-on-black-background-1.jpg");
-  background-size: cover; */
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -33,7 +24,6 @@
 }
 
 .centerContents {
-
 }
 
 /*상단메뉴*/
@@ -41,7 +31,7 @@
   display: flex;
   flex: 1;
   flex-direction: row;
-  height: 20px;
+  height: 8%;
   /* background-color: rgba(255, 255, 255, 1); */
 }
 .dropMenu {
@@ -71,11 +61,17 @@
   flex: 1;
   width: 100%;
 }
+.defualt-div {
+  /*z-index: 1;*/
+  position: absolute;
+  left: 30%;
+  top: 40%;
+}
 
 .App-Content {
   /* background-image: url("https://thecrystalenchantress.com/wp-content/uploads/2017/03/gold-on-black-background-1.jpg");
   background-size: cover; */
-  height: 90%;
+  height: 92%;
   display: flex;
   flex-direction: column;
   color: #fff;
@@ -93,18 +89,17 @@
   height: 2em;
   margin: 3px;
   text-align: center;
-  background : rgba(170, 156, 145, 0.1)
+  background: rgba(170, 156, 145, 0.1);
 }
 
 .bottom-bar {
-  background-color: chocolate;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   flex: 0 1;
   text-align: center;
+  padding: 0 0 0.5em 0;
 }
-
 
 /*WriteTopic.js*/
 .newTopic-Button {
@@ -163,5 +158,62 @@
   margin: auto;
   line-height: 2em;
   vertical-align: middle;
+  color: white;
+}
+
+.Load-outer {
+  display: flex;
+  flex: 1;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.ant-spin-text {
+  color: gold;
+  font-size: 1.5em;
+}
+
+.span_middle {
+  color: white;
+  font-size: 1.5em;
+}
+
+/*main.js*/
+.Main-Containner {
+  padding: 0.5em;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Top-Infomation {
+  color: white;
+  display: flex;
+  flex: 0;
+  flex-direction: column;
+  margin-bottom: auto;
+  margin-top: 3em;
+}
+.ant-statistic-title {
+  color: white !important;
+}
+
+.main-botton-group {
+  display: flex;
+  flex: 0;
+}
+.bottom-information {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  flex: 0;
+  color: white;
+}
+.list-wrap {
+  flex: 1;
+}
+.list-item {
   color: white;
 }

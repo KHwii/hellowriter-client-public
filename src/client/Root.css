@@ -9,6 +9,10 @@
     height: 0;
 }
 
+.transition{
+    z-index: 3;
+}
+
 .ui.modal>.header {
     background-color: #0f0f1a;
     color: gold;

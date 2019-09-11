@@ -89,7 +89,7 @@ class Mypage extends Component {
         <div className="my-page">
           <span>마이페이지</span>
         </div>
-        <Carousel autoplay>
+        <div autoplay>
           <div>
             <h2>나는 어때</h2>
             <h3>내가 쓴글 :{userData.total}개</h3>
@@ -102,9 +102,9 @@ class Mypage extends Component {
             <h3>토픽 :{totalInfo.topics}개</h3>
             <h3>유저 :{totalInfo.users}개</h3>
           </div>
-        </Carousel>
+        </div>
 
-        <div className="bottom-bar">
+        <div className="mypage-bottom-bar">
           <Button
             id="mypage-homeBtn"
             size="large"

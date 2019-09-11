@@ -6,7 +6,7 @@ class ExperienceGuage extends Component {
   // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
-    this.state = { animation: "zoom", duration: 500, visible: false };
+    this.state = { animation: "zoom", duration: 1500, visible: false };
   }
 
   componentWillReceiveProps(Nextprops) {
@@ -21,16 +21,13 @@ class ExperienceGuage extends Component {
   }
 
   takeDown = () => {
-    console.log("펄스시작");
     this.setState({ visible: false }, () => {
-      console.log("펄스끝!");
       this.props.endEvent();
     });
   };
 
   render() {
     let { point, isEventTime } = this.props;
-    console.log(point, isEventTime, "변화상태를 보고해주세요~");
     const { animation, duration, visible } = this.state;
     return (
       <div className="progress-box">
@@ -45,7 +42,7 @@ class ExperienceGuage extends Component {
           showInfo={false}
           percent={point}
         />
-        <div>
+        <div className="defualt-div">
           <Transition
             animation={animation}
             duration={duration}

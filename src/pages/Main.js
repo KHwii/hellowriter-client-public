@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { List, Button, Statistic, Icon, message } from "antd";
+import { List, Statistic, Icon, message } from "antd";
+import { Button } from "semantic-ui-react";
 import SERVER_URL from "../config/config";
 import IsLoading from "../components/IsLoading";
 class Main extends Component {
@@ -71,57 +72,77 @@ class Main extends Component {
     console.log(this.props);
     const { hotArticleTitle, isLoading } = this.state;
     const data = [hotArticleTitle[0], hotArticleTitle[1], hotArticleTitle[2]];
+    const lists = data.map(el => (
+      <div key={el + String(Math.random() * 100)} className="list-item">
+        <span className="span_middle">{el}</span>
+      </div>
+    ));
     return isLoading ? (
       <IsLoading />
     ) : (
       <div className="Main-Containner">
         <div className="Top-Infomation">
           <Statistic
+            valueStyle={{ color: "white" }}
             title="불타는 당신의 글"
             value={this.state.currentStatus.burning}
             prefix={<Icon type="fire" />}
           />
           <Statistic
+            valueStyle={{ color: "white" }}
             title="시간여행 중인 글"
             value={this.state.currentStatus.timecapsule}
             prefix={<Icon type="branches" />}
           />
           <Statistic
+            valueStyle={{ color: "white" }}
             title="이슈 인용 지수"
             value={this.state.currentStatus.topicRefCount}
             prefix={<Icon type="line-chart" />}
           />
         </div>
-        <div>
-          <Button.Group size="default">
-            <Button
-              onClick={this.goWrite}
-              type="primary"
-              loading={this.state.isLoading}
-            >
-              <Icon type="left" />
-              쓰러가기
-            </Button>
-            <Button
-              onClick={this.goRead}
-              type="primary"
-              loading={this.state.isLoading}
-            >
-              읽으러가기
-              <Icon type="right" />
-            </Button>
-          </Button.Group>
-        </div>
+
+        <Button.Group
+          style={{
+            margin: "1em",
+            display: "flex"
+          }}
+          className="main-botton-group"
+          size="default"
+        >
+          <Button
+            onClick={this.goWrite}
+            inverted
+            color="red"
+            loading={this.state.isLoading}
+          >
+            <Icon type="left" />
+            쓰러가기
+          </Button>
+          <Button
+            onClick={this.goRead}
+            inverted
+            color="yellow"
+            loading={this.state.isLoading}
+          >
+            읽으러가기
+            <Icon type="right" />
+          </Button>
+        </Button.Group>
         {/*<h3 style={{ margin: '16px 0' }}></h3>*/}
-        <div>오늘의 핫한 글~?</div>
-        <List
-          size="small"
-          // header={}
-          // footer={<div style={{ margin: '8px 0' }}>Footer</div>}
-          bordered
-          dataSource={data}
-          renderItem={item => <List.Item>{item}</List.Item>}
-        />
+        <div className="bottom-information">
+          <div className="span_middle">오늘의 핫한 글~?</div>
+          <div className="list-wrap">{lists}</div>
+        </div>
+        {/*<List*/}
+        {/*  //   style={{color:"white"}}*/}
+        {/*  // className="bottom-information"*/}
+        {/*  // header="오늘의 핫한 글~?"*/}
+        {/*  // size="small"*/}
+        {/*  // bordered*/}
+        {/*  // dataSource={data}*/}
+        {/*  // renderItem={item => <List.Item>{item}</List.Item>}*/}
+        {/*/>*/}
       </div>
     );
   }
