@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button, Carousel } from "antd";
+import { Button } from "semantic-ui-react";
 import IsLoading from "../components/IsLoading";
 import "./Mypage.css";
 import SERVER_URL from "../config/config";
@@ -106,6 +106,9 @@ class Mypage extends Component {
 
         <div className="mypage-bottom-bar">
           <Button
+            color="orange"
+            circular
+            Inverted
             id="mypage-homeBtn"
             size="large"
             onClick={this.changePageHome}

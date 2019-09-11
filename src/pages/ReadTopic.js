@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button } from "antd";
+import { Button } from "semantic-ui-react";
 import SERVER_URL from "../config/config";
 
 class ReadTopic extends Component {
@@ -54,7 +54,13 @@ class ReadTopic extends Component {
           {this.state.tags
             ? this.state.tags.map(tag => {
                 return (
-                  <Button onClick={this.handleClickEachTag} key={tag}>
+                  <Button
+                    circular
+                    inverted
+                    color="yellow"
+                    onClick={this.handleClickEachTag}
+                    key={tag}
+                  >
                     {tag}
                   </Button>
                 );
@@ -62,8 +68,12 @@ class ReadTopic extends Component {
             : null}
         </div>
         <div className="bottom-bar-topic">
-          <Button onClick={this.goRead}>바로보기</Button>
-          <Button onClick={this.goMain}>뒤로가기</Button>
+          <Button color="yellow" circular onClick={this.goRead}>
+            바로보기
+          </Button>
+          <Button color="orange" circular onClick={this.goMain}>
+            뒤로가기
+          </Button>
         </div>
       </div>
     );
