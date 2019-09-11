@@ -28,7 +28,7 @@ class DropMenu extends React.Component {
   };
 
   render() {
-    const { user } = this.props;
+    const { currentUserId } = this.props;
     return (
       <Menu onClick={this.handleClick} mode="horizontal" theme="dark">
         <SubMenu
@@ -63,6 +63,13 @@ class DropMenu extends React.Component {
             <span>Creator</span>
             <Link to="/creator" />
           </Menu.Item>
+          {currentUserId === 1 || currentUserId === 2 || currentUserId === 3 ? (
+            <Menu.Item key="7">
+              <Icon type="idcard" />
+              <span>Admin</span>
+              <Link to="/admin" />
+            </Menu.Item>
+          ) : null}
           <Menu.Item
             key="6"
             onClick={() => {
@@ -73,13 +80,6 @@ class DropMenu extends React.Component {
             <span>Sign out</span>
             <Link to="/" />
           </Menu.Item>
-          {user === 1 || user === 2 || user === 3 ? (
-            <Menu.Item key="7">
-              <Icon type="admin" />
-              <span>Admin</span>
-              <Link to="/admin" />
-            </Menu.Item>
-          ) : null}
         </SubMenu>
       </Menu>
     );

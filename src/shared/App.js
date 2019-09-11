@@ -28,7 +28,7 @@ class App extends Component {
       email: "fakeUser",
       nickname: "fakeNick",
       point: 77,
-      currentUserId: 1,
+      currentUserId: null,
       isEventTime: false,
       writeCount: 0
     };
@@ -72,6 +72,7 @@ class App extends Component {
               <>
                 <DropMenu
                   changeCurrentUser={this.changeCurrentUser}
+                  currentUserId={this.state.currentUserId}
                   data={this.state}
                 />
                 <ExperienceGuage
