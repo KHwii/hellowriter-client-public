@@ -45,3 +45,7 @@ h3 {
 .ant-progress-inner {
   background-color: transparent;
 }
+
+.ant-menu-item {
+  background-color: black;
+}

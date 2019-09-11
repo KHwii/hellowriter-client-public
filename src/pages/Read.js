@@ -4,9 +4,9 @@
 /* eslint-disable no-console */
 /* eslint-disable quotes */
 import React, { Component } from "react";
-import { Button, message } from "antd";
+import { message } from "antd";
 import SERVER_URL from "../config/config";
-import { Confirm } from "semantic-ui-react";
+import { Button, Confirm } from "semantic-ui-react";
 
 class Read extends Component {
   constructor(props) {
@@ -53,7 +53,6 @@ class Read extends Component {
       setTimeout(() => this.props.history.push("/read"), 200);
     });
   };
-
 
   getArticle = () => {
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
@@ -129,13 +128,31 @@ class Read extends Component {
         </div>
         {this.state.curArticle !== null ? (
           <div>
-            <Button loading={this.state.loading} onClick={this.postEvaluation}>
+            <Button
+              loading={this.state.loading}
+              onClick={this.postEvaluation}
+              color="red"
+              circular
+              inverted
+            >
               별로
             </Button>
-            <Button loading={this.state.loading} onClick={this.postEvaluation}>
+            <Button
+              loading={this.state.loading}
+              onClick={this.postEvaluation}
+              color="orange"
+              circular
+              inverted
+            >
               그냥
             </Button>
-            <Button loading={this.state.loading} onClick={this.postEvaluation}>
+            <Button
+              loading={this.state.loading}
+              onClick={this.postEvaluation}
+              color="yellow"
+              circular
+              inverted
+            >
               좋아
             </Button>
           </div>

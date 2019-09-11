@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Button, message } from "antd";
-import { Input } from "semantic-ui-react";
+import { message } from "antd";
+import { Input, Button } from "semantic-ui-react";
 import SERVER_URL from "../config/config";
 
 class Signin extends Component {
@@ -57,11 +57,11 @@ class Signin extends Component {
       message.warning("이메일과 비밀번호를 모두 입력 해주세요");
     }
   };
-  handleEnterEvent = (e) => {
+  handleEnterEvent = e => {
     if (e.charCode === 13) {
       this.toLongIn();
     }
-  }
+  };
   render() {
     return (
       <div>
@@ -72,17 +72,27 @@ class Signin extends Component {
         </div>
         <div>
           <span>비밀번호 : </span>
-          <Input onKeyPress={this.handleEnterEvent} id="password-input" type="password" placeholder="password" />
+          <Input
+            onKeyPress={this.handleEnterEvent}
+            id="password-input"
+            type="password"
+            placeholder="password"
+          />
         </div>
         <div>
-          <Button onClick={this.toLongIn}>로그인하기</Button>
+          <Button color="yellow" circular onClick={this.toLongIn}>
+            로그인하기
+          </Button>
         </div>
         <div>
-          <Button onClick={this.goSignIn}>가입하기</Button>
-          <Button onClick={this.goWelcome}>뒤로가기</Button>
+          <Button color="orange" circular inverted onClick={this.goSignIn}>
+            가입하기
+          </Button>
+          <Button color="red" circular inverted onClick={this.goWelcome}>
+            뒤로가기
+          </Button>
         </div>
       </div>
-
     );
   }
 }
