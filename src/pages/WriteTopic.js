@@ -87,7 +87,6 @@ class WriteTopic extends Component {
         <Button
           color="yellow"
           circular
-          Inverted
           className="Topic-Button"
           onClick={this.getTopic}
           style={{
@@ -103,7 +102,6 @@ class WriteTopic extends Component {
         <Button
           color="orange"
           circular
-          Inverted
           className="Topic-Button"
           onClick={this.toggleInputBox}
           type="default"
@@ -131,7 +129,6 @@ class WriteTopic extends Component {
         <Button
           color="red"
           circular
-          Inverted
           className="Topic-Button"
           onClick={this.goWrite}
           type="primary"
