@@ -3,7 +3,7 @@
         "browser": true,
         "es6": true
     },
-    "extends": "eslint:recommended",
+    "extends": ["airbnb", "plugin:prettier/recommended"],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
@@ -16,9 +16,19 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react", "prettier"
     ],
     "rules": {
-
+        "prettier/prettier": "warn",
+        "no-console": "off",
+        "react/jsc-indent-props": "off",
+        "indent": "off",
+        "object-curly-spacing": "off",
+        "import/no-unresolved": "off",
+        "import/extensions": "off",
+        "react/jsx-tag-spacing": "off",
+        "react/prefer-stateless-function": "off",
+        "react/jsx-filename-extension": "off",
+        "react/jsx-indent": "off"
     }
 }

@@ -1,0 +1,25 @@
+/* .mypage-info-table {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    line-height: initial;
+} */
+
+
+.bottom-bar {
+    position: absolute;
+    bottom:15px;
+    width: 90%;
+    box-align: center;
+}
+
+.ant-carousel .slick-slide {
+    position: relative;
+    border-top: 150px;
+    text-align: center;
+    height: 300px;
+    line-height: 300px;
+    /* background: rgba(97, 218, 251, 0.26); */
+    color:white;
+    overflow: hidden;
+  };
