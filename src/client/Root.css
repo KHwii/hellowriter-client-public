@@ -1,9 +1,5 @@
 @import "~antd/dist/antd.css";
 
-.Root {
-  text-align: center;
-}
-
 .ui.modal > .actions {
   visibility: hidden;
   height: 0;

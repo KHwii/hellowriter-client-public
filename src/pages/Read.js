@@ -1,8 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable comma-dangle */
-/* eslint-disable arrow-parens */
-/* eslint-disable no-console */
-/* eslint-disable quotes */
 import React, { Component } from "react";
 import { Button, message } from "antd";
 import SERVER_URL from "../config/config";
