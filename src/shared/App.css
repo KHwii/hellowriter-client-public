@@ -23,7 +23,8 @@
   text-align: center;
 }
 
-.centerContents {}
+.centerContents {
+}
 
 /*상단메뉴*/
 .Header-Box {
@@ -98,7 +99,6 @@
 }
 
 .bottom-bar {
-
   display: flex;
   flex: 0 1;
   text-align: center;
@@ -123,7 +123,8 @@
   font-size: 2em;
 }
 
-.write-area {}
+.write-area {
+}
 
 .ant-btn-group {
   margin-right: 8px;
@@ -134,14 +135,8 @@
 }
 
 .bottom-bar-topic {
-  position: absolute;
-  bottom: 3%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-#div-read-tags {
-  overflow: auto;
+  position: relative;
+  margin-top: 5rem;
 }
 
 .center-string {
@@ -242,7 +237,6 @@
   border-color: rgba(255, 215, 0, 0);
 }
 
-
 /*welcomePage*/
 .welcomePage {
   display: flex;
@@ -261,7 +255,6 @@
   justify-content: center;
   height: 30%;
   text-align: center;
-
 }
 .wel-image {
   width: 10em;
@@ -320,12 +313,12 @@
 }
 
 .box {
-  line-height:3em;
+  line-height: 3em;
   margin: 1em 0 1em 0;
 }
 
 .allow-collapse {
-  opacity: 0.6
+  opacity: 0.6;
 }
 
 .allow-text {
@@ -340,4 +333,8 @@
   border: medium important;
   color: black;
   text-emphasis: emphasis;
+}
+
+#render-article-div {
+  font-size: 2em;
 }
