@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Button } from "antd";
+import { Button, Collapse } from "antd";
 import SERVER_URL from "../config/config";
+const { Panel } = Collapse;
 
 class Admin extends Component {
   constructor(props) {
@@ -64,17 +65,20 @@ class Admin extends Component {
         {this.state.notAllowedTopics
           ? this.state.notAllowedTopics.map(topic => {
               return (
-                <div key={topic.id}>
-                  <h3 className="allow-text">{topic.topic_text}</h3>
-                  <Button
-                    size="small"
-                    onClick={this.allowTopic}
-                    value={topic.id}
-                    className="allow-btn"
-                  >
-                    발행 허용
-                  </Button>
-                </div>
+                <Collapse className="allow-collapse">
+                  <Panel header={topic.topic_text} className="allow-text">
+                    <p>
+                      <Button
+                        size="small"
+                        onClick={this.allowTopic}
+                        value={topic.id}
+                        className="allow-btn"
+                      >
+                        발행 허용
+                      </Button>
+                    </p>
+                  </Panel>
+                </Collapse>
               );
             })
           : null}

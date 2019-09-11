@@ -261,6 +261,10 @@
   display: inline-block;
 }
 
+.allow-collapse {
+  opacity: 0.6
+}
+
 .allow-text {
   text-align: left;
 }
@@ -268,5 +272,9 @@
 .allow-btn {
   float: right;
   right: 0.3em;
-  bottom: 2.3em;
+  bottom: 0.5em;
+  background-color: grey important;
+  border: medium important;
+  color: black;
+  text-emphasis: emphasis;
 }
