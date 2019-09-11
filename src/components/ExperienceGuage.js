@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Progress } from "antd";
 import { Image, Transition } from "semantic-ui-react";
-
+import great from "../pages/img/123.png";
 class ExperienceGuage extends Component {
   // eslint-disable-next-line no-useless-constructor
   constructor(props) {
@@ -48,11 +48,7 @@ class ExperienceGuage extends Component {
             duration={duration}
             visible={visible}
           >
-            <Image
-              centered
-              size="small"
-              src="https://react.semantic-ui.com/images/leaves/4.png"
-            />
+            <Image centered size="small" src={great} />
           </Transition>
         </div>
       </div>

@@ -63,12 +63,12 @@ class Read extends Component {
     })
       .then(res => res.json())
       .then(json => {
-        console.log(json.success, "어떤 형태.");
+        // console.log(json.success, "어떤 형태.");
         if (json.success === "NULL") {
-          console.log("null셋팅 완료");
+          // console.log("null셋팅 완료");
           this.state({ curArticle: null });
         } else {
-          console.log("제대로 바다왔습니다. ", json);
+          // console.log("제대로 바다왔습니다. ", json);
           this.setState({ curArticle: json });
         }
       })
@@ -109,14 +109,26 @@ class Read extends Component {
 
   render() {
     const { curArticle } = this.state;
-    console.log(curArticle, "셋팅");
-    console.log("count!!", this.state.count);
+    // console.log(curArticle, "셋팅");
+    // console.log("count!!", this.state.count);
 
     return (
-      <div>
+      <div className="page">
         <div id="render-article-div">
           {this.state.curArticle !== null ? (
-            <span> {this.state.curArticle.article_text}</span>
+            <div className="box">
+              <div className="box">
+                <span className="span_larger">
+                  {this.state.curArticle.title}
+                </span>
+              </div>
+              <div className="box">
+                <span className="span_middle">
+                  {" "}
+                  {this.state.curArticle.article_text}
+                </span>
+              </div>
+            </div>
           ) : (
             <span>"article 재고가 떨어졌습니다.. ☠️"</span>
           )}
@@ -129,6 +141,7 @@ class Read extends Component {
               color="red"
               circular
               inverted
+              size="large"
             >
               별로
             </Button>
@@ -138,6 +151,7 @@ class Read extends Component {
               color="orange"
               circular
               inverted
+              size="large"
             >
               그냥
             </Button>
@@ -147,6 +161,7 @@ class Read extends Component {
               color="yellow"
               circular
               inverted
+              size="large"
             >
               좋아
             </Button>
