@@ -116,7 +116,7 @@ class Write extends Component {
             setTimeout(() => {
               this.setState({ phaseFourBool: false }, () => {
                 message.success(
-                  "비바람이 몰아치는 가운데 당신의 기록이 어디에 남았어요! 🙊"
+                  "비바람이 몰아치는 가운데 당신의 기록이 어딘가에 남았어요! 🙊"
                 );
                 this.props.changeActivePoint(30);
                 setTimeout(() => this.props.history.push("/write/topic"), 0);

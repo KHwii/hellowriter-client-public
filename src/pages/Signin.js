@@ -66,13 +66,13 @@ class Signin extends Component {
     return (
       <div className="sign-page">
         <div className="box">
-          <span className="span_larger">로그인</span>
+          <span className="span_larger">로그인  </span>
           <div className="box">
             <span className="span_middle">이메일&nbsp;&nbsp;&nbsp;&nbsp;</span>
             <Input id="email-input" placeholder="e-mail" />
           </div>
           <div className="box">
-            <span className="span_middle">비밀번호 </span>
+            <span className="span_middle">비밀번호{" "}</span>
             <Input
               onKeyPress={this.handleEnterEvent}
               id="password-input"
