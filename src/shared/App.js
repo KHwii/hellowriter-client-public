@@ -28,7 +28,7 @@ class App extends Component {
       email: "fakeUser",
       nickname: "fakeNick",
       point: 77,
-      currentUserId: null,
+      currentUserId: 1,
       isEventTime: false,
       writeCount: 0
     };
