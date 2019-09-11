@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, Icon } from "antd";
+import { Menu, Icon, message } from "antd";
 import { Link } from "react-router-dom";
 import "./DropMenu.css";
 import SERVER_URL from "../config/config";
@@ -9,18 +9,24 @@ export default function Menus(props) {
   const { toggleCollapsed } = props;
 
   const logout = () => {
+    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+    const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
     fetch(`${SERVER_URL}/signout`, {
-      method: "GET", // include, *same-origin, omit
+      method: "GET",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
-        credentials: "include"
+        accessToken,
+        refreshToken
       }
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res, "res.json() 결과");
+        if (res.success === true) { message.success('다음에 또 봐요, 나의 작가님.')}
+        else { message.warning("아직 접속하지 않으셨어요. 들어오실래요?") }
       })
-      .catch(err => console.log(err));
+        // console.log(res, "res.json() 결과");
+      // .catch(err => console.log(err, "로그인 하지 않으셨습니다"));
   };
   return (
     <div>
