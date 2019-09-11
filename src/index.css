@@ -11,9 +11,9 @@ body {
   flex-direction: initial;
 }
 
-* {
-  outline: 1px red dashed;
-}
+/** {*/
+/*  outline: 1px red dashed;*/
+/*}*/
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
