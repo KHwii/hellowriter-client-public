@@ -101,16 +101,6 @@
   padding: 0 0 0.5em 0;
 }
 
-/*WriteTopic.js*/
-.newTopic-Button {
-  margin-top: 25px;
-}
-.myIssue-Button {
-  margin-top: 25px;
-}
-.goWrite-Button {
-  margin-top: 25px;
-}
 
 /*Write.js*/
 .write-area-box {
@@ -134,11 +124,7 @@
   margin-right: 8px;
 }
 
-.Topic-TEXT {
-  margin-top: 30px;
-  height: 3em;
-  vertical-align: middle;
-}
+
 
 .signUpPage {
   color: white;
@@ -174,10 +160,7 @@
   font-size: 1.5em;
 }
 
-.span_middle {
-  color: white;
-  font-size: 1.5em;
-}
+
 
 /*main.js*/
 .Main-Containner {
@@ -216,4 +199,47 @@
 }
 .list-item {
   color: white;
+}
+
+
+/*WriteTopic.js*/
+.Write-Topic-Box {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.Topic-TEXT {
+  display: flex;
+  flex-direction: column;
+  flex: 0;
+  height: 3em;
+  vertical-align: middle;
+  text-align: center;
+  margin: auto;
+  padding: 20% 0 20% 0 ;
+}
+.Topic-Button {
+  display: flex;
+  width: 50%;
+}
+.ant-input {
+  background-color: rgba(192, 192, 192, 0.59) !important;
+  color: white !important;
+}
+.ant-input:hover {
+  border-color: rgba(255, 215, 0, 0);
+}
+/*재활용하는 텍스트 클래스 */
+.span_middle {
+  color: white;
+  font-size: 1.5em;
+  display: inline-block;
+}
+.span_larger {
+  color: white;
+  font-size: 2em;
+  display: inline-block;
 }
