@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import "./Creator.css";
+import Ykh from "./img/ykh.jpeg";
+import Kth from "./img/giphy.gif";
 
 class Creator extends Component {
   render() {
     const creators = [
       {
-        name: "강태훈",
-        img:
-          "https://files.slack.com/files-pri/TLJSSPZFE-FN1NFG2LV/i-didnt-choose-the-puglife-the-pug-life-chose-me-23261739.png"
+        name: "육광휘",
+        img: Ykh
       },
       {
-        name: "육광휘",
-        img:
-          "https://files.slack.com/files-pri/TLJSSPZFE-FMQ91CAGK/deadpool.jpeg"
+        name: "강태훈",
+        img: Kth
       },
       {
         name: "김해준",
@@ -20,7 +20,7 @@ class Creator extends Component {
       }
     ];
     const creatorsImg = creators.map((ele, index) => (
-      <div className="creators" key={ele + index}>
+      <div className="creators" key={index}>
         <img alt="fail" className="creatorsPic" src={ele.img} />
         <br />
         {ele.name}
@@ -29,14 +29,15 @@ class Creator extends Component {
     return (
       <div>
         <br />
-        <h3>Hello, Writer</h3>
-        <p>by codestates</p>
+        <h2>Hello, Writer</h2>
+        <h3>by codestates</h3>
         <br />
-        <br />
-        Runaway trains
-        <br />
-        <br />
-        <div>{creatorsImg}</div>
+        <div id="creator-info">
+          <h3>Runaway trains</h3>
+          <br />
+          <br />
+          <div>{creatorsImg}</div>
+        </div>
       </div>
     );
   }

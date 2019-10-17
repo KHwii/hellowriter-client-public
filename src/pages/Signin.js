@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Button } from "antd";
-import { Input } from "semantic-ui-react";
+import { message } from "antd";
+import { Input, Button } from "semantic-ui-react";
 import SERVER_URL from "../config/config";
 
 class Signin extends Component {
@@ -10,7 +10,7 @@ class Signin extends Component {
   }
 
   goWelcome = () => {
-    this.props.history.push("/welcome");
+    this.props.history.push("/");
   };
 
   goSignIn = () => {
@@ -46,7 +46,7 @@ class Signin extends Component {
             this.props.changeCurrentUser(json.id);
             this.goMain();
           } else {
-            alert("가입 내용이 없습니다");
+            message.warning("가입 내용이 없습니다");
           }
         })
         .catch(err => console.log(err))
@@ -54,28 +54,45 @@ class Signin extends Component {
 
         .catch(err => console.log(err));
     } else {
-      alert("이메일과 비밀번호를 모두 입력 해 주세요");
+      message.warning("이메일과 비밀번호를 모두 입력 해주세요");
     }
   };
-
+  handleEnterEvent = e => {
+    if (e.charCode === 13) {
+      this.toLongIn();
+    }
+  };
   render() {
     return (
-      <div>
-        <div>로그인</div>
-        <div>
-          <span>이메일 : </span>
-          <Input id="email-input" />
+      <div className="sign-page">
+        <div className="box">
+          <span className="span_larger">로그인  </span>
+          <div className="box">
+            <span className="span_middle">이메일&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <Input id="email-input" placeholder="e-mail" />
+          </div>
+          <div className="box">
+            <span className="span_middle">비밀번호{" "}</span>
+            <Input
+              onKeyPress={this.handleEnterEvent}
+              id="password-input"
+              type="password"
+              placeholder="password"
+            />
+          </div>
         </div>
         <div>
-          <span>비밀번호 : </span>
-          <Input id="password-input" type="password" />
+          <Button color="yellow" circular onClick={this.toLongIn}>
+            로그인하기
+          </Button>
         </div>
-        <div>
-          <Button onClick={this.toLongIn}>로그인하기</Button>
-        </div>
-        <div>
-          <Button onClick={this.goSignIn}>가입하기</Button>
-          <Button onClick={this.goWelcome}>뒤로가기</Button>
+        <div className="box">
+          <Button color="orange" circular inverted onClick={this.goSignIn}>
+            가입하기
+          </Button>
+          <Button color="red" circular inverted onClick={this.goWelcome}>
+            뒤로가기
+          </Button>
         </div>
       </div>
     );

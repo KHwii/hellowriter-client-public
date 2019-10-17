@@ -1,0 +1,50 @@
+@import "~antd/dist/antd.css";
+
+
+
+
+.ui.modal > .actions {
+  visibility: hidden;
+  height: 0;
+}
+
+.transition {
+  z-index: 3;
+}
+
+.ui.modal > .header {
+  background-color: #0f0f1a;
+  color: gold;
+}
+
+.ui.small.modal.transition.visible.active.confirmPhaseBurn {
+  background-color: rgb(0, 0, 0);
+  text-align: center;
+}
+
+.confirmPhaseBurnButtonGroup {
+  padding: 10px 0 0 0;
+}
+
+.ui.dimmer {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+h2 {
+  color: tan;
+}
+h3 {
+  color: #ffffff;
+}
+
+.ant-menu-dark {
+  background-color: transparent;
+}
+
+.ant-progress-inner {
+  background-color: transparent;
+}
+
+.ant-menu-item {
+  background-color: black;
+}

@@ -1,108 +1,110 @@
-.ant-layout-header {
-  background: #7dbcea;
-  color: #fff;
-}
-
-.ant-layout-content {
-  background: rgba(16, 142, 233, 0.47);
+.first-container {
+  /* background: #8f93ff; */
+  background-image: url("https://thecrystalenchantress.com/wp-content/uploads/2017/03/gold-on-black-background-1.jpg");
+  background-size: cover;
   color: #fff;
   min-height: 120px;
-}
-/*중앙배치 CSS*/
-.container {
-  width: 70%;
-  height: 70%;
-  margin: 20px auto;
-  background: #8f93ff;
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0.2em;
 }
 
-.App-table {
-  background-color: #48363c;
-  display: table;
+.second-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  color: rgba(0, 22, 170, 0.62);
   width: 100%;
   height: 100%;
-}
-.App-table-cell {
-  display: table-cell;
+  padding: 0.2em;
   vertical-align: middle;
   text-align: center;
 }
+
 .centerContents {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  height: 450px;
-  padding: 1em;
-  background: orange;
-  color: white;
 }
 
 /*상단메뉴*/
 .Header-Box {
   display: flex;
+  flex: 1;
   flex-direction: row;
-  height: 20px;
+  height: 8%;
+  /* background-color: rgba(255, 255, 255, 1); */
 }
+
 .dropMenu {
   display: flex;
   flex: 0;
 }
+
 .Menu-Button {
   display: flex;
   flex: 0;
 }
+
+.real-menu {
+  z-index: 1;
+  /*position: absolute;*/
+  /*display: none;*/
+}
+
+.ant-input:focus {
+  border: gold 0.2em;
+}
+
 .progress-box {
   display: flex;
   flex: 1;
-  margin-left: 50px;
-  margin-right: -40px;
+  padding: 0 0.3em 0 0.3em;
 }
+
 .progress {
+  display: flex;
+  flex: 1;
   width: 100%;
 }
 
+.defualt-div {
+  /*z-index: 1;*/
+  position: absolute;
+  pointer-events: none;
+  left: 50%;
+  top: 50%;
+}
+
 .App-Content {
-  height: 90%;
+  /* background-image: url("https://thecrystalenchantress.com/wp-content/uploads/2017/03/gold-on-black-background-1.jpg");
+  background-size: cover; */
+  height: 92%;
   display: flex;
   flex-direction: column;
+  color: #fff;
 }
 
 .flex-container {
-  line-height: initial;
   display: flex;
   flex-direction: column;
   flex: 1;
-  overflow: auto;
-}
-.topic-bar {
-  line-height: initial;
-  display: flex;
-  flex: 0;
-  height: 30px;
-  margin: 3px;
-}
-.bottom-bar {
-  line-height: initial;
-  flex-direction: column;
-  display: flex;
-  flex: 0;
-  height: 30px;
-  margin: 3px;
-  background-color: chocolate;
 }
 
-/*WriteTopic.js*/
-.newTopic-Button {
-  margin-top: 25px;
+.topic-bar {
+  display: flex;
+  flex: 0;
+  height: 2em;
+  margin: 3px;
+  text-align: center;
+  background: rgba(170, 156, 145, 0.1);
 }
-.myIssue-Button {
-  margin-top: 25px;
-}
-.goWrite-Button {
-  margin-top: 25px;
+
+.bottom-bar {
+  display: flex;
+  flex: 0 1;
+  text-align: center;
+  padding: 0 0 0.5em 0;
+  margin: 0 1em 0 1em;
 }
 
 /*Write.js*/
@@ -112,26 +114,246 @@
   flex: 1;
   padding: 5px;
 }
-.write-area {
+
+.title-area {
   display: flex;
-  flex: 1;
-  width: auto;
-  padding: 10px;
-  background-color: rgba(97, 218, 251, 0.26);
+  flex: 0 1;
+  height: 2.5em;
+  padding: 1em;
   color: white;
-  font-size: 1.2em;
+  font-size: 2em;
+}
+
+.write-area {
 }
 
 .ant-btn-group {
   margin-right: 8px;
 }
 
+.signUpPage {
+  color: white;
+}
+
+.bottom-bar-topic {
+  position: relative;
+  margin-top: 5rem;
+}
+
+.center-string {
+  margin: auto;
+  line-height: 2em;
+  vertical-align: middle;
+  color: white;
+}
+
+.Load-outer {
+  display: flex;
+  flex: 1;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.ant-spin-text {
+  color: gold;
+  font-size: 1.5em;
+}
+
+/*main.js*/
+.Main-Containner {
+  padding: 0.5em;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Top-Infomation {
+  color: white;
+  display: flex;
+  flex: 0;
+  flex-direction: column;
+  margin-bottom: auto;
+  margin-top: 3em;
+}
+
+.ant-statistic-title {
+  color: white !important;
+}
+
+.main-botton-group {
+  display: flex;
+  flex: 0;
+}
+
+.bottom-information {
+  margin-top: auto;
+  margin-bottom: 35%;
+  display: flex;
+  flex-direction: column;
+  flex: 0;
+  color: white;
+}
+
+.list-wrap {
+  flex: 1;
+}
+
+.list-item {
+  color: white;
+}
+
+/*WriteTopic.js*/
+.Write-Topic-Box {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
 .Topic-TEXT {
-  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  flex: 0;
   height: 3em;
+  vertical-align: middle;
+  text-align: center;
+  margin: auto;
+  padding: 20% 0 20% 0;
+}
+
+.Topic-Button {
+  display: flex;
+  width: 50%;
+}
+
+.ant-input {
+  background-color: rgba(192, 192, 192, 0.59) !important;
+  color: white !important;
+}
+
+.ant-input:hover {
+  border-color: rgba(255, 215, 0, 0);
+}
+
+/*welcomePage*/
+.welcomePage {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  margin-bottom: 45%;
+}
+
+.wel-upper-box {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  height: 30%;
+  text-align: center;
+}
+.wel-image {
+  width: 10em;
+  height: 10em;
+  margin: 2em auto 2em auto;
+}
+.wel-text-box {
+  display: flex;
+  flex: 0;
+  margin: 2em auto 2em auto;
+  padding: 1em;
+}
+
+.wel-bottom-box {
+  display: flex;
+  flex: 0;
+}
+
+/*signUpPage*/
+.signUpPage {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  margin-bottom: 45%;
+}
+
+.wel-upper-box {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  height: 30%;
+  text-align: center;
+}
+
+.ant-input:focus {
+  color: white;
+  border-color: rgba(32, 32, 32, 0.82);
+}
+
+/*재활용하는 텍스트 클래스 */
+.span_middle {
+  font-family: BM JUA, BM HANNA, BMHANNAPro, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  color: white;
+  font-size: 1.5em;
+  display: inline-block;
   vertical-align: middle;
 }
 
-.signUpPage {
-  color: black;
+.span_larger {
+  color: white;
+  font-size: 2em;
+  display: inline-block;
 }
+
+.box {
+  line-height: 3em;
+  margin: 1em 0 1em 0;
+}
+
+.allow-collapse {
+  opacity: 0.6;
+}
+
+.allow-text {
+  text-align: left;
+}
+
+.allow-btn {
+  float: right;
+  right: 0.3em;
+  bottom: 0.5em;
+  background-color: grey important;
+  border: medium important;
+  color: black;
+  text-emphasis: emphasis;
+}
+
+/*signin.js*/
+.sign-page {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.page{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#render-article-div {
+  font-size: 2em;
+}
+

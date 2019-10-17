@@ -15,11 +15,8 @@ import {
   WriteTopic,
   Creator
 } from "../pages";
-import DropMenu from "../components/DropMenu";
-import ExperienceGuage from "../components/ExperienceGuage";
+import { DropMenu, ExperienceGuage } from "../components";
 import "./App.css";
-
-const { Header, Content } = Layout;
 
 class App extends Component {
   constructor(props) {
@@ -30,120 +27,151 @@ class App extends Component {
       isCustomIssue: false,
       email: "fakeUser",
       nickname: "fakeNick",
-      point: 77.7
+      point: 77,
+      currentUserId: null,
+      isEventTime: false,
+      writeCount: 0
     };
   }
-
+  handleWriteCounter = () => {
+    const prevCount = this.state.writeCount;
+    this.setState({ writeCount: prevCount + 1 });
+  };
+  resetWriteCounter = () => {
+    this.setState({ writeCount: 0 });
+  };
+  endEvent = () => {
+    this.setState({ isEventTime: false });
+  };
+  changeActivePoint = v => {
+    let nextPoint = this.state.point + v;
+    if (nextPoint > 100) {
+      nextPoint = nextPoint - 100;
+      this.setState({ point: nextPoint, isEventTime: true });
+    }
+    this.setState({ point: nextPoint });
+  };
   changeCurrentUser = event => {
     this.setState({ currentUserId: event });
   };
-
   changeCurrentWriteTopic = (string, bool) => {
     this.setState({ currentWriteTopic: string, isCustomIssue: bool }, () => {
       console.log("changed to ", this.state.currentWriteTopic);
     });
   };
-
   changeCurrentReadTopic = event => {
     this.setState({ currentReadTopic: event });
   };
 
   render() {
     return (
-      <div className="container">
-        <Layout className="App-table">
-          <div className="App-table-cell">
-            <div className="centerContents">
-              <Header style={{ paddingLeft: "5px" }} className="Header-Box">
-                <DropMenu />
-                <ExperienceGuage point={this.state.point} />
-              </Header>
-              <Content className="App-Content">
-                <Switch>
-                  <Route
-                    exact
-                    path="/main"
-                    render={props => (
-                      <Main
-                        {...props}
-                        data={this.state}
-                        changeCurrentReadTopic={this.changeCurrentReadTopic}
-                      />
-                    )}
-                  />
-                  <Route
-                    exact
-                    path="/signin"
-                    render={props => (
-                      <Signin
-                        {...props}
-                        changeCurrentUser={this.changeCurrentUser}
-                        data={this.state}
-                      />
-                    )}
-                  />
-                  <Route exact path="/signup" component={Signup} />
-                  <Route
-                    exact
-                    path="/mypage"
-                    render={props => <Mypage {...props} data={this.state} />}
-                  />
-                  <Route
-                    exact
-                    path="/mypage/Article"
-                    component={MypageArticle}
-                  />
-                  <Route
-                    exact
-                    path="/write"
-                    render={props => <Write {...props} data={this.state} />}
-                  />
-                  <Route
-                    exact
-                    path="/write/topic"
-                    render={props => (
-                      <WriteTopic
-                        {...props}
-                        changeCurrentWriteTopic={this.changeCurrentWriteTopic}
-                        data={this.state}
-                      />
-                    )}
-                  />
-                  {/*Todo 진짜 데이터가 App에서 관리되면 같은 키값으로 리팩토링해주세요*/}
-                  <Route
-                    exact
-                    path="/read"
-                    changeCurrentReadTopic={this.changeCurrentReadTopic}
-                    render={props => <Read {...props} data={this.state} />}
-                  />
-                  <Route
-                    exact
-                    path="/read/Topic"
-                    render={props => (
-                      <ReadTopic
-                        {...props}
-                        changeCurrentReadTopic={this.changeCurrentReadTopic}
-                        data={this.state}
-                      />
-                    )}
-                  />
-                  <Route
-                    exact
-                    path="/mypage/Article"
-                    component={MypageArticle}
-                  />
-                  <Route
-                    exact
-                    path="/admin"
-                    render={props => <Admin {...props} data={this.state} />}
-                  />
-                  <Route exact path="/" component={Welcome} />
-                  <Route exact path="/creator" component={Creator} />
-                </Switch>
-              </Content>
-            </div>
+      <div className="first-container">
+        <div className="second-container">
+          <div className="Header-Box">
+            {this.state.currentUserId ? (
+              <>
+                <DropMenu
+                  changeCurrentUser={this.changeCurrentUser}
+                  currentUserId={this.state.currentUserId}
+                  data={this.state}
+                />
+                <ExperienceGuage
+                  isEventTime={this.state.isEventTime}
+                  point={this.state.point}
+                  endEvent={this.endEvent}
+                />
+              </>
+            ) : null}
           </div>
-        </Layout>
+          <div className="App-Content">
+            <Switch>
+              <Route
+                exact
+                path="/main"
+                render={props => (
+                  <Main
+                    {...props}
+                    data={this.state}
+                    changeCurrentReadTopic={this.changeCurrentReadTopic}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path="/signin"
+                render={props => (
+                  <Signin
+                    {...props}
+                    changeCurrentUser={this.changeCurrentUser}
+                    data={this.state}
+                  />
+                )}
+              />
+              <Route exact path="/signup" component={Signup} />
+              <Route
+                exact
+                path="/mypage"
+                render={props => <Mypage {...props} data={this.state} />}
+              />
+              <Route exact path="/mypage/Article" component={MypageArticle} />
+              <Route
+                exact
+                path="/write"
+                render={props => (
+                  <Write
+                    {...props}
+                    changeActivePoint={this.changeActivePoint}
+                    data={this.state}
+                    handleWriteCounter={this.handleWriteCounter}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path="/write/topic"
+                render={props => (
+                  <WriteTopic
+                    {...props}
+                    changeCurrentWriteTopic={this.changeCurrentWriteTopic}
+                    data={this.state}
+                    resetWriteCounter={this.resetWriteCounter}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path="/read"
+                changeCurrentReadTopic={this.changeCurrentReadTopic}
+                render={props => (
+                  <Read
+                    {...props}
+                    changeActivePoint={this.changeActivePoint}
+                    data={this.state}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path="/read/Topic"
+                render={props => (
+                  <ReadTopic
+                    {...props}
+                    changeCurrentReadTopic={this.changeCurrentReadTopic}
+                    data={this.state}
+                  />
+                )}
+              />
+              <Route exact path="/mypage/Article" component={MypageArticle} />
+              <Route
+                exact
+                path="/admin"
+                render={props => <Admin {...props} data={this.state} />}
+              />
+              <Route exact path="/" component={Welcome} />
+              <Route exact path="/creator" component={Creator} />
+            </Switch>
+          </div>
+        </div>
       </div>
     );
   }
